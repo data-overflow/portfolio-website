@@ -1,0 +1,228 @@
+{
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "name": "internal",
+    "src": ".svelte-kit/generated/server/internal.js",
+    "isEntry": true,
+    "imports": [
+      "_internal.js"
+    ]
+  },
+  "_Footer.js": {
+    "file": "chunks/Footer.js",
+    "name": "Footer",
+    "imports": [
+      "_index2.js",
+      "_index.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Footer.BxM0PgoB.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/matrix-gif.CFrjL3yg.gif"
+    ]
+  },
+  "_Footer.svelte_svelte_type_style_lang.js": {
+    "file": "_app/immutable/assets/Footer.BxM0PgoB.css",
+    "src": "_Footer.svelte_svelte_type_style_lang.js"
+  },
+  "_Music.js": {
+    "file": "chunks/Music.js",
+    "name": "Music",
+    "imports": [
+      "_index2.js"
+    ],
+    "assets": [
+      "_app/immutable/assets/moutain_city.o2YZ7Jvx.png"
+    ]
+  },
+  "_aos.js": {
+    "file": "chunks/aos.js",
+    "name": "aos",
+    "imports": [
+      "_index2.js"
+    ],
+    "css": [
+      "_app/immutable/assets/aos.0g9V78UU.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/cognizant.Dm5Hl-7U.png",
+      "_app/immutable/assets/fiverr.Cjn4SrRP.png",
+      "_app/immutable/assets/donationstation.BbB2po_f.png",
+      "_app/immutable/assets/cyberhakz.DhPrJWbp.png",
+      "_app/immutable/assets/indianinfra.D2Boj4o0.png",
+      "_app/immutable/assets/mood.3QHnJzV2.png",
+      "_app/immutable/assets/layer-1.BDfcLgU3.gif",
+      "_app/immutable/assets/layer-3.zhfkxy6v.gif"
+    ]
+  },
+  "_equality.js": {
+    "file": "chunks/equality.js",
+    "name": "equality"
+  },
+  "_exports.js": {
+    "file": "chunks/exports.js",
+    "name": "exports"
+  },
+  "_index.js": {
+    "file": "chunks/index.js",
+    "name": "index",
+    "imports": [
+      "_index2.js",
+      "_equality.js"
+    ]
+  },
+  "_index2.js": {
+    "file": "chunks/index2.js",
+    "name": "index"
+  },
+  "_internal.js": {
+    "file": "chunks/internal.js",
+    "name": "internal",
+    "imports": [
+      "_index2.js",
+      "_equality.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "name": "entries/fallbacks/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_exports.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "name": "index",
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "isEntry": true,
+    "imports": [
+      "_internal.js",
+      "_exports.js",
+      "_index.js"
+    ]
+  },
+  "src/lib/assets/PerfectDOSVGA437.ttf": {
+    "file": "_app/immutable/assets/PerfectDOSVGA437.DdISv4LV.ttf",
+    "src": "src/lib/assets/PerfectDOSVGA437.ttf"
+  },
+  "src/lib/assets/apple.ttf": {
+    "file": "_app/immutable/assets/apple.DwSSc6XR.ttf",
+    "src": "src/lib/assets/apple.ttf"
+  },
+  "src/lib/assets/cognizant.png": {
+    "file": "_app/immutable/assets/cognizant.Dm5Hl-7U.png",
+    "src": "src/lib/assets/cognizant.png"
+  },
+  "src/lib/assets/dav.png": {
+    "file": "_app/immutable/assets/dav.BBJhWVC0.png",
+    "src": "src/lib/assets/dav.png"
+  },
+  "src/lib/assets/fiverr.png": {
+    "file": "_app/immutable/assets/fiverr.Cjn4SrRP.png",
+    "src": "src/lib/assets/fiverr.png"
+  },
+  "src/lib/assets/games/layer-1.gif": {
+    "file": "_app/immutable/assets/layer-1.BDfcLgU3.gif",
+    "src": "src/lib/assets/games/layer-1.gif"
+  },
+  "src/lib/assets/games/layer-3.gif": {
+    "file": "_app/immutable/assets/layer-3.zhfkxy6v.gif",
+    "src": "src/lib/assets/games/layer-3.gif"
+  },
+  "src/lib/assets/matrix-gif.gif": {
+    "file": "_app/immutable/assets/matrix-gif.CFrjL3yg.gif",
+    "src": "src/lib/assets/matrix-gif.gif"
+  },
+  "src/lib/assets/mood.png": {
+    "file": "_app/immutable/assets/mood.3QHnJzV2.png",
+    "src": "src/lib/assets/mood.png"
+  },
+  "src/lib/assets/moutain_city.png": {
+    "file": "_app/immutable/assets/moutain_city.o2YZ7Jvx.png",
+    "src": "src/lib/assets/moutain_city.png"
+  },
+  "src/lib/assets/projects/cyberhakz.png": {
+    "file": "_app/immutable/assets/cyberhakz.DhPrJWbp.png",
+    "src": "src/lib/assets/projects/cyberhakz.png"
+  },
+  "src/lib/assets/projects/donationstation.png": {
+    "file": "_app/immutable/assets/donationstation.BbB2po_f.png",
+    "src": "src/lib/assets/projects/donationstation.png"
+  },
+  "src/lib/assets/projects/indianinfra.png": {
+    "file": "_app/immutable/assets/indianinfra.D2Boj4o0.png",
+    "src": "src/lib/assets/projects/indianinfra.png"
+  },
+  "src/lib/assets/upheavtt.ttf": {
+    "file": "_app/immutable/assets/upheavtt.B-9OJ9eJ.ttf",
+    "src": "src/lib/assets/upheavtt.ttf"
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "name": "entries/pages/_layout.svelte",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_Footer.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.D-pWi36S.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/PerfectDOSVGA437.DdISv4LV.ttf",
+      "_app/immutable/assets/apple.DwSSc6XR.ttf",
+      "_app/immutable/assets/upheavtt.B-9OJ9eJ.ttf"
+    ]
+  },
+  "src/routes/+page.svelte": {
+    "file": "entries/pages/_page.svelte.js",
+    "name": "entries/pages/_page.svelte",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_aos.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Footer.BxM0PgoB.css"
+    ]
+  },
+  "src/routes/2024Q1/+page.svelte": {
+    "file": "entries/pages/2024Q1/_page.svelte.js",
+    "name": "entries/pages/2024Q1/_page.svelte",
+    "src": "src/routes/2024Q1/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_Footer.js",
+      "_aos.js",
+      "_Music.js"
+    ]
+  },
+  "src/routes/blog/+page.svelte": {
+    "file": "entries/pages/blog/_page.svelte.js",
+    "name": "entries/pages/blog/_page.svelte",
+    "src": "src/routes/blog/+page.svelte",
+    "isEntry": true
+  },
+  "src/routes/music/+page.svelte": {
+    "file": "entries/pages/music/_page.svelte.js",
+    "name": "entries/pages/music/_page.svelte",
+    "src": "src/routes/music/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_Music.js"
+    ]
+  },
+  "src/routes/test/+page.svelte": {
+    "file": "entries/pages/test/_page.svelte.js",
+    "name": "entries/pages/test/_page.svelte",
+    "src": "src/routes/test/+page.svelte",
+    "isEntry": true
+  }
+}
