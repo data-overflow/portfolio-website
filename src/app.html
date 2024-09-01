@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>DataOverflow</title>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+
+		<div class="tv" id="tv">
+			<div id="terminal"></div>
+			<div class="collection external terminal"></div>
+			<div class="flicker" id="flicker"></div>
+			<div class="scanlines"></div>
+			<div id="noise" class="noise"></div>
+		</div>
+	</body>
+	<script defer async src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+	<!-- Animate On Scroll Library -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+	<script defer async src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+	<!-- Our stylesheet and script
+  <link rel="stylesheet" href="./style.css" />
+  <script defer async src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer async src="./script.js"></script> -->
+
+	<!-- Terminal Effects -->
+	<script defer async src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<link rel="stylesheet" href="./terminal/terminal-style.css" />
+	<script defer async src="./terminal/terminal.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+	<script defer>
+		//window.addEventListener('resize', function (event) {
+
+		if (window.innerWidth < 640) {
+			document.getElementById('noise').classList.toggle('noise');
+			console.log('noise removed!');
+		}
+
+		//});
+	</script>
+</html>
