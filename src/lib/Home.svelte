@@ -10,66 +10,66 @@
 	let typewriter = $state();
 
 	onMount(() => {
-		let TxtType = function (el, toRotate, period) {
-			this.toRotate = toRotate;
-			this.el = el;
-			this.loopNum = 0;
-			this.period = period;
-			this.txt = '';
-			this.tick();
-			this.isDeleting = false;
-		};
+		// let TxtType = function (el, toRotate, period) {
+		// 	this.toRotate = toRotate;
+		// 	this.el = el;
+		// 	this.loopNum = 0;
+		// 	this.period = period;
+		// 	this.txt = '';
+		// 	this.tick();
+		// 	this.isDeleting = false;
+		// };
 
-		TxtType.prototype.tick = function () {
-			var i = this.loopNum % this.toRotate.length;
-			var fullTxt = this.toRotate[i];
+		// TxtType.prototype.tick = function () {
+		// 	var i = this.loopNum % this.toRotate.length;
+		// 	var fullTxt = this.toRotate[i];
 
-			if (this.isDeleting) {
-				this.txt = fullTxt.substring(0, this.txt.length - 1);
-			} else {
-				this.txt = fullTxt.substring(0, this.txt.length + 1);
-			}
+		// 	if (this.isDeleting) {
+		// 		this.txt = fullTxt.substring(0, this.txt.length - 1);
+		// 	} else {
+		// 		this.txt = fullTxt.substring(0, this.txt.length + 1);
+		// 	}
 
-			this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+		// 	this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
-			var that = this;
-			var delta = 90 - Math.random() * 100;
+		// 	var that = this;
+		// 	var delta = 90 - Math.random() * 100;
 
-			if (this.isDeleting) {
-				delta /= 2;
-			}
+		// 	if (this.isDeleting) {
+		// 		delta /= 2;
+		// 	}
 
-			if (!this.isDeleting && this.txt === fullTxt) {
-				delta = this.period;
-				this.isDeleting = true;
-			} else if (this.isDeleting && this.txt.length == 1) {
-				this.isDeleting = false;
-				this.loopNum++;
-				delta = 500;
-			}
+		// 	if (!this.isDeleting && this.txt === fullTxt) {
+		// 		delta = this.period;
+		// 		this.isDeleting = true;
+		// 	} else if (this.isDeleting && this.txt.length == 1) {
+		// 		this.isDeleting = false;
+		// 		this.loopNum++;
+		// 		delta = 500;
+		// 	}
 
-			setTimeout(function () {
-				that.tick();
-			}, delta);
-		};
+		// 	setTimeout(function () {
+		// 		that.tick();
+		// 	}, delta);
+		// };
 
-		var toRotate = [
-			'I write Code.',
-			'I am Creative.\n\n\n\n\n\n\n\n\n\n\n\nI guess.',
-			'I Love Design. Pixel Art. 8 Bit Music. And Creating Video Games.',
-			'Humans call me Kavirajar B',
-			'Scroll Down!\n\n\n\n\n\n\n\n And witness pure magic',
-			'Wait you are still here?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Lmao.',
-			'This text is just going to loop itself, nothing fancy to see here. Scroll down.',
-			"You can't be stuck here pls. Move on to the rest of the site!"
-		];
-		var period = 1800;
-		if (toRotate && typewriter) {
-			new TxtType(typewriter, toRotate, period);
-		}
-		var css = document.createElement('style');
-		css.innerHTML = '.typewrite > .wrap { border-right: 0.08em solid #fff}';
-		document.body.appendChild(css);
+		// var toRotate = [
+		// 	'I write Code.',
+		// 	'I am Creative.\n\n\n\n\n\n\n\n\n\n\n\nI guess.',
+		// 	'I Love Design. Pixel Art. 8 Bit Music. And Creating Video Games.',
+		// 	'Humans call me Kavirajar B',
+		// 	'Scroll Down!\n\n\n\n\n\n\n\n And witness pure magic',
+		// 	'Wait you are still here?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Lmao.',
+		// 	'This text is just going to loop itself, nothing fancy to see here. Scroll down.',
+		// 	"You can't be stuck here pls. Move on to the rest of the site!"
+		// ];
+		// var period = 1800;
+		// if (toRotate && typewriter) {
+		// 	new TxtType(typewriter, toRotate, period);
+		// }
+		// var css = document.createElement('style');
+		// css.innerHTML = '.typewrite > .wrap { border-right: 0.08em solid #fff}';
+		// document.body.appendChild(css);
 
 		window.addEventListener('scroll', function () {
 			if (home) {
@@ -98,7 +98,8 @@
 	That's me working on the next big thing!
 </div>
 <div id="home" bind:this={home} class="h-full w-full flex pb-16 md:p-0 md:items-center items-end">
-	<div class="flex flex-col gap-2 w-full">
+	<!-- <div class="absolute h-full w-full backdrop-blur-sm pointer-events-none"></div> -->
+	<div class="flex flex-col gap-2 w-full z-10">
 		<div
 			class="flex items-end text-4xl md:text-6xl md:w-[60%] px-6 md:px-10 xl:px-32 font-bold switzer h-40 align-text-bottom"
 		>
@@ -139,7 +140,7 @@
 		}}
 	></div>
 </div>
-{#if rss.success}
+{#if rss && rss.success}
 	<!-- <div
 		class="marquee flex items-center justify-center h-4 relative -mt-4 bg-white text-black jersey font-bold text-xl"
 	>
@@ -174,7 +175,7 @@
 		/* background-image: url('./assets/mood.png?enhanced'); */
 		background-size: cover;
 		background-image: linear-gradient(0deg, rgb(0, 0, 0), rgba(43, 57, 42, 0.073)),
-			url('./assets/mood.png?enhanced');
+			url('./assets/mood.webp');
 		background-position-y: -20%;
 		background-position-x: 80%;
 		height: 99vh;
@@ -207,7 +208,7 @@
 	@media screen and (min-width: 640px) {
 		#home {
 			background-image: linear-gradient(120deg, rgba(0, 0, 0, 0.811), rgba(255, 219, 135, 0.032)),
-				url('./assets/mood.png');
+				url('./assets/mood.webp');
 		}
 	}
 

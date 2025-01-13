@@ -2,6 +2,7 @@ import { installPolyfills } from '@sveltejs/kit/node/polyfills';
 import { getRequest, setResponse, createReadableStream } from '@sveltejs/kit/node';
 import { Server } from '../output/server/index.js';
 import { manifest } from './manifest.js';
+import process from 'node:process';
 
 installPolyfills();
 

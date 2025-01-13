@@ -1,4 +1,5 @@
-import { e as pop, p as push } from "../../chunks/index2.js";
+import "clsx";
+import { R as pop, P as push } from "../../chunks/index.js";
 import { N as NavBar, F as Footer } from "../../chunks/Footer.js";
 function _layout($$payload, $$props) {
   push();

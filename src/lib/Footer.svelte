@@ -66,6 +66,7 @@
 		</div>
 		<div class="flex flex-col">
 			<div class="text-white/80">ARCHIVE</div>
+			<a class={style.a} target="_blank" rel="noreferrer" href="/archive-2024">2024</a>
 			<a
 				class={style.a}
 				target="_blank"

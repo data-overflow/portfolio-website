@@ -1,10 +1,11 @@
-import { b as base, a as assets, o as override, r as reset, p as public_env, s as safe_public_env, c as options, d as set_private_env, e as prerendering, f as set_public_env, g as get_hooks, h as set_safe_public_env } from "./chunks/internal.js";
+import { B as BROWSER } from "./chunks/index.js";
+import { b as base, a as assets, o as override, r as reset, p as public_env, s as safe_public_env, c as read_implementation, d as options, e as set_private_env, f as prerendering, g as set_public_env, h as get_hooks, i as set_safe_public_env, j as set_read_implementation } from "./chunks/internal.js";
+import { t as text, j as json } from "./chunks/index2.js";
 import { m as make_trackable, d as disable_search, n as normalize_path, a as add_data_suffix, r as resolve, b as decode_pathname, h as has_data_suffix, s as strip_data_suffix, c as decode_params, v as validate_layout_server_exports, e as validate_layout_exports, f as validate_page_server_exports, g as validate_page_exports, i as validate_server_exports } from "./chunks/exports.js";
 import * as devalue from "devalue";
-import { r as readable, w as writable } from "./chunks/index.js";
+import { r as readable, w as writable } from "./chunks/index3.js";
 import { parse, serialize } from "cookie";
 import * as set_cookie_parser from "set-cookie-parser";
-const DEV = false;
 const SVELTE_KIT_ASSETS = "/_svelte_kit_assets";
 const ENDPOINT_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"];
 const PAGE_METHODS = ["GET", "POST", "HEAD"];
@@ -106,36 +107,6 @@ class ActionFailure {
     this.data = data;
   }
 }
-function json(data, init2) {
-  const body2 = JSON.stringify(data);
-  const headers2 = new Headers(init2?.headers);
-  if (!headers2.has("content-length")) {
-    headers2.set("content-length", encoder$3.encode(body2).byteLength.toString());
-  }
-  if (!headers2.has("content-type")) {
-    headers2.set("content-type", "application/json");
-  }
-  return new Response(body2, {
-    ...init2,
-    headers: headers2
-  });
-}
-const encoder$3 = new TextEncoder();
-function text(body2, init2) {
-  const headers2 = new Headers(init2?.headers);
-  if (!headers2.has("content-length")) {
-    const encoded = encoder$3.encode(body2);
-    headers2.set("content-length", encoded.byteLength.toString());
-    return new Response(encoded, {
-      ...init2,
-      headers: headers2
-    });
-  }
-  return new Response(body2, {
-    ...init2,
-    headers: headers2
-  });
-}
 function coalesce_to_error(err) {
   return err instanceof Error || err && /** @type {any} */
   err.name && /** @type {any} */
@@ -156,6 +127,39 @@ function get_status(error) {
 function get_message(error) {
   return error instanceof SvelteKitError ? error.text : "Internal Error";
 }
+const escape_html_attr_dict = {
+  "&": "&amp;",
+  '"': "&quot;"
+  // Svelte also escapes < because the escape function could be called inside a `noscript` there
+  // https://github.com/sveltejs/svelte/security/advisories/GHSA-8266-84wp-wv5c
+  // However, that doesn't apply in SvelteKit
+};
+const escape_html_dict = {
+  "&": "&amp;",
+  "<": "&lt;"
+};
+const surrogates = (
+  // high surrogate without paired low surrogate
+  "[\\ud800-\\udbff](?![\\udc00-\\udfff])|[\\ud800-\\udbff][\\udc00-\\udfff]|[\\udc00-\\udfff]"
+);
+const escape_html_attr_regex = new RegExp(
+  `[${Object.keys(escape_html_attr_dict).join("")}]|` + surrogates,
+  "g"
+);
+const escape_html_regex = new RegExp(
+  `[${Object.keys(escape_html_dict).join("")}]|` + surrogates,
+  "g"
+);
+function escape_html(str, is_attr) {
+  const dict = is_attr ? escape_html_attr_dict : escape_html_dict;
+  const escaped_str = str.replace(is_attr ? escape_html_attr_regex : escape_html_regex, (match) => {
+    if (match.length === 2) {
+      return match;
+    }
+    return dict[match] ?? `&#${match.charCodeAt(0)};`;
+  });
+  return escaped_str;
+}
 function method_not_allowed(mod, method) {
   return text(`${method} method not allowed`, {
     status: 405,
@@ -172,7 +176,7 @@ function allowed_methods(mod) {
   return allowed;
 }
 function static_error_page(options2, status, message) {
-  let page = options2.templates.error({ status, message });
+  let page = options2.templates.error({ status, message: escape_html(message) });
   return text(page, {
     headers: { "content-type": "text/html; charset=utf-8" },
     status
@@ -313,7 +317,7 @@ async function handle_action_json_request(event, options2, server) {
     const no_actions_error = new SvelteKitError(
       405,
       "Method Not Allowed",
-      "POST method not allowed. No actions exist for this page"
+      `POST method not allowed. No form actions exist for ${"this page"}`
     );
     return action_json(
       {
@@ -344,7 +348,8 @@ async function handle_action_json_request(event, options2, server) {
         data: stringify_action_response(
           data.data,
           /** @type {string} */
-          event.route.id
+          event.route.id,
+          options2.hooks.transport
         )
       });
     } else {
@@ -355,7 +360,8 @@ async function handle_action_json_request(event, options2, server) {
         data: stringify_action_response(
           data,
           /** @type {string} */
-          event.route.id
+          event.route.id,
+          options2.hooks.transport
         )
       });
     }
@@ -404,7 +410,7 @@ async function handle_action_request(event, server) {
       error: new SvelteKitError(
         405,
         "Method Not Allowed",
-        "POST method not allowed. No actions exist for this page"
+        `POST method not allowed. No form actions exist for ${"this page"}`
       )
     };
   }
@@ -444,7 +450,7 @@ async function handle_action_request(event, server) {
 function check_named_default_separate(actions) {
   if (actions.default && Object.keys(actions).length > 1) {
     throw new Error(
-      "When using named actions, the default action cannot be used. See the docs for more info: https://kit.svelte.dev/docs/form-actions#named-actions"
+      "When using named actions, the default action cannot be used. See the docs for more info: https://svelte.dev/docs/kit/form-actions#named-actions"
     );
   }
 }
@@ -483,13 +489,24 @@ function validate_action_return(data) {
     throw new Error("Cannot `return error(...)` — use `error(...)` or `return fail(...)` instead");
   }
 }
-function uneval_action_response(data, route_id) {
-  return try_deserialize(data, devalue.uneval, route_id);
+function uneval_action_response(data, route_id, transport) {
+  const replacer = (thing) => {
+    for (const key2 in transport) {
+      const encoded = transport[key2].encode(thing);
+      if (encoded) {
+        return `app.decode('${key2}', ${devalue.uneval(encoded, replacer)})`;
+      }
+    }
+  };
+  return try_serialize(data, (value) => devalue.uneval(value, replacer), route_id);
 }
-function stringify_action_response(data, route_id) {
-  return try_deserialize(data, devalue.stringify, route_id);
+function stringify_action_response(data, route_id, transport) {
+  const encoders = Object.fromEntries(
+    Object.entries(transport).map(([key2, value]) => [key2, value.encode])
+  );
+  return try_serialize(data, (value) => devalue.stringify(value, encoders), route_id);
 }
-function try_deserialize(data, fn, route_id) {
+function try_serialize(data, fn, route_id) {
   try {
     return fn(data);
   } catch (e) {
@@ -497,6 +514,11 @@ function try_deserialize(data, fn, route_id) {
       /** @type {any} */
       e
     );
+    if (data instanceof Response) {
+      throw new Error(
+        `Data returned from action inside ${route_id} is not serializable. Form actions need to return plain objects or fail(). E.g. return { success: true } or return fail(400, { message: "invalid" });`
+      );
+    }
     if ("path" in error) {
       let message = `Data returned from action inside ${route_id} is not serializable: ${error.message}`;
       if (error.path !== "") message += ` (data.${error.path})`;
@@ -725,7 +747,7 @@ function create_universal_fetch(event, state, fetched, csr, resolve_opts) {
           const included = resolve_opts.filterSerializedResponseHeaders(lower, value);
           if (!included) {
             throw new Error(
-              `Failed to get response header "${lower}" — it must be included by the \`filterSerializedResponseHeaders\` option: https://kit.svelte.dev/docs/hooks#server-hooks-handle (at ${event.route.id})`
+              `Failed to get response header "${lower}" — it must be included by the \`filterSerializedResponseHeaders\` option: https://svelte.dev/docs/kit/hooks#Server-hooks-handle (at ${event.route.id})`
             );
           }
         }
@@ -770,24 +792,6 @@ function hash(...values) {
   }
   return (hash2 >>> 0).toString(36);
 }
-const escape_html_attr_dict = {
-  "&": "&amp;",
-  '"': "&quot;"
-};
-const escape_html_attr_regex = new RegExp(
-  // special characters
-  `[${Object.keys(escape_html_attr_dict).join("")}]|[\\ud800-\\udbff](?![\\udc00-\\udfff])|[\\ud800-\\udbff][\\udc00-\\udfff]|[\\udc00-\\udfff]`,
-  "g"
-);
-function escape_html_attr(str) {
-  const escaped_str = str.replace(escape_html_attr_regex, (match) => {
-    if (match.length === 2) {
-      return match;
-    }
-    return escape_html_attr_dict[match] ?? `&#${match.charCodeAt(0)};`;
-  });
-  return `"${escaped_str}"`;
-}
 const replacements = {
   "<": "\\u003C",
   "\u2028": "\\u2028",
@@ -817,7 +821,7 @@ function serialize_data(fetched, filter, prerendering2 = false) {
   const attrs = [
     'type="application/json"',
     "data-sveltekit-fetched",
-    `data-url=${escape_html_attr(fetched.url)}`
+    `data-url="${escape_html(fetched.url, true)}"`
   ];
   if (fetched.is_b64) {
     attrs.push("data-b64");
@@ -987,7 +991,17 @@ class BaseProvider {
   /** @type {boolean} */
   #script_needs_csp;
   /** @type {boolean} */
+  #script_src_needs_csp;
+  /** @type {boolean} */
+  #script_src_elem_needs_csp;
+  /** @type {boolean} */
   #style_needs_csp;
+  /** @type {boolean} */
+  #style_src_needs_csp;
+  /** @type {boolean} */
+  #style_src_attr_needs_csp;
+  /** @type {boolean} */
+  #style_src_elem_needs_csp;
   /** @type {import('types').CspDirectives} */
   #directives;
   /** @type {import('types').Csp.Source[]} */
@@ -1021,62 +1035,47 @@ class BaseProvider {
     const effective_style_src = d["style-src"] || d["default-src"];
     const style_src_attr = d["style-src-attr"];
     const style_src_elem = d["style-src-elem"];
-    this.#script_needs_csp = !!effective_script_src && effective_script_src.filter((value) => value !== "unsafe-inline").length > 0 || !!script_src_elem && script_src_elem.filter((value) => value !== "unsafe-inline").length > 0;
-    this.#style_needs_csp = !!effective_style_src && effective_style_src.filter((value) => value !== "unsafe-inline").length > 0 || !!style_src_attr && style_src_attr.filter((value) => value !== "unsafe-inline").length > 0 || !!style_src_elem && style_src_elem.filter((value) => value !== "unsafe-inline").length > 0;
+    const needs_csp = (directive) => !!directive && !directive.some((value) => value === "unsafe-inline");
+    this.#script_src_needs_csp = needs_csp(effective_script_src);
+    this.#script_src_elem_needs_csp = needs_csp(script_src_elem);
+    this.#style_src_needs_csp = needs_csp(effective_style_src);
+    this.#style_src_attr_needs_csp = needs_csp(style_src_attr);
+    this.#style_src_elem_needs_csp = needs_csp(style_src_elem);
+    this.#script_needs_csp = this.#script_src_needs_csp || this.#script_src_elem_needs_csp;
+    this.#style_needs_csp = this.#style_src_needs_csp || this.#style_src_attr_needs_csp || this.#style_src_elem_needs_csp;
     this.script_needs_nonce = this.#script_needs_csp && !this.#use_hashes;
     this.style_needs_nonce = this.#style_needs_csp && !this.#use_hashes;
     this.#nonce = nonce;
   }
   /** @param {string} content */
   add_script(content) {
-    if (this.#script_needs_csp) {
-      const d = this.#directives;
-      if (this.#use_hashes) {
-        const hash2 = sha256(content);
-        this.#script_src.push(`sha256-${hash2}`);
-        if (d["script-src-elem"]?.length) {
-          this.#script_src_elem.push(`sha256-${hash2}`);
-        }
-      } else {
-        if (this.#script_src.length === 0) {
-          this.#script_src.push(`nonce-${this.#nonce}`);
-        }
-        if (d["script-src-elem"]?.length) {
-          this.#script_src_elem.push(`nonce-${this.#nonce}`);
-        }
-      }
+    if (!this.#script_needs_csp) return;
+    const source = this.#use_hashes ? `sha256-${sha256(content)}` : `nonce-${this.#nonce}`;
+    if (this.#script_src_needs_csp) {
+      this.#script_src.push(source);
+    }
+    if (this.#script_src_elem_needs_csp) {
+      this.#script_src_elem.push(source);
     }
   }
   /** @param {string} content */
   add_style(content) {
-    if (this.#style_needs_csp) {
-      const empty_comment_hash = "9OlNO0DNEeaVzHL4RZwCLsBHA8WBQ8toBp/4F5XV2nc=";
+    if (!this.#style_needs_csp) return;
+    const source = this.#use_hashes ? `sha256-${sha256(content)}` : `nonce-${this.#nonce}`;
+    if (this.#style_src_needs_csp) {
+      this.#style_src.push(source);
+    }
+    if (this.#style_src_attr_needs_csp) {
+      this.#style_src_attr.push(source);
+    }
+    if (this.#style_src_elem_needs_csp) {
+      const sha256_empty_comment_hash = "sha256-9OlNO0DNEeaVzHL4RZwCLsBHA8WBQ8toBp/4F5XV2nc=";
       const d = this.#directives;
-      if (this.#use_hashes) {
-        const hash2 = sha256(content);
-        this.#style_src.push(`sha256-${hash2}`);
-        if (d["style-src-attr"]?.length) {
-          this.#style_src_attr.push(`sha256-${hash2}`);
-        }
-        if (d["style-src-elem"]?.length) {
-          if (hash2 !== empty_comment_hash && !d["style-src-elem"].includes(`sha256-${empty_comment_hash}`)) {
-            this.#style_src_elem.push(`sha256-${empty_comment_hash}`);
-          }
-          this.#style_src_elem.push(`sha256-${hash2}`);
-        }
-      } else {
-        if (this.#style_src.length === 0 && !d["style-src"]?.includes("unsafe-inline")) {
-          this.#style_src.push(`nonce-${this.#nonce}`);
-        }
-        if (d["style-src-attr"]?.length) {
-          this.#style_src_attr.push(`nonce-${this.#nonce}`);
-        }
-        if (d["style-src-elem"]?.length) {
-          if (!d["style-src-elem"].includes(`sha256-${empty_comment_hash}`)) {
-            this.#style_src_elem.push(`sha256-${empty_comment_hash}`);
-          }
-          this.#style_src_elem.push(`nonce-${this.#nonce}`);
-        }
+      if (d["style-src-elem"] && !d["style-src-elem"].includes(sha256_empty_comment_hash) && !this.#style_src_elem.includes(sha256_empty_comment_hash)) {
+        this.#style_src_elem.push(sha256_empty_comment_hash);
+      }
+      if (source !== sha256_empty_comment_hash) {
+        this.#style_src_elem.push(source);
       }
     }
   }
@@ -1146,7 +1145,7 @@ class CspProvider extends BaseProvider {
     if (!content) {
       return;
     }
-    return `<meta http-equiv="content-security-policy" content=${escape_html_attr(content)}>`;
+    return `<meta http-equiv="content-security-policy" content="${escape_html(content, true)}">`;
   }
 }
 class CspReportOnlyProvider extends BaseProvider {
@@ -1273,12 +1272,16 @@ async function render_response({
   let base$1 = base;
   let assets$1 = assets;
   let base_expression = s(base);
-  if (!state.prerendering?.fallback) {
-    const segments = event.url.pathname.slice(base.length).split("/").slice(2);
-    base$1 = segments.map(() => "..").join("/") || ".";
-    base_expression = `new URL(${s(base$1)}, location).pathname.slice(0, -1)`;
-    if (!assets || assets[0] === "/" && assets !== SVELTE_KIT_ASSETS) {
-      assets$1 = base$1;
+  {
+    if (!state.prerendering?.fallback) {
+      const segments = event.url.pathname.slice(base.length).split("/").slice(2);
+      base$1 = segments.map(() => "..").join("/") || ".";
+      base_expression = `new URL(${s(base$1)}, location).pathname.slice(0, -1)`;
+      if (!assets || assets[0] === "/" && assets !== SVELTE_KIT_ASSETS) {
+        assets$1 = base$1;
+      }
+    } else if (options2.hash_routing) {
+      base_expression = "new URL('.', location).pathname.slice(0, -1)";
     }
   }
   if (page_config.ssr) {
@@ -1310,9 +1313,19 @@ async function render_response({
       state: {}
     };
     override({ base: base$1, assets: assets$1 });
+    const render_opts = {
+      context: /* @__PURE__ */ new Map([
+        [
+          "__request__",
+          {
+            page: props.page
+          }
+        ]
+      ])
+    };
     {
       try {
-        rendered = options2.root.render(props);
+        rendered = options2.root.render(props, render_opts);
       } finally {
         reset();
       }
@@ -1321,7 +1334,7 @@ async function render_response({
       for (const url of node.imports) modulepreloads.add(url);
       for (const url of node.stylesheets) stylesheets.add(url);
       for (const url of node.fonts) fonts.add(url);
-      if (node.inline_styles) {
+      if (node.inline_styles && !client.inline) {
         Object.entries(await node.inline_styles()).forEach(([k, v]) => inline_styles.set(k, v));
       }
     }
@@ -1339,13 +1352,13 @@ async function render_response({
     }
     return `${assets$1}/${path}`;
   };
-  if (inline_styles.size > 0) {
-    const content = Array.from(inline_styles.values()).join("\n");
+  const style = client.inline ? client.inline?.style : Array.from(inline_styles.values()).join("\n");
+  if (style) {
     const attributes = [];
     if (csp.style_needs_nonce) attributes.push(` nonce="${csp.nonce}"`);
-    csp.add_style(content);
+    csp.add_style(style);
     head += `
-	<style${attributes.join("")}>${content}</style>`;
+	<style${attributes.join("")}>${style}</style>`;
   }
   for (const dep of stylesheets) {
     const path = prefixed(dep);
@@ -1381,6 +1394,7 @@ async function render_response({
     event,
     options2,
     branch.map((b) => b.server_data),
+    csp,
     global
   );
   if (page_config.ssr && page_config.csr) {
@@ -1393,17 +1407,19 @@ async function render_response({
     if (client.uses_env_dynamic_public && state.prerendering) {
       modulepreloads.add(`${options2.app_dir}/env.js`);
     }
-    const included_modulepreloads = Array.from(modulepreloads, (dep) => prefixed(dep)).filter(
-      (path) => resolve_opts.preload({ type: "js", path })
-    );
-    for (const path of included_modulepreloads) {
-      link_header_preloads.add(`<${encodeURI(path)}>; rel="modulepreload"; nopush`);
-      if (options2.preload_strategy !== "modulepreload") {
-        head += `
+    if (!client.inline) {
+      const included_modulepreloads = Array.from(modulepreloads, (dep) => prefixed(dep)).filter(
+        (path) => resolve_opts.preload({ type: "js", path })
+      );
+      for (const path of included_modulepreloads) {
+        link_header_preloads.add(`<${encodeURI(path)}>; rel="modulepreload"; nopush`);
+        if (options2.preload_strategy !== "modulepreload") {
+          head += `
 		<link rel="preload" as="script" crossorigin="anonymous" href="${path}">`;
-      } else if (state.prerendering) {
-        head += `
+        } else if (state.prerendering) {
+          head += `
 		<link rel="modulepreload" href="${path}">`;
+        }
       }
     }
     const blocks = [];
@@ -1421,26 +1437,32 @@ async function render_response({
 							deferred.set(id, { fulfil, reject });
 						})`);
       properties.push(`resolve: ({ id, data, error }) => {
-							const { fulfil, reject } = deferred.get(id);
-							deferred.delete(id);
-
-							if (error) reject(error);
-							else fulfil(data);
+							const try_to_resolve = () => {
+								if (!deferred.has(id)) {
+									setTimeout(try_to_resolve, 0);
+									return;
+								}
+								const { fulfil, reject } = deferred.get(id);
+								deferred.delete(id);
+								if (error) reject(error);
+								else fulfil(data);
+							}
+							try_to_resolve();
 						}`);
     }
     blocks.push(`${global} = {
 						${properties.join(",\n						")}
 					};`);
-    const args = ["app", "element"];
+    const args = ["element"];
     blocks.push("const element = document.currentScript.parentElement;");
     if (page_config.ssr) {
       const serialized = { form: "null", error: "null" };
-      blocks.push(`const data = ${data};`);
       if (form_value) {
         serialized.form = uneval_action_response(
           form_value,
           /** @type {string} */
-          event.route.id
+          event.route.id,
+          options2.hooks.transport
         );
       }
       if (error) {
@@ -1448,7 +1470,7 @@ async function render_response({
       }
       const hydrate = [
         `node_ids: [${branch.map(({ node }) => node.index).join(", ")}]`,
-        "data",
+        `data: ${data}`,
         `form: ${serialized.form}`,
         `error: ${serialized.error}`
       ];
@@ -1464,24 +1486,24 @@ ${indent}	${hydrate.join(`,
 ${indent}	`)}
 ${indent}}`);
     }
+    const boot = client.inline ? `${client.inline.script}
+
+					__sveltekit_${options2.version_hash}.app.start(${args.join(", ")});` : client.app ? `Promise.all([
+						import(${s(prefixed(client.start))}),
+						import(${s(prefixed(client.app))})
+					]).then(([kit, app]) => {
+						kit.start(app, ${args.join(", ")});
+					});` : `import(${s(prefixed(client.start))}).then((app) => {
+						app.start(${args.join(", ")})
+					});`;
     if (load_env_eagerly) {
       blocks.push(`import(${s(`${base$1}/${options2.app_dir}/env.js`)}).then(({ env }) => {
 						${global}.env = env;
 
-						Promise.all([
-							import(${s(prefixed(client.start))}),
-							import(${s(prefixed(client.app))})
-						]).then(([kit, app]) => {
-							kit.start(${args.join(", ")});
-						});
+						${boot.replace(/\n/g, "\n	")}
 					});`);
     } else {
-      blocks.push(`Promise.all([
-						import(${s(prefixed(client.start))}),
-						import(${s(prefixed(client.app))})
-					]).then(([kit, app]) => {
-						kit.start(${args.join(", ")});
-					});`);
+      blocks.push(boot);
     }
     if (options2.service_worker) {
       const opts = "";
@@ -1563,13 +1585,11 @@ ${indent}}`);
       type: "bytes"
     }),
     {
-      headers: {
-        "content-type": "text/html"
-      }
+      headers: headers2
     }
   );
 }
-function get_data(event, options2, nodes, global) {
+function get_data(event, options2, nodes, csp, global) {
   let promise_id = 1;
   let count = 0;
   const { iterator, push, done } = create_async_iterator();
@@ -1603,12 +1623,20 @@ function get_data(event, options2, nodes, global) {
             data = void 0;
             str = devalue.uneval({ id, data, error }, replacer);
           }
-          push(`<script>${global}.resolve(${str})<\/script>
+          const nonce = csp.script_needs_nonce ? ` nonce="${csp.nonce}"` : "";
+          push(`<script${nonce}>${global}.resolve(${str})<\/script>
 `);
           if (count === 0) done();
         }
       );
       return `${global}.defer(${id})`;
+    } else {
+      for (const key2 in options2.hooks.transport) {
+        const encoded = options2.hooks.transport[key2].encode(thing);
+        if (encoded) {
+          return `app.decode('${key2}', ${devalue.uneval(encoded, replacer)})`;
+        }
+      }
     }
   }
   try {
@@ -1866,6 +1894,9 @@ function get_data_json(event, options2, nodes) {
   let count = 0;
   const { iterator, push, done } = create_async_iterator();
   const reducers = {
+    ...Object.fromEntries(
+      Object.entries(options2.hooks.transport).map(([key2, value]) => [key2, value.encode])
+    ),
     /** @param {any} thing */
     Promise: (thing) => {
       if (typeof thing?.then === "function") {
@@ -1970,7 +2001,10 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
         status = action_result.status;
       }
     }
-    const should_prerender_data = nodes.some((node) => node?.server?.load);
+    const should_prerender_data = nodes.some(
+      // prerender in case of trailingSlash because the client retrieves that value from the server
+      (node) => node?.server?.load || node?.server?.trailingSlash !== void 0
+    );
     const data_pathname = add_data_suffix(event.url.pathname);
     const should_prerender = get_option(nodes, "prerender") ?? false;
     if (should_prerender) {
@@ -1986,6 +2020,7 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
     state.prerender_default = should_prerender;
     const fetched = [];
     if (get_option(nodes, "ssr") === false && !(state.prerendering && should_prerender_data)) {
+      if (BROWSER && action_result && !event.request.headers.has("x-sveltekit-action")) ;
       return await render_response({
         branch: [],
         fetched,
@@ -2204,6 +2239,7 @@ function exec(match, params, matchers) {
   if (buffered) return;
   return result;
 }
+const INVALID_COOKIE_CHARACTER_REGEX = /[\x00-\x1F\x7F()<>@,;:"/[\]?={} \t]/;
 function validate_options(options2) {
   if (options2?.path === void 0) {
     throw new Error("You must specify a `path` when setting, deleting or serializing cookies");
@@ -2233,8 +2269,7 @@ function get_cookies(request, url, trailing_slash) {
       if (c && domain_matches(url.hostname, c.options.domain) && path_matches(url.pathname, c.options.path)) {
         return c.value;
       }
-      const decoder = opts?.decode || decodeURIComponent;
-      const req_cookies = parse(header, { decode: decoder });
+      const req_cookies = parse(header, { decode: opts?.decode });
       const cookie = req_cookies[name];
       return cookie;
     },
@@ -2242,8 +2277,7 @@ function get_cookies(request, url, trailing_slash) {
      * @param {import('cookie').CookieParseOptions} opts
      */
     getAll(opts) {
-      const decoder = opts?.decode || decodeURIComponent;
-      const cookies2 = parse(header, { decode: decoder });
+      const cookies2 = parse(header, { decode: opts?.decode });
       for (const c of Object.values(new_cookies)) {
         if (domain_matches(url.hostname, c.options.domain) && path_matches(url.pathname, c.options.path)) {
           cookies2[c.name] = c.value;
@@ -2257,6 +2291,14 @@ function get_cookies(request, url, trailing_slash) {
      * @param {import('./page/types.js').Cookie['options']} options
      */
     set(name, value, options2) {
+      const illegal_characters = name.match(INVALID_COOKIE_CHARACTER_REGEX);
+      if (illegal_characters) {
+        console.warn(
+          `The cookie name "${name}" will be invalid in SvelteKit 3.0 as it contains ${illegal_characters.join(
+            " and "
+          )}. See RFC 2616 for more details https://datatracker.ietf.org/doc/html/rfc2616#section-2.2`
+        );
+      }
       validate_options(options2);
       set_internal(name, value, { ...defaults, ...options2 });
     },
@@ -2365,14 +2407,23 @@ function create_fetch({ event, options: options2, manifest, state, get_cookie_he
         const decoded = decodeURIComponent(url.pathname);
         const filename = (decoded.startsWith(prefix) ? decoded.slice(prefix.length) : decoded).slice(1);
         const filename_html = `${filename}/index.html`;
-        const is_asset = manifest.assets.has(filename);
-        const is_asset_html = manifest.assets.has(filename_html);
+        const is_asset = manifest.assets.has(filename) || filename in manifest._.server_assets;
+        const is_asset_html = manifest.assets.has(filename_html) || filename_html in manifest._.server_assets;
         if (is_asset || is_asset_html) {
           const file = is_asset ? filename : filename_html;
           if (state.read) {
             const type = is_asset ? manifest.mimeTypes[filename.slice(filename.lastIndexOf("."))] : "text/html";
             return new Response(state.read(file), {
               headers: type ? { "content-type": type } : {}
+            });
+          } else if (read_implementation && file in manifest._.server_assets) {
+            const length = manifest._.server_assets[file];
+            const type = manifest.mimeTypes[file.slice(file.lastIndexOf("."))];
+            return new Response(read_implementation(file), {
+              headers: {
+                "Content-Length": "" + length,
+                "Content-Type": type
+              }
             });
           }
           return await fetch(request);
@@ -2480,6 +2531,9 @@ async function respond(request, options2, manifest, state) {
       return text(csrf_error.body.message, { status: csrf_error.status });
     }
   }
+  if (options2.hash_routing && url.pathname !== base + "/" && url.pathname !== "/[fallback]") {
+    return text("Not found", { status: 404 });
+  }
   let rerouted_path;
   try {
     rerouted_path = options2.hooks.reroute({ url: new URL(url) }) ?? url.pathname;
@@ -2584,12 +2638,12 @@ async function respond(request, options2, manifest, state) {
         trailing_slash = "always";
       } else if (route.page) {
         const nodes = await load_page_nodes(route.page, manifest);
-        if (DEV) ;
+        if (BROWSER) ;
         trailing_slash = get_option(nodes, "trailingSlash");
       } else if (route.endpoint) {
         const node = await route.endpoint();
         trailing_slash = node.trailingSlash;
-        if (DEV) ;
+        if (BROWSER) ;
       }
       if (!is_data_request) {
         const normalized = normalize_path(url.pathname, trailing_slash ?? "never");
@@ -2625,6 +2679,11 @@ async function respond(request, options2, manifest, state) {
           event.platform = await state.emulator.platform({ config, prerender });
         }
       }
+    } else if (state.emulator?.platform) {
+      event.platform = await state.emulator.platform({
+        config: {},
+        prerender: !!state.prerendering?.fallback
+      });
     }
     const { cookies, new_cookies, get_cookie_header, set_internal } = get_cookies(
       request,
@@ -2716,7 +2775,7 @@ async function respond(request, options2, manifest, state) {
           preload: opts.preload || default_preload
         };
       }
-      if (state.prerendering?.fallback) {
+      if (options2.hash_routing || state.prerendering?.fallback) {
         return await render_response({
           event: event2,
           options: options2,
@@ -2852,6 +2911,7 @@ const prerender_env_handler = {
     );
   }
 };
+let init_promise;
 class Server {
   /** @type {import('types').SSROptions} */
   #options;
@@ -2882,7 +2942,10 @@ class Server {
       prerendering ? new Proxy({ type: "public" }, prerender_env_handler) : public_env2
     );
     set_safe_public_env(public_env2);
-    if (!this.#options.hooks) {
+    if (read) {
+      set_read_implementation(read);
+    }
+    await (init_promise ??= (async () => {
       try {
         const module = await get_hooks();
         this.#options.hooks = {
@@ -2890,14 +2953,18 @@ class Server {
           handleError: module.handleError || (({ error }) => console.error(error)),
           handleFetch: module.handleFetch || (({ request, fetch: fetch2 }) => fetch2(request)),
           reroute: module.reroute || (() => {
-          })
+          }),
+          transport: module.transport || {}
         };
+        if (module.init) {
+          await module.init();
+        }
       } catch (error) {
         {
           throw error;
         }
       }
-    }
+    })());
   }
   /**
    * @param {Request} request

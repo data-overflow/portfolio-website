@@ -1,19 +1,69 @@
-import { k as attr, e as pop, l as stringify, p as push, m as ensure_array_like, h as escape_html } from "./index2.js";
+import { Z as fallback, X as ensure_array_like, _ as bind_props, V as stringify, R as pop, P as push } from "./index.js";
+import { l as linkedin, g as github, x } from "./Footer.svelte_svelte_type_style_lang.js";
+import { a as attr, c as clsx } from "./attributes.js";
+import { e as escape_html } from "./escaping.js";
+const whatsapp = "data:image/svg+xml,%3csvg%20width='64'%20height='64'%20viewBox='0%200%2064%2064'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_590_4)'%3e%3cpath%20d='M54.404%209.30422C51.4704%206.34221%2047.9764%203.994%2044.1257%202.3966C40.275%200.799188%2036.1448%20-0.0154433%2031.976%200.0002217C14.508%200.0002217%200.272%2014.2322%200.256%2031.7042C0.256%2037.3002%201.72%2042.7442%204.484%2047.5642L0%2064.0002L16.816%2059.5922C21.4659%2062.1292%2026.679%2063.4565%2031.976%2063.4522H31.992C49.464%2063.4522%2063.696%2049.2202%2063.712%2031.7322C63.7156%2027.5645%2062.8946%2023.4372%2061.2965%2019.588C59.6983%2015.7388%2057.3585%2012.2438%2054.404%209.30422ZM31.976%2058.0842C27.2527%2058.0805%2022.6169%2056.8097%2018.552%2054.4042L17.592%2053.8282L7.616%2056.4442L10.28%2046.7122L9.656%2045.7082C7.01523%2041.5095%205.61859%2036.6483%205.628%2031.6882C5.628%2017.1842%2017.456%205.35222%2031.992%205.35222C35.455%205.34601%2038.8849%206.02532%2042.0841%207.35099C45.2833%208.67666%2048.1884%2010.6225%2050.632%2013.0762C53.0836%2015.5208%2055.0272%2018.4264%2056.3508%2021.6255C57.6744%2024.8247%2058.3518%2028.2541%2058.344%2031.7162C58.328%2046.2722%2046.5%2058.0842%2031.976%2058.0842ZM46.436%2038.3482C45.648%2037.9522%2041.756%2036.0362%2041.024%2035.7642C40.296%2035.5042%2039.764%2035.3682%2039.244%2036.1602C38.712%2036.9482%2037.192%2038.7442%2036.736%2039.2602C36.28%2039.7922%2035.808%2039.8522%2035.016%2039.4602C34.228%2039.0602%2031.672%2038.2282%2028.648%2035.5202C26.288%2033.4202%2024.708%2030.8202%2024.236%2030.0322C23.78%2029.2402%2024.192%2028.8162%2024.588%2028.4202C24.936%2028.0682%2025.376%2027.4922%2025.772%2027.0362C26.172%2026.5802%2026.304%2026.2442%2026.564%2025.7162C26.824%2025.1802%2026.7%2024.7242%2026.504%2024.3282C26.304%2023.9322%2024.724%2020.0242%2024.056%2018.4482C23.416%2016.8922%2022.764%2017.1082%2022.276%2017.0882C21.82%2017.0602%2021.288%2017.0602%2020.756%2017.0602C20.3543%2017.0704%2019.959%2017.1635%2019.5949%2017.3335C19.2308%2017.5035%2018.9057%2017.7468%2018.64%2018.0482C17.912%2018.8402%2015.876%2020.7562%2015.876%2024.6642C15.876%2028.5722%2018.716%2032.3282%2019.116%2032.8602C19.508%2033.3922%2024.692%2041.3882%2032.648%2044.8282C34.528%2045.6482%2036.008%2046.1322%2037.164%2046.5002C39.064%2047.1082%2040.78%2047.0162%2042.148%2046.8202C43.668%2046.5882%2046.832%2044.9002%2047.5%2043.0482C48.156%2041.1922%2048.156%2039.6082%2047.956%2039.2762C47.76%2038.9402%2047.228%2038.7442%2046.436%2038.3482Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_590_4'%3e%3crect%20width='64'%20height='64'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e";
+function SocialIcons($$payload, $$props) {
+  let opacity = fallback($$props["opacity"], 50);
+  let useSmallerIcons = fallback($$props["useSmallerIcons"], false);
+  const icons = [
+    [
+      linkedin,
+      "https://www.linkedin.com/in/kavirajar"
+    ],
+    [github, "https://github.com/data-overflow"],
+    [x, "https://x.com/kvrjr"],
+    // [instagram, 'https://www.instagram.com/data.overflow/'],
+    [whatsapp, "https://wa.me/917695901087"]
+  ];
+  const each_array = ensure_array_like(icons);
+  $$payload.out += `<div class="flex flex-row flex-wrap gap-3"><!--[-->`;
+  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+    let icon = each_array[$$index];
+    $$payload.out += `<a${attr("style", `opacity: ${stringify(opacity)}%;`)}${attr("class", `${stringify(useSmallerIcons ? "w-5 h-5" : "w-8 h-8 md:w-6 md:h-6")} hover:!opacity-80`)}${attr("href", icon[1])} target="_blank" rel="noreferrer"><img class="brightness-0 dark:brightness-100"${attr("src", icon[0])}${attr("alt", icon[1])}></a>`;
+  }
+  $$payload.out += `<!--]--></div>`;
+  bind_props($$props, { opacity, useSmallerIcons });
+}
 function Home($$payload, $$props) {
   push();
-  $$payload.out += `<div${attr("class", `absolute bg-black/50 backdrop-blur px-2 transition-opacity ${stringify("opacity-0")} svelte-5myb1g`)}>That's me working on the next big thing!</div> <div id="home" class="h-full w-full flex pb-16 md:p-0 md:items-center items-end svelte-5myb1g"><div class="flex flex-col w-full svelte-5myb1g"><div class="text-3xl md:text-5xl text-white px-6 md:px-10 svelte-5myb1g">Hiii I'm DATA OVERFLOW</div> <div class="px-6 md:px-10 svelte-5myb1g"><p class="typewrite text-left text-doswhite text-2xl md:text-3xl svelte-5myb1g"><span class="wrap svelte-5myb1g"></span></p></div> <div class="px-6 md:px-10 text-xl md:text-2xl mt-8 bg-transparent svelte-5myb1g"><a class="p-2 px-6 border-2 hover:bg-white hover:text-black z-100 svelte-5myb1g" href="https://flowcv.com/resume/pjasuoi5b2" target="_blank">View Resume</a></div></div> <div role="presentation" class="bg-black/0 right-[15%] top-[50%] md:absolute w-64 h-96 hidden md:block svelte-5myb1g"></div></div>`;
+  let { rss } = $$props;
+  $$payload.out += `<div${attr("class", `absolute bg-black/50 backdrop-blur px-2 transition-opacity ${stringify("opacity-0")} svelte-vgee67`)}>That's me working on the next big thing!</div> <div id="home" class="h-full w-full flex pb-16 md:p-0 md:items-center items-end svelte-vgee67"><div class="flex flex-col gap-2 w-full z-10 svelte-vgee67"><div class="flex items-end text-4xl md:text-6xl md:w-[60%] px-6 md:px-10 xl:px-32 font-bold switzer h-40 align-text-bottom svelte-vgee67">This is me, Kavirajar B</div> <div class="flex flex-col gap-0 svelte-vgee67"><div class="text-2xl md:text-3xl text-doswhite switzer px-6 md:px-10 xl:px-32 svelte-vgee67">Distrupting the Ordinary, Building for a Better World</div></div> <div class="h-fit px-6 md:px-10 xl:px-32 svelte-vgee67">`;
+  SocialIcons($$payload, { opacity: 50 });
+  $$payload.out += `<!----></div> <div class="flex flex-row gap-4 items-center px-6 md:px-10 xl:px-32 text-xl md:text-2xl mt-8 bg-transparent svelte-vgee67"><a class="p-2 px-6 border-2 hover:bg-white rounded-sm hover:text-black z-100 svelte-vgee67" href="https://flowcv.com/resume/pjasuoi5b2" target="_blank">View Resume</a></div></div> <div role="presentation" class="bg-black/0 right-[15%] top-[50%] md:absolute w-64 h-96 hidden md:block svelte-vgee67"></div></div> `;
+  if (rss && rss.success) {
+    $$payload.out += "<!--[-->";
+    const each_array = ensure_array_like(rss.news);
+    const each_array_1 = ensure_array_like(rss.news);
+    $$payload.out += `<div class="overflow-x-hidden flex h-hit relative -mt-4 bg-white text-black jersey font-bold text-xl svelte-vgee67"><div class="animate-marquee whitespace-nowrap h-fit w-fit svelte-vgee67"><!--[-->`;
+    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+      let news = each_array[$$index];
+      $$payload.out += `<span class="mx-4 min-h-fit svelte-vgee67">${escape_html(news.toUpperCase())}</span>`;
+    }
+    $$payload.out += `<!--]--></div> <div class="animate-marquee2 whitespace-nowrap h-fit absolute w-fit svelte-vgee67"><!--[-->`;
+    for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
+      let news = each_array_1[$$index_1];
+      $$payload.out += `<span class="mx-4 min-h-fit svelte-vgee67">${escape_html(news.toUpperCase())}</span>`;
+    }
+    $$payload.out += `<!--]--></div></div>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+  }
+  $$payload.out += `<!--]-->`;
   pop();
 }
 const arrow = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAGRJREFUWIXtlkEKwCAMBK34/y/Xi4ciBDdRGoQZ8LbCZlSwFADY5x0rRD1Y5HfmyUMmrjSwmtRl4ioD3jOW8ukGHiFjTWHtdeXTDTQhMzdX74FiN98ABSigvAKL8B/gS7oBAIAOMkQSEhmoDtUAAAAASUVORK5CYII=";
 const cognizant = "/_app/immutable/assets/cognizant.Dm5Hl-7U.png";
 const fiverr = "/_app/immutable/assets/fiverr.Cjn4SrRP.png";
+const teachafy = "/_app/immutable/assets/teachafy.0phtI4wM.png";
 function Resume($$payload) {
-  $$payload.out += `<div id="apple-bg" class="flex flex-col gap-2 justify-center bg-white h-fit w-full xl:h-[120vh] 2xl:h-[110vh] 3xl:h-[90vh] svelte-1q6rcg1"><div class="bg-doswhite h-fit xl:h-[90%] w-[98%] md:w-[90%] xl:w-[80%] mt-4 mb-4 mx-auto border-2 border-black svelte-1q6rcg1"><div class="flex flex-col items-center apple svelte-1q6rcg1"><div class="flex flex-row justify-between w-full svelte-1q6rcg1"><div class="relative z-[10] border-x-4 top-[4px] left-[20px] border-doswhite svelte-1q6rcg1"><div class="border-2 border-black w-6 h-6 bg-doswhite svelte-1q6rcg1"></div></div> <div class="relative text-center px-2 top-[4px] z-[100] text-black bg-doswhite w-fit m-auto svelte-1q6rcg1">Resume.exe</div></div> <div class="relative top-[-24px] flex flex-col w-full svelte-1q6rcg1"><div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black svelte-1q6rcg1"></div></div></div> <div class="flex flex-col md:flex-row apple text-black p-4 md:p-8 gap-8 svelte-1q6rcg1"><div class="flex flex-col gap-1 sticky top-10 z-50 bg-doswhite border-4 border-doswhite text-sm md:text-base svelte-1q6rcg1"><div class="svelte-1q6rcg1">Disk: /C</div> <div class="flex flex-col md:flex-row svelte-1q6rcg1"><div class="border-2 border-black w-full svelte-1q6rcg1"><ul class="grid grid-cols-2 text-xs md:text-base md:flex md:flex-col svelte-1q6rcg1"><li${attr("class", `border-b-2 border-transparent hover:border-black ${stringify("")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Education</button></li> <li${attr("class", `border-y-2 border-transparent hover:border-black ${stringify("bg-black text-doswhite")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Experience</button></li> <li${attr("class", `border-y-2 border-transparent hover:border-black ${stringify("")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Extracurricular</button></li> <li${attr("class", `border-y-2 border-transparent hover:border-black ${stringify("")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Skills</button></li> <li${attr("class", `border-t-2 border-transparent hover:border-black ${stringify("")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Achievements</button></li></ul></div> <div class="md:border-2 border-b-2 md:w-8 border-t-0 border-x-0 md:border-l-0 border-black flex flex-row w-full md:flex-col justify-between svelte-1q6rcg1"><button class="svelte-1q6rcg1"><img${attr("src", arrow)} class="w-8 h-8 border-y-2 md:border-y-0 md:border-b-2 -rotate-90 md:rotate-0 border-black cursor-pointer svelte-1q6rcg1" alt="arrow"></button> <button class="svelte-1q6rcg1"><img${attr("src", arrow)} class="w-8 h-8 border-y-2 md:border-y-0 md:border-b-2 border-black rotate-90 md:rotate-180 cursor-pointer svelte-1q6rcg1" alt="arrow"></button></div></div></div> <div class="flex flex-col w-full h-full gap-8 lg:gap-2 justify-between text-sm lg:text-md svelte-1q6rcg1">`;
+  $$payload.out += `<div id="apple-bg" class="flex flex-col gap-2 justify-center bg-white h-fit w-full svelte-1q6rcg1"><div class="bg-doswhite h-fit xl:h-[100vh] 3xl:h-[90vh] w-[98%] md:w-[90%] xl:w-[80%] mt-4 mb-4 mx-auto border-2 border-black svelte-1q6rcg1"><div class="flex flex-col items-center apple svelte-1q6rcg1"><div class="flex flex-row justify-between w-full svelte-1q6rcg1"><div class="relative z-[10] border-x-4 top-[4px] left-[20px] border-doswhite svelte-1q6rcg1"><div class="border-2 border-black w-6 h-6 bg-doswhite svelte-1q6rcg1"></div></div> <div class="relative text-center px-2 top-[4px] z-[100] text-black bg-doswhite w-fit m-auto svelte-1q6rcg1">Resume.exe</div></div> <div class="relative top-[-24px] flex flex-col w-full svelte-1q6rcg1"><div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black mx-2 svelte-1q6rcg1"></div> <div class="mt-1 border-t-2 border-black svelte-1q6rcg1"></div></div></div> <div class="flex flex-col lg:flex-row h-fit apple text-black p-4 md:p-8 gap-8 svelte-1q6rcg1"><div class="flex flex-col gap-1 sticky min-w-[30%] md:relative top-10 h-fit overflow-hidden z-50 bg-doswhite border-4 border-doswhite text-sm md:text-base svelte-1q6rcg1"><div class="svelte-1q6rcg1">Disk: /C</div> <div class="flex flex-col md:flex-row w-full svelte-1q6rcg1"><div class="border-2 border-black w-full svelte-1q6rcg1"><ul class="grid grid-cols-2 text-xs md:text-base md:flex md:flex-col svelte-1q6rcg1"><li${attr("class", `border-b-2 border-transparent hover:border-black ${stringify("")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Education</button></li> <li${attr("class", `border-y-2 border-transparent hover:border-black ${stringify("bg-black text-doswhite")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Experience</button></li> <li${attr("class", `border-y-2 border-transparent hover:border-black ${stringify("")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Extracurricular</button></li> <li${attr("class", `border-y-2 border-transparent hover:border-black ${stringify("")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Skills</button></li> <li${attr("class", `border-t-2 border-transparent hover:border-black ${stringify("")} svelte-1q6rcg1`)}><button class="p-2 md:p-1 w-full text-left svelte-1q6rcg1">Achievements</button></li></ul></div> <div class="md:border-2 border-b-2 md:w-8 border-t-0 border-x-0 md:border-l-0 border-black flex flex-row w-full md:flex-col justify-between svelte-1q6rcg1"><button class="svelte-1q6rcg1"><img${attr("src", arrow)} class="w-8 h-8 border-y-2 md:border-y-0 md:border-b-2 -rotate-90 md:rotate-0 border-black cursor-pointer svelte-1q6rcg1" alt="arrow"></button> <button class="svelte-1q6rcg1"><img${attr("src", arrow)} class="w-8 h-8 border-y-2 md:border-y-0 md:border-b-2 border-black rotate-90 md:rotate-180 cursor-pointer svelte-1q6rcg1" alt="arrow"></button></div></div></div> <div class="flex flex-col xl:h-[100vh] 3xl:h-[90vh] gap-8 lg:gap-2 justify-between text-sm lg:text-md svelte-1q6rcg1">`;
   {
     $$payload.out += "<!--[!-->";
     {
       $$payload.out += "<!--[-->";
-      $$payload.out += `<div class="px-2 py-2 md:px-8 flex flex-col gap-8 svelte-1q6rcg1"><div class="text-xl apple sticky top-48 pt-4 md:top-56 md:static bg-doswhite border-2 border-doswhite svelte-1q6rcg1">Experience</div> <div class="flex flex-col gap-10 apple svelte-1q6rcg1"><div class="flex flex-col md:flex-row gap-2 md:gap-10 svelte-1q6rcg1"><img${attr("src", fiverr)} class="h-24 w-24 svelte-1q6rcg1" alt="cit logo"> <div class="flex flex-col svelte-1q6rcg1"><div class="text-sm text-black svelte-1q6rcg1">Fiverr</div> <div class="text-sm text-black svelte-1q6rcg1">Freelancer, Full Stack Developer</div> <div class="text-sm text-black svelte-1q6rcg1">Dec 2023 - Present</div> <ul class="text-xs svelte-1q6rcg1"><li class="svelte-1q6rcg1">- Developed animated, responsive, and accessible websites for 5+ clients using
+      $$payload.out += `<div class="px-2 py-2 md:px-8 flex flex-col gap-8 svelte-1q6rcg1"><div class="text-xl apple sticky top-48 pt-4 md:top-56 md:static bg-doswhite border-2 border-doswhite svelte-1q6rcg1">Experience</div> <div class="flex flex-col gap-10 apple xl:h-[75%] overflow-y-scroll svelte-1q6rcg1"><div class="flex flex-col md:flex-row gap-2 md:gap-10 svelte-1q6rcg1"><img${attr("src", teachafy)} class="h-24 w-24 svelte-1q6rcg1" alt="cit logo"> <div class="flex flex-col svelte-1q6rcg1"><div class="text-sm text-black svelte-1q6rcg1">Teachafy Labs</div> <div class="text-sm text-black svelte-1q6rcg1">ML &amp; Backend Developer Intern</div> <div class="text-sm text-black svelte-1q6rcg1">Dec 2024 - Present</div> <ul class="text-xs svelte-1q6rcg1"><li class="svelte-1q6rcg1">- Working on development of AI products using Open AI API, FastAPI, Nango,
+											n8n, Docker, EasyPanel, and other tools</li></ul></div></div> <div class="flex flex-col md:flex-row gap-2 md:gap-10 svelte-1q6rcg1"><img${attr("src", fiverr)} class="h-24 w-24 svelte-1q6rcg1" alt="cit logo"> <div class="flex flex-col svelte-1q6rcg1"><div class="text-sm text-black svelte-1q6rcg1">Fiverr</div> <div class="text-sm text-black svelte-1q6rcg1">Freelancer, Full Stack Developer</div> <div class="text-sm text-black svelte-1q6rcg1">Dec 2023 - Dec 2024</div> <ul class="text-xs svelte-1q6rcg1"><li class="svelte-1q6rcg1">- Developed animated, responsive, and accessible websites for 5+ clients using
 											SvelteKit and FastAPI, delivering high-quality projects on time</li> <li class="svelte-1q6rcg1">- Generated $1200 in revenue in under 3 weeks while working part-time,
 											demonstrating strong project management and client satisfaction</li></ul></div></div> <div class="flex flex-col md:flex-row gap-2 md:gap-10 svelte-1q6rcg1"><img${attr("src", cognizant)} class="h-24 w-24 svelte-1q6rcg1" alt="cit logo"> <div class="flex flex-col svelte-1q6rcg1"><div class="text-sm text-black svelte-1q6rcg1">Cognizant</div> <div class="text-sm text-black svelte-1q6rcg1">Research &amp; Development Intern</div> <div class="text-sm text-black svelte-1q6rcg1">Jun 2023 - Aug 2023</div> <ul class="text-xs svelte-1q6rcg1"><li class="svelte-1q6rcg1">- Innovated an Augmented Reality (AR) app using Unity3D and Vuforia Engine for
 											the Vuzix m400 device, enhancing user interaction</li> <li class="svelte-1q6rcg1">- Improved navigation efficiency by 100% using AR, significantly boosting
@@ -23,11 +73,97 @@ function Resume($$payload) {
     }
     $$payload.out += `<!--]-->`;
   }
-  $$payload.out += `<!--]--> <div class="flex flex-row w-full justify-center p-4 svelte-1q6rcg1"><a class="apple bg-doswhite text-black border-2 border-black p-2 px-4 active:underline hover:text-doswhite hover:bg-black svelte-1q6rcg1" href="https://flowcv.com/resume/pjasuoi5b2" target="_blank" rel="noreferrer">View Full Resume</a></div></div></div></div></div>`;
+  $$payload.out += `<!--]--></div></div></div> <div class="flex flex-row w-full justify-center p-4 svelte-1q6rcg1"><a class="apple bg-doswhite text-black border-2 border-black p-2 px-4 active:underline hover:text-doswhite hover:bg-black svelte-1q6rcg1" href="https://flowcv.com/resume/pjasuoi5b2" target="_blank" rel="noreferrer">View Full Resume</a></div></div>`;
 }
-const img1 = "/_app/immutable/assets/donationstation.BbB2po_f.png";
-const img2 = "/_app/immutable/assets/cyberhakz.DhPrJWbp.png";
-const img3 = "/_app/immutable/assets/indianinfra.D2Boj4o0.png";
+const img1 = {
+  sources: {
+    avif: "/_app/immutable/assets/donationstation.C5lUUEKq.avif 946w, /_app/immutable/assets/donationstation.Dved3Loz.avif 1892w",
+    webp: "/_app/immutable/assets/donationstation.BdqKNBSu.webp 946w, /_app/immutable/assets/donationstation.DnXSkSZt.webp 1892w",
+    png: "/_app/immutable/assets/donationstation.DQGo7Z33.png 946w, /_app/immutable/assets/donationstation.uRWbimuD.png 1892w"
+  },
+  img: {
+    src: "/_app/immutable/assets/donationstation.uRWbimuD.png",
+    w: 1892,
+    h: 905
+  }
+};
+const img2 = {
+  sources: {
+    avif: "/_app/immutable/assets/cyberhakz.g2WqP9d4.avif 941w, /_app/immutable/assets/cyberhakz.BxYJ9bA7.avif 1882w",
+    webp: "/_app/immutable/assets/cyberhakz.C0UxtGTJ.webp 941w, /_app/immutable/assets/cyberhakz.yr6aOx9-.webp 1882w",
+    png: "/_app/immutable/assets/cyberhakz.CIxbnOlW.png 941w, /_app/immutable/assets/cyberhakz.BV6BKe6-.png 1882w"
+  },
+  img: {
+    src: "/_app/immutable/assets/cyberhakz.BV6BKe6-.png",
+    w: 1882,
+    h: 896
+  }
+};
+const img3 = {
+  sources: {
+    avif: "/_app/immutable/assets/indianinfra.Bl23w_ii.avif 773w, /_app/immutable/assets/indianinfra.B6zv1KuS.avif 1545w",
+    webp: "/_app/immutable/assets/indianinfra.BLx21vqJ.webp 773w, /_app/immutable/assets/indianinfra.cmfHPpFI.webp 1545w",
+    png: "/_app/immutable/assets/indianinfra.Cb4cvT20.png 773w, /_app/immutable/assets/indianinfra.CI4u-UiG.png 1545w"
+  },
+  img: {
+    src: "/_app/immutable/assets/indianinfra.CI4u-UiG.png",
+    w: 1545,
+    h: 903
+  }
+};
+const game1 = {
+  sources: {
+    avif: "/_app/immutable/assets/1.kzEQOGDE.avif 320w, /_app/immutable/assets/1.DNRKzSN5.avif 640w",
+    webp: "/_app/immutable/assets/1.TAKOf2GT.webp 320w, /_app/immutable/assets/1.CCj4WYA5.webp 640w",
+    jpeg: "/_app/immutable/assets/1.OaRGZSg-.jpeg 320w, /_app/immutable/assets/1.Da9CT01J.jpeg 640w"
+  },
+  img: {
+    src: "/_app/immutable/assets/1.Da9CT01J.jpeg",
+    w: 640,
+    h: 271
+  }
+};
+const game2 = {
+  sources: {
+    avif: "/_app/immutable/assets/2.CI4at4dh.avif 200w, /_app/immutable/assets/2.Ym9Q7BLV.avif 400w",
+    webp: "/_app/immutable/assets/2.D6ZMmZ8G.webp 200w, /_app/immutable/assets/2.AKFGLH-J.webp 400w",
+    jpeg: "/_app/immutable/assets/2.DxTd3mE_.jpeg 200w, /_app/immutable/assets/2.iRlYTdUR.jpeg 400w"
+  },
+  img: {
+    src: "/_app/immutable/assets/2.iRlYTdUR.jpeg",
+    w: 400,
+    h: 300
+  }
+};
+const game3 = {
+  sources: {
+    avif: "/_app/immutable/assets/3.BEyzWC3Q.avif 150w, /_app/immutable/assets/3.CcqrEouG.avif 300w",
+    webp: "/_app/immutable/assets/3.2QdWMtyG.webp 150w, /_app/immutable/assets/3.Tc4mx3a1.webp 300w",
+    jpeg: "/_app/immutable/assets/3.BsiyMpPC.jpeg 150w, /_app/immutable/assets/3.CbJYCwy4.jpeg 300w"
+  },
+  img: {
+    src: "/_app/immutable/assets/3.CbJYCwy4.jpeg",
+    w: 300,
+    h: 225
+  }
+};
+function card($$payload, img, title, desc, link) {
+  $$payload.out += `<div class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0">`;
+  if (typeof img === "string") {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"${attr("src", img.img.src)} alt="banner"${attr("width", img.img.w)}${attr("height", img.img.h)}>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+    const each_array = ensure_array_like(Object.entries(img.sources));
+    $$payload.out += `<picture><!--[-->`;
+    for (let $$index_4 = 0, $$length = each_array.length; $$index_4 < $$length; $$index_4++) {
+      let [format, srcset] = each_array[$$index_4];
+      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
+    }
+    $$payload.out += `<!--]--> <img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"${attr("src", img.img.src)} alt="banner"${attr("width", img.img.w)}${attr("height", img.img.h)}></picture>`;
+  }
+  $$payload.out += `<!--]--> <div class="p-4 flex flex-col gap-2"><div class="text-3xl">${escape_html(title)}</div> <div class="relative text-xl leading-5">${escape_html(desc)}</div> <a class="text-primary text-xl w-fit group hover:opacity-80"${attr("href", link)} target="_blank" rel="noreferrer">Visit Site <span class="group-hover:visible invisible">→</span></a></div></div>`;
+}
 function Games($$payload, $$props) {
   push();
   const projects = [
@@ -50,14 +186,53 @@ function Games($$payload, $$props) {
       link: "https://indianinfra.in/"
     }
   ];
-  function card($$payload2, img, title, desc, link) {
-    $$payload2.out += `<div class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"${attr("src", img)} alt="banner"> <div class="p-4 flex flex-col gap-2"><div class="text-3xl">${escape_html(title)}</div> <div class="relative text-xl leading-5">${escape_html(desc)}</div> <a class="text-primary text-xl w-fit group hover:opacity-80"${attr("href", link)} target="_blank" rel="noreferrer">Visit Site <span class="group-hover:visible invisible">→</span></a></div></div>`;
+  const each_array_4 = ensure_array_like(projects);
+  $$payload.out += `<div class="h-fit svelte-1qrqq0h" id="games"><div class="absolute svelte-1qrqq0h" id="bg-layer-0"></div> <div id="bg-layer-1" class="absolute svelte-1qrqq0h"></div> <div id="bg-layer-2" class="absolute svelte-1qrqq0h"></div> <div id="bg-layer-3" class="absolute svelte-1qrqq0h"></div> <h2 data-aos="fade" data-aos-duration="1000" data-aos-delay="500" class="jersey uppercase opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[30%] text-xl md:text-9xl h-0">Welcome to my <br> Video Game Universe</h2> <div id="bg-layer-4" class="absolute svelte-1qrqq0h"></div></div> <section class="flex flex-col bg-black p-4 md:p-10 xl:px-32 xl:min-h-full"><div class="flex flex-col md:flex-row gap-8 p-4 md:p-0"><div class="text-primary text-6xl w-[50%] md:my-8">VIDEO GAMES</div> <p class="text-sm md:px-8 text-doswhite apple m-auto">I craft rich purpose driven experience that shares a story, dive into my video game universe!
+			Check out my games at <a href="https://dataoverflow.itch.io/" target="_blank" class="text-primary" rel="noreferrer">dataoverflow.itch.io</a></p></div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"><div class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1hZ2UvMjg0ODQzNS8xNzAzNDQwNC5naWY=/original/1hNkmZ.gif" alt="banner"> <div class="col-start-1 row-start-1">`;
+  if (typeof game1 === "string") {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 group-hover:invisible"${attr("src", game1.img.src)} alt="banner"${attr("width", game1.img.w)}${attr("height", game1.img.h)}>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+    const each_array_1 = ensure_array_like(Object.entries(game1.sources));
+    $$payload.out += `<picture><!--[-->`;
+    for (let $$index = 0, $$length = each_array_1.length; $$index < $$length; $$index++) {
+      let [format, srcset] = each_array_1[$$index];
+      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
+    }
+    $$payload.out += `<!--]--> <img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 group-hover:invisible"${attr("src", game1.img.src)} alt="banner"${attr("width", game1.img.w)}${attr("height", game1.img.h)}></picture>`;
   }
-  const each_array = ensure_array_like(projects);
-  $$payload.out += `<div class="h-fit svelte-1qrqq0h" id="games"><div class="absolute svelte-1qrqq0h" id="bg-layer-0"></div> <div id="bg-layer-1" class="absolute svelte-1qrqq0h"></div> <div id="bg-layer-2" class="absolute svelte-1qrqq0h"></div> <div id="bg-layer-3" class="absolute svelte-1qrqq0h"></div> <h2 data-aos="fade" data-aos-duration="1000" data-aos-delay="500" class="pstart opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[40%] text-xl md:text-7xl h-0">Welcome to my <br> Video Game Universe</h2> <div id="bg-layer-4" class="absolute svelte-1qrqq0h"></div></div> <section class="flex flex-col bg-black p-4 md:p-10 xl:min-h-full"><div class="flex flex-col md:flex-row gap-8 p-4 md:p-0"><div class="text-primary text-6xl w-[50%] md:my-8">VIDEO GAMES</div> <p class="text-sm md:px-8 text-doswhite apple m-auto">I craft rich purpose driven experience that shares a story, dive into my video game universe!
-			Check out my games at <a href="https://dataoverflow.itch.io/" target="_blank" class="text-primary" rel="noreferrer">dataoverflow.itch.io</a></p></div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"><div class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover" src="https://img.itch.zone/aW1hZ2UvMjg0ODQzNS8xNzAzNDQwNC5naWY=/original/1hNkmZ.gif" alt="banner"> <div class="p-4 flex flex-col"><div class="text-3xl">Cupid's Startup</div> <div class="relative top-[-0.5rem] text-xl">Are they really compatible?</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/cs" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div> <div class="flex flex-col h-full w-full md:w-72 md:h-64 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover" src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif" alt="banner"> <div class="p-4 flex flex-col"><div class="text-3xl">Notebook Game</div> <div class="relative top-[-0.5rem] text-xl">A satisfying platformer</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/notebook-game" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div> <div class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover" src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif" alt="banner"> <div class="p-4 flex flex-col"><div class="text-3xl">Survive 60 Seconds</div> <div class="relative top-[-0.5rem] text-xl">Can you survive longer?</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/survive-60-seconds" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div></div></section> <section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:min-h-full" id="projects"><div class="flex flex-col md:flex-row gap-8 p-4 md:p-0"><div class="text-primary text-6xl w-[50%] md:my-8">PROJECTS</div> <p class="text-sm md:px-8 text-doswhite apple m-auto">Check out my high performance fullstack projects here</p></div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"><!--[-->`;
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    const project = each_array[$$index];
+  $$payload.out += `<!--]--></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Cupid's Startup</div> <div class="relative top-[-0.5rem] text-xl">Are they really compatible?</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/cs" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div> <div class="group flex flex-col h-full w-full md:w-72 md:h-64 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif" alt="banner"> <div class="col-start-1 row-start-1">`;
+  if (typeof game2 === "string") {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game2.img.src)} alt="banner"${attr("width", game2.img.w)}${attr("height", game2.img.h)}>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+    const each_array_2 = ensure_array_like(Object.entries(game2.sources));
+    $$payload.out += `<picture><!--[-->`;
+    for (let $$index_1 = 0, $$length = each_array_2.length; $$index_1 < $$length; $$index_1++) {
+      let [format, srcset] = each_array_2[$$index_1];
+      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
+    }
+    $$payload.out += `<!--]--> <img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game2.img.src)} alt="banner"${attr("width", game2.img.w)}${attr("height", game2.img.h)}></picture>`;
+  }
+  $$payload.out += `<!--]--></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Notebook Game</div> <div class="relative top-[-0.5rem] text-xl">A satisfying platformer</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/notebook-game" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div> <div class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif" alt="banner"> <div class="col-start-1 row-start-1">`;
+  if (typeof game3 === "string") {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game3.img.src)} alt="banner"${attr("width", game3.img.w)}${attr("height", game3.img.h)}>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+    const each_array_3 = ensure_array_like(Object.entries(game3.sources));
+    $$payload.out += `<picture><!--[-->`;
+    for (let $$index_2 = 0, $$length = each_array_3.length; $$index_2 < $$length; $$index_2++) {
+      let [format, srcset] = each_array_3[$$index_2];
+      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
+    }
+    $$payload.out += `<!--]--> <img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game3.img.src)} alt="banner"${attr("width", game3.img.w)}${attr("height", game3.img.h)}></picture>`;
+  }
+  $$payload.out += `<!--]--></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Survive 60 Seconds</div> <div class="relative top-[-0.5rem] text-xl">Can you survive longer?</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/survive-60-seconds" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div></div></section> <section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:px-32 xl:min-h-full" id="projects"><div class="flex flex-col md:flex-row gap-8 p-4 md:p-0"><div class="text-primary text-6xl w-[50%] md:my-8">PROJECTS</div> <p class="text-sm md:px-8 text-doswhite apple m-auto">Check out my high performance fullstack projects here</p></div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"><!--[-->`;
+  for (let $$index_3 = 0, $$length = each_array_4.length; $$index_3 < $$length; $$index_3++) {
+    let project = each_array_4[$$index_3];
     card($$payload, project.img, project.title, project.desc, project.link);
   }
   $$payload.out += `<!--]--></div></section>`;
@@ -146,13 +321,24 @@ function Projects($$payload, $$props) {
   const each_array = ensure_array_like(projects);
   $$payload.out += `<div id="dos-bg" class="flex flex-col gap-2 justify-center bg-[#0000B0] h-fit xl:h-[110vh] 2xl:h-[105vh] 3xl:h-[90vh] svelte-1pha16v"><div id="dos-window" class="bg-[#AFA8AF] h-fit w-[95%] md:w-[90%] xl:w-[80%] my-10 mx-auto text-md svelte-1pha16v"><div class="p-1 border-4 border-white m-2 mt-3 svelte-1pha16v"><div class="p-1 border-4 border-white svelte-1pha16v"><div class="flex flex-col items-center dos svelte-1pha16v"><div class="flex flex-row justify-between w-full svelte-1pha16v"><div class="relative z-[10] border-x-4 top-[4px] left-[20px] border-[#AFA8AF] svelte-1pha16v"></div> <div class="relative top-[-1.5rem] bg-[#AFA8AF] px-2 text-2xl svelte-1pha16v">[ <span class="text-primary svelte-1pha16v">■</span> ]</div> <div class="relative text-center px-2 top-[-1.5rem] z-[100] text-white bg-[#AFA8AF] w-fit m-auto text-xl md:text-2xl svelte-1pha16v">All Projects</div></div></div> <div id="allprojects" class="svelte-1pha16v"><div class="flex flex-col md:flex-row dos min-h-[80vh] md:min-h-[65vh] text-black p-2 md:p-8 sm:text-lg gap-8 md:text-2xl svelte-1pha16v"><div class="flex flex-col gap-2 text-black w-full lg:w-[40%] sticky top-16 md:top-8 border-4 bg-[#AFA8AF] border-[#AFA8AF] svelte-1pha16v"><div class="svelte-1pha16v"><span class="text-yellow-200 svelte-1pha16v">O</span>pen Project <span class="inline md:hidden svelte-1pha16v">(Scroll)</span></div> <div class="flex flex-row bg-[#00A8AF] w-full svelte-1pha16v"><div class="w-full svelte-1pha16v"><ul class="grid grid-cols-3 grid-flow-row gap-x-56 md:flex md:flex-col overflow-x-scroll md:overflow-x-hidden svelte-1pha16v"><!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
-    const project = each_array[i];
+    let project = each_array[i];
     $$payload.out += `<li${attr("class", `min-w-56 border-r-4 md:border-0 border-[#0000B0] ${stringify(tab == i ? "bg-[#00B000] text-white active-li blink" : "hover:text-yellow-200")} svelte-1pha16v`)}><button class="p-1 px-4 w-full text-left svelte-1pha16v">${escape_html(project.toUpperCase())}</button></li>`;
   }
   $$payload.out += `<!--]--></ul></div> <div class="w-8 border-l-4 hidden md:flex border-[#0000B0] flex-col justify-between svelte-1pha16v"></div></div></div> <div class="flex flex-col h-full gap-8 lg:gap-2 justify-between svelte-1pha16v"><div class="px-2 py-2 md:px-8 flex flex-col gap-1 text-lg md:text-xl lg:text-2xl svelte-1pha16v"><div class="text-xl md:text-2xl dos svelte-1pha16v">${escape_html(projectDetails[tab].title.toUpperCase())}</div> <div class="text-[#FF0000] svelte-1pha16v">${escape_html(projectDetails[tab].techstack)}</div> <div class="svelte-1pha16v">${escape_html(projectDetails[tab].description)}</div> <a class="my-4 bg-[#00B000] hover:text-white active:ml-4 text-black w-fit px-4 pr-12 dos-shadow svelte-1pha16v"${attr("href", projectDetails[tab].link)} target="_blank" rel="noreferrer"><span class="text-[#FFFF50] svelte-1pha16v">E</span>xplore</a></div></div></div> <div class="bg-[#0000B0] text-[#00A8AF] p-2 flex flex-col md:text-2xl dos select-none svelte-1pha16v"><div class="svelte-1pha16v">C:\\TURBOC3\\BIN\\PROJECTS\\*CPP</div> <div class="flex flex-row justify-between svelte-1pha16v"><div class="svelte-1pha16v">${escape_html(projects[tab].toUpperCase())}</div> <div class="svelte-1pha16v">${escape_html(projectDetails[tab].date)}</div></div></div></div></div></div></div></div>`;
   pop();
 }
-const heart = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAFJJREFUOI3tksEKACAIQ5f//83VRUFGmZHHdszlHjhA1YHRgYGD2NfskY2iM/9x5WlRqgQBzvOmkCCjZ4K/wJXl9hrWkTqCLAlXvJ5gR8LJZQQT6zIYB7qaB+EAAAAASUVORK5CYII=";
+const heart = {
+  sources: {
+    avif: "/_app/immutable/assets/heart.CV2f-wHv.avif 8w, /_app/immutable/assets/heart.BcBv0fpf.avif 16w",
+    webp: "/_app/immutable/assets/heart.CxJuprzV.webp 8w, /_app/immutable/assets/heart.BgNonreo.webp 16w",
+    png: "/_app/immutable/assets/heart.C3d-wACK.png 8w, /_app/immutable/assets/heart.iqOAQ3GE.png 16w"
+  },
+  img: {
+    src: "/_app/immutable/assets/heart.iqOAQ3GE.png",
+    w: 16,
+    h: 16
+  }
+};
 function GameOver($$payload, $$props) {
   push();
   let time = 0;
@@ -162,7 +348,35 @@ function GameOver($$payload, $$props) {
   }
   tick();
   setInterval(tick, 1e3);
-  $$payload.out += `<div class="md:h-[100vh] flex flex-col items-center"><div class="flex flex-col w-full m-auto p-10 bg-black text-white md:min-h-[100vh] lg:h-[100vh] md:text-lg lg:text-xl xl:text-3xl pstart"><div class="flex flex-row justify-between sticky top-16 pointer-events-none"><div class="flex flex-col z-50"><div>SCORE</div> <div${attr("class", "")}>${escape_html(scroll)}</div></div> <div class="flex flex-col"><div>TIME</div> <div class="text-right">${escape_html(time)}</div></div></div> <div class="relative -top-16 flex flex-col w-full py-32 md:p-64 gap-8 items-center"><div class="text-center z-50">${escape_html("GAME OVER")}</div> <div class="flex flex-col text-left gap-4 z-10"><div class="flex flex-row gap-8 group"><img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart)}> <a class="text-doswhite group-hover:text-white group-active:text-[#fe0000]" href="#home">RETRY</a></div> <div class="flex flex-row gap-8 group"><img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart)}> <a class="text-doswhite group-hover:text-white group-active:text-[#fe0000]" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">END</a></div></div></div></div> <canvas class="relative h-[100vh] w-full top-[-100vh] hidden lg:block"></canvas></div>`;
+  $$payload.out += `<div id="gameover" class="min-h-[60vh] md:h-[100vh] flex flex-col items-center"><div class="flex flex-col w-full m-auto p-10 bg-black text-white md:min-h-[100vh] lg:h-[100vh] md:text-lg lg:text-xl xl:text-3xl pstart"><div class="flex flex-row justify-between sticky top-16 pointer-events-none"><div class="flex flex-col z-50"><div>SCORE</div> <div${attr("class", clsx(""))}>${escape_html(scroll)}</div></div> <div class="flex flex-col"><div>TIME</div> <div class="text-right">${escape_html(time)}</div></div></div> <div class="relative -top-16 flex flex-col w-full py-32 xl:p-64 gap-8 items-center"><div class="text-center z-50">${escape_html("GAME OVER")}</div> <div class="flex flex-col text-left gap-4 z-10"><div class="flex flex-row gap-8 group">`;
+  if (typeof heart === "string") {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart.img.src)}${attr("width", heart.img.w)}${attr("height", heart.img.h)}>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+    const each_array = ensure_array_like(Object.entries(heart.sources));
+    $$payload.out += `<picture><!--[-->`;
+    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+      let [format, srcset] = each_array[$$index];
+      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
+    }
+    $$payload.out += `<!--]--> <img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart.img.src)}${attr("width", heart.img.w)}${attr("height", heart.img.h)}></picture>`;
+  }
+  $$payload.out += `<!--]--> <a class="text-doswhite group-hover:text-white group-active:text-[#fe0000]" href="#home">RETRY</a></div> <div class="flex flex-row gap-8 group">`;
+  if (typeof heart === "string") {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart.img.src)}${attr("width", heart.img.w)}${attr("height", heart.img.h)}>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+    const each_array_1 = ensure_array_like(Object.entries(heart.sources));
+    $$payload.out += `<picture><!--[-->`;
+    for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
+      let [format, srcset] = each_array_1[$$index_1];
+      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
+    }
+    $$payload.out += `<!--]--> <img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart.img.src)}${attr("width", heart.img.w)}${attr("height", heart.img.h)}></picture>`;
+  }
+  $$payload.out += `<!--]--> <a class="text-doswhite group-hover:text-white group-active:text-[#fe0000]" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">END</a></div></div></div></div> <canvas class="relative h-[100vh] w-full top-[-100vh] hidden lg:block"></canvas></div>`;
   pop();
 }
 export {
