@@ -1,8 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
-	import img1 from '$lib/assets/projects/donationstation.png';
-	import img2 from '$lib/assets/projects/cyberhakz.png';
-	import img3 from '$lib/assets/projects/indianinfra.png';
+	import img1 from '$lib/assets/projects/donationstation.png?enhanced';
+	import img2 from '$lib/assets/projects/cyberhakz.png?enhanced';
+	import img3 from '$lib/assets/projects/indianinfra.png?enhanced';
+
+	import game1 from '$lib/assets/games/1.jpg?enhanced';
+	import game2 from '$lib/assets/games/2.jpg?enhanced';
+	import game3 from '$lib/assets/games/3.jpg?enhanced';
 
 	let layer0, layer1, layer2, layer3, layer4;
 
@@ -55,13 +59,13 @@
 		data-aos="fade"
 		data-aos-duration="1000"
 		data-aos-delay="500"
-		class="pstart opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[40%] text-xl md:text-7xl h-0"
+		class="jersey uppercase opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[30%] text-xl md:text-9xl h-0"
 	>
 		Welcome to my <br /> Video Game Universe
 	</h2>
 	<div id="bg-layer-4" class="absolute" bind:this={layer4}></div>
 </div>
-<section class="flex flex-col bg-black p-4 md:p-10 xl:min-h-full">
+<section class="flex flex-col bg-black p-4 md:p-10 xl:px-32 xl:min-h-full">
 	<!-- <div class="text-primary text-6xl w-[50%] ">VIDEO GAMES</div> -->
 	<div class="flex flex-col md:flex-row gap-8 p-4 md:p-0">
 		<div class="text-primary text-6xl w-[50%] md:my-8">VIDEO GAMES</div>
@@ -79,14 +83,24 @@
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"
 	>
 		<div
-			class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
+			class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
 		>
-			<img
-				loading="lazy"
-				class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
-				src="https://img.itch.zone/aW1hZ2UvMjg0ODQzNS8xNzAzNDQwNC5naWY=/original/1hNkmZ.gif"
-				alt="banner"
-			/>
+			<div class="grid">
+				<img
+					loading="lazy"
+					class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1"
+					src="https://img.itch.zone/aW1hZ2UvMjg0ODQzNS8xNzAzNDQwNC5naWY=/original/1hNkmZ.gif"
+					alt="banner"
+				/>
+				<div class="col-start-1 row-start-1">
+					<enhanced:img
+						loading="lazy"
+						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 group-hover:invisible"
+						src={game1}
+						alt="banner"
+					/>
+				</div>
+			</div>
 			<div class="p-4 flex flex-col">
 				<div class="text-3xl">Cupid's Startup</div>
 				<div class="relative top-[-0.5rem] text-xl">Are they really compatible?</div>
@@ -99,14 +113,30 @@
 			</div>
 		</div>
 		<div
-			class="flex flex-col h-full w-full md:w-72 md:h-64 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
+			class="group flex flex-col h-full w-full md:w-72 md:h-64 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
 		>
-			<img
+			<div class="grid">
+				<img
+					loading="lazy"
+					class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1"
+					src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif"
+					alt="banner"
+				/>
+				<div class="col-start-1 row-start-1">
+					<enhanced:img
+						loading="lazy"
+						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"
+						src={game2}
+						alt="banner"
+					/>
+				</div>
+			</div>
+			<!-- <enhanced:img 
 				loading="lazy"
 				class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
 				src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif"
 				alt="banner"
-			/>
+			/> -->
 			<div class="p-4 flex flex-col">
 				<div class="text-3xl">Notebook Game</div>
 				<div class="relative top-[-0.5rem] text-xl">A satisfying platformer</div>
@@ -119,14 +149,30 @@
 			</div>
 		</div>
 		<div
-			class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
+			class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
 		>
-			<img
+			<div class="grid">
+				<img
+					loading="lazy"
+					class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1"
+					src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif"
+					alt="banner"
+				/>
+				<div class="col-start-1 row-start-1">
+					<enhanced:img
+						loading="lazy"
+						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"
+						src={game3}
+						alt="banner"
+					/>
+				</div>
+			</div>
+			<!-- <enhanced:img 
 				loading="lazy"
 				class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
 				src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif"
 				alt="banner"
-			/>
+			/> -->
 			<div class="p-4 flex flex-col">
 				<div class="text-3xl">Survive 60 Seconds</div>
 				<div class="relative top-[-0.5rem] text-xl">Can you survive longer?</div>
@@ -141,7 +187,7 @@
 		</div>
 	</div>
 </section>
-<section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:min-h-full" id="projects">
+<section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:px-32 xl:min-h-full" id="projects">
 	<div class="flex flex-col md:flex-row gap-8 p-4 md:p-0">
 		<div class="text-primary text-6xl w-[50%] md:my-8">PROJECTS</div>
 		<p class="text-sm md:px-8 text-doswhite apple m-auto">
@@ -161,7 +207,7 @@
 	<div
 		class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
 	>
-		<img
+		<enhanced:img
 			loading="lazy"
 			class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
 			src={img}

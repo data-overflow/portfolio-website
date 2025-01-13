@@ -5,6 +5,7 @@
 	import cognizant from '$lib/assets/cognizant.png';
 	import fiverr from '$lib/assets/fiverr.png';
 	import lumos from '$lib/assets/lumos.png';
+	import teachafy from '$lib/assets/teachafy.png';
 
 	const MAX_TAB = 5;
 	let tab = 2;
@@ -18,13 +19,10 @@
 	}
 </script>
 
-<div
-	id="apple-bg"
-	class="flex flex-col gap-2 justify-center bg-white h-fit w-full xl:h-[120vh] 2xl:h-[110vh] 3xl:h-[90vh]"
->
+<div id="apple-bg" class="flex flex-col gap-2 justify-center bg-white h-fit w-full">
 	<!-- Window -->
 	<div
-		class="bg-doswhite h-fit xl:h-[90%] w-[98%] md:w-[90%] xl:w-[80%] mt-4 mb-4 mx-auto border-2 border-black"
+		class="bg-doswhite h-fit xl:h-[100vh] 3xl:h-[90vh] w-[98%] md:w-[90%] xl:w-[80%] mt-4 mb-4 mx-auto border-2 border-black"
 	>
 		<!-- Topbar -->
 		<div class="flex flex-col items-center apple">
@@ -48,12 +46,12 @@
 			</div>
 		</div>
 
-		<div class="flex flex-col md:flex-row apple text-black p-4 md:p-8 gap-8">
+		<div class="flex flex-col lg:flex-row h-fit apple text-black p-4 md:p-8 gap-8">
 			<div
-				class="flex flex-col gap-1 sticky top-10 z-50 bg-doswhite border-4 border-doswhite text-sm md:text-base"
+				class="flex flex-col gap-1 sticky min-w-[30%] md:relative top-10 h-fit overflow-hidden z-50 bg-doswhite border-4 border-doswhite text-sm md:text-base"
 			>
 				<div>Disk: /C</div>
-				<div class="flex flex-col md:flex-row">
+				<div class="flex flex-col md:flex-row w-full">
 					<div class="border-2 border-black w-full">
 						<ul class="grid grid-cols-2 text-xs md:text-base md:flex md:flex-col">
 							<li
@@ -152,7 +150,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-col w-full h-full gap-8 lg:gap-2 justify-between text-sm lg:text-md">
+			<div
+				class="flex flex-col xl:h-[100vh] 3xl:h-[90vh] gap-8 lg:gap-2 justify-between text-sm lg:text-md"
+			>
 				{#if tab == 1}
 					<div class="px-2 py-2 md:px-8 flex flex-col gap-8">
 						<div
@@ -190,13 +190,27 @@
 						>
 							Experience
 						</div>
-						<div class="flex flex-col gap-10 apple">
+						<div class="flex flex-col gap-10 apple xl:h-[75%] overflow-y-scroll">
+							<div class="flex flex-col md:flex-row gap-2 md:gap-10">
+								<img src={teachafy} class="h-24 w-24" alt="cit logo" />
+								<div class="flex flex-col">
+									<div class="text-sm text-black">Teachafy Labs</div>
+									<div class="text-sm text-black">ML & Backend Developer Intern</div>
+									<div class="text-sm text-black">Dec 2024 - Present</div>
+									<ul class="text-xs">
+										<li>
+											- Working on development of AI products using Open AI API, FastAPI, Nango,
+											n8n, Docker, EasyPanel, and other tools
+										</li>
+									</ul>
+								</div>
+							</div>
 							<div class="flex flex-col md:flex-row gap-2 md:gap-10">
 								<img src={fiverr} class="h-24 w-24" alt="cit logo" />
 								<div class="flex flex-col">
 									<div class="text-sm text-black">Fiverr</div>
 									<div class="text-sm text-black">Freelancer, Full Stack Developer</div>
-									<div class="text-sm text-black">Dec 2023 - Present</div>
+									<div class="text-sm text-black">Dec 2023 - Dec 2024</div>
 									<ul class="text-xs">
 										<li>
 											- Developed animated, responsive, and accessible websites for 5+ clients using
@@ -327,16 +341,16 @@
 						</ul>
 					</div>
 				{/if}
-				<div class="flex flex-row w-full justify-center p-4">
-					<a
-						class="apple bg-doswhite text-black border-2 border-black p-2 px-4 active:underline hover:text-doswhite hover:bg-black"
-						href="https://flowcv.com/resume/pjasuoi5b2"
-						target="_blank"
-						rel="noreferrer">View Full Resume</a
-					>
-				</div>
 			</div>
 		</div>
+	</div>
+	<div class="flex flex-row w-full justify-center p-4">
+		<a
+			class="apple bg-doswhite text-black border-2 border-black p-2 px-4 active:underline hover:text-doswhite hover:bg-black"
+			href="https://flowcv.com/resume/pjasuoi5b2"
+			target="_blank"
+			rel="noreferrer">View Full Resume</a
+		>
 	</div>
 	<!-- <div class="flex flex-row w-full justify-center pb-4">
         <button

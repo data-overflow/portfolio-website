@@ -204,6 +204,52 @@
       "_Music.js"
     ]
   },
+  "src/routes/archive-2024/+page.svelte": {
+    "file": "entries/pages/archive-2024/_page.svelte.js",
+    "name": "entries/pages/archive-2024/_page.svelte",
+    "src": "src/routes/archive-2024/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_aos.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Footer.BxM0PgoB.css"
+    ]
+  },
+  "src/routes/archive-2024/2024Q1/+page.svelte": {
+    "file": "entries/pages/archive-2024/2024Q1/_page.svelte.js",
+    "name": "entries/pages/archive-2024/2024Q1/_page.svelte",
+    "src": "src/routes/archive-2024/2024Q1/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_Footer.js",
+      "_aos.js",
+      "_Music.js"
+    ]
+  },
+  "src/routes/archive-2024/blog/+page.svelte": {
+    "file": "entries/pages/archive-2024/blog/_page.svelte.js",
+    "name": "entries/pages/archive-2024/blog/_page.svelte",
+    "src": "src/routes/archive-2024/blog/+page.svelte",
+    "isEntry": true
+  },
+  "src/routes/archive-2024/music/+page.svelte": {
+    "file": "entries/pages/archive-2024/music/_page.svelte.js",
+    "name": "entries/pages/archive-2024/music/_page.svelte",
+    "src": "src/routes/archive-2024/music/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_Music.js"
+    ]
+  },
+  "src/routes/archive-2024/test/+page.svelte": {
+    "file": "entries/pages/archive-2024/test/_page.svelte.js",
+    "name": "entries/pages/archive-2024/test/_page.svelte",
+    "src": "src/routes/archive-2024/test/+page.svelte",
+    "isEntry": true
+  },
   "src/routes/blog/+page.svelte": {
     "file": "entries/pages/blog/_page.svelte.js",
     "name": "entries/pages/blog/_page.svelte",

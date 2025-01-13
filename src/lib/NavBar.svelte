@@ -1,6 +1,6 @@
 <script>
 	import { slide } from 'svelte/transition';
-	import matrix from './assets/matrix-gif.gif';
+	import matrix from './assets/matrix-gif.gif?enhanced';
 	import { graphics, menuState } from './stores';
 	import { onMount } from 'svelte';
 
@@ -89,7 +89,7 @@
 			: 'bg-black/90'
 		: 'bg-black'} text-2xl w-full h-[100dvh] z-[300] flex flex-col {$menuState ? '' : 'hidden'}"
 >
-	<img
+	<enhanced:img
 		loading="lazy"
 		src={matrix}
 		alt="matrix-bg"

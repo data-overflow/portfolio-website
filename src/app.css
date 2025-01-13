@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -61,6 +63,14 @@
 
 .upheaval {
 	font-family: Upheaval, 'Press Start 2P', monospace;
+}
+
+.switzer {
+	font-family: 'Switzer', sans-serif;
+}
+
+.jersey {
+	font-family: 'Jersey 15', serif;
 }
 
 a,

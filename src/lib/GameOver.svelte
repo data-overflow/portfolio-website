@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import heart from '$lib/assets/heart.png';
+	import heart from '$lib/assets/heart.png?enhanced';
 
 	let time = 0;
 	let scroll = 0;
@@ -133,7 +133,7 @@
 	});
 </script>
 
-<div class="md:h-[100vh] flex flex-col items-center">
+<div id="gameover" class="min-h-[60vh] md:h-[100vh] flex flex-col items-center">
 	<div
 		class="flex flex-col w-full m-auto p-10 bg-black text-white md:min-h-[100vh] lg:h-[100vh] md:text-lg lg:text-xl xl:text-3xl pstart"
 	>
@@ -147,13 +147,13 @@
 				<div class="text-right">{time}</div>
 			</div>
 		</div>
-		<div class="relative -top-16 flex flex-col w-full py-32 md:p-64 gap-8 items-center">
+		<div class="relative -top-16 flex flex-col w-full py-32 xl:p-64 gap-8 items-center">
 			<div class="text-center z-50">
 				{scroll == 69420 ? 'YOU WIN!' : 'GAME OVER'}
 			</div>
 			<div class="flex flex-col text-left gap-4 z-10">
 				<div class="flex flex-row gap-8 group">
-					<img
+					<enhanced:img
 						class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block"
 						alt="heart"
 						src={heart}
@@ -163,7 +163,7 @@
 					>
 				</div>
 				<div class="flex flex-row gap-8 group">
-					<img
+					<enhanced:img
 						class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block"
 						alt="heart"
 						src={heart}

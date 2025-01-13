@@ -15,6 +15,8 @@
 	import AOS from 'aos';
 	import 'aos/dist/aos.css';
 
+	let { data } = $props();
+
 	onMount(() => {
 		AOS.init();
 		graphics.subscribe((value) => {
@@ -41,12 +43,12 @@
 
 <div>
 	<!-- <NavBar /> -->
-	<Home />
+	<Home rss={data} />
 
-	<div id="about" class="flex flex-col bg-black md:p-10 py-16 gap-20">
-		<div class="flex flex-col md:flex-row gap-8 p-6">
+	<div id="about" class="flex flex-col bg-black md:py-10 2xl:p-10 py-16 gap-20">
+		<div class="flex flex-col md:flex-row gap-8 p-6 md:px-10 xl:px-32">
 			<div class="text-secondary text-6xl w-[50%]" data-aos="fade">ABOUT</div>
-			<p class="text-sm md:px-8 text-doswhite apple" data-aos="fade">
+			<!-- <p class="text-sm md:px-8 text-doswhite apple" data-aos="fade">
 				Passionate about technology from a young age, I began developing <a
 					class="text-primary"
 					href="#games">video games</a
@@ -58,6 +60,17 @@
 				>
 				aimed at fostering genuine connections. I am seeking challenging internships to leverage my diverse
 				expertise and contribute to innovative projects
+			</p> -->
+			<p class="whitespace-pre-line text-sm text-doswhite apple" data-aos="fade">
+				{`Hi, I'm Kavi, a final year student pursuing my B. Tech in AI & Data Science. I have been making`}
+				<a class="text-primary" href="#games">video games</a>
+				{`from the age of 14, an experience that gave me strong foundations in computer science and design.
+				
+				Some quick stats:
+					- Worked on 10+ video games
+					- Finalist in 3+ national level hackathons
+					- Served 5+ freelancing clients, charging 30k-2L INR per project
+					- Solved 450+ problems on leetcode`}
 			</p>
 		</div>
 		<Resume />

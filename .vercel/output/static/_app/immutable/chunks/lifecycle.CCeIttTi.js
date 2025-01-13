@@ -1,0 +1,1 @@
+import{u as r,b as e,d as c,e as f,f as i,g as u,h as l,i as _}from"./runtime.s-S3P415.js";function b(){const s=c,n=s.l.u;n&&(n.b.length&&r(()=>{a(s),f(n.b)}),e(()=>{const o=i(()=>n.m.map(u));return()=>{for(const t of o)typeof t=="function"&&t()}}),n.a.length&&e(()=>{a(s),f(n.a)}))}function a(s){if(s.l.s)for(const n of s.l.s)l(n);_(s.s)}export{b as i};
