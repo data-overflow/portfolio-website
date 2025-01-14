@@ -172,7 +172,7 @@
 		color: black;
 	}
 	#home {
-		/* background-image: url('./assets/mood.png?enhanced'); */
+		/* background-image: url('./assets/mood.png'); */
 		background-size: cover;
 		background-image: linear-gradient(0deg, rgb(0, 0, 0), rgba(43, 57, 42, 0.073)),
 			url('./assets/mood.webp');

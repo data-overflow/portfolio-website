@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import heart from '$lib/assets/heart.png?enhanced';
+	import heart from '$lib/assets/heart.png';
 
 	let time = 0;
 	let scroll = 0;
@@ -153,7 +153,7 @@
 			</div>
 			<div class="flex flex-col text-left gap-4 z-10">
 				<div class="flex flex-row gap-8 group">
-					<enhanced:img
+					<img
 						class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block"
 						alt="heart"
 						src={heart}
@@ -163,7 +163,7 @@
 					>
 				</div>
 				<div class="flex flex-row gap-8 group">
-					<enhanced:img
+					<img
 						class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block"
 						alt="heart"
 						src={heart}

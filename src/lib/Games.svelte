@@ -1,12 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
-	import img1 from '$lib/assets/projects/donationstation.png?enhanced';
-	import img2 from '$lib/assets/projects/cyberhakz.png?enhanced';
-	import img3 from '$lib/assets/projects/indianinfra.png?enhanced';
+	import img1 from '$lib/assets/projects/donationstation.png';
+	import img2 from '$lib/assets/projects/cyberhakz.png';
+	import img3 from '$lib/assets/projects/indianinfra.png';
 
-	import game1 from '$lib/assets/games/1.jpg?enhanced';
-	import game2 from '$lib/assets/games/2.jpg?enhanced';
-	import game3 from '$lib/assets/games/3.jpg?enhanced';
+	import game1 from '$lib/assets/games/1.jpg';
+	import game2 from '$lib/assets/games/2.jpg';
+	import game3 from '$lib/assets/games/3.jpg';
 
 	let layer0, layer1, layer2, layer3, layer4;
 
@@ -93,7 +93,7 @@
 					alt="banner"
 				/>
 				<div class="col-start-1 row-start-1">
-					<enhanced:img
+					<img
 						loading="lazy"
 						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 group-hover:invisible"
 						src={game1}
@@ -123,7 +123,7 @@
 					alt="banner"
 				/>
 				<div class="col-start-1 row-start-1">
-					<enhanced:img
+					<img
 						loading="lazy"
 						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"
 						src={game2}
@@ -131,7 +131,7 @@
 					/>
 				</div>
 			</div>
-			<!-- <enhanced:img 
+			<!-- <img  
 				loading="lazy"
 				class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
 				src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif"
@@ -159,7 +159,7 @@
 					alt="banner"
 				/>
 				<div class="col-start-1 row-start-1">
-					<enhanced:img
+					<img
 						loading="lazy"
 						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"
 						src={game3}
@@ -167,7 +167,7 @@
 					/>
 				</div>
 			</div>
-			<!-- <enhanced:img 
+			<!-- <img  
 				loading="lazy"
 				class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
 				src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif"
@@ -207,7 +207,7 @@
 	<div
 		class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
 	>
-		<enhanced:img
+		<img
 			loading="lazy"
 			class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
 			src={img}

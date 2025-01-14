@@ -1,0 +1,1 @@
+import{a,t as o}from"../chunks/disclose-version.C0ON5NiS.js";import"../chunks/legacy.D3CvSoT7.js";var e=o('<p class="text-purple-600">hiiii</p>');function m(p){var t=e();a(p,t)}export{m as component};

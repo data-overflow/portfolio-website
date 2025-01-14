@@ -1,4 +1,4 @@
-import { Z as fallback, X as ensure_array_like, _ as bind_props, V as stringify, R as pop, P as push } from "./index.js";
+import { Z as fallback, Y as ensure_array_like, _ as bind_props, V as stringify, R as pop, P as push } from "./index.js";
 import { l as linkedin, g as github, x } from "./Footer.svelte_svelte_type_style_lang.js";
 import { a as attr, c as clsx } from "./attributes.js";
 import { e as escape_html } from "./escaping.js";
@@ -28,22 +28,22 @@ function SocialIcons($$payload, $$props) {
 function Home($$payload, $$props) {
   push();
   let { rss } = $$props;
-  $$payload.out += `<div${attr("class", `absolute bg-black/50 backdrop-blur px-2 transition-opacity ${stringify("opacity-0")} svelte-vgee67`)}>That's me working on the next big thing!</div> <div id="home" class="h-full w-full flex pb-16 md:p-0 md:items-center items-end svelte-vgee67"><div class="flex flex-col gap-2 w-full z-10 svelte-vgee67"><div class="flex items-end text-4xl md:text-6xl md:w-[60%] px-6 md:px-10 xl:px-32 font-bold switzer h-40 align-text-bottom svelte-vgee67">This is me, Kavirajar B</div> <div class="flex flex-col gap-0 svelte-vgee67"><div class="text-2xl md:text-3xl text-doswhite switzer px-6 md:px-10 xl:px-32 svelte-vgee67">Distrupting the Ordinary, Building for a Better World</div></div> <div class="h-fit px-6 md:px-10 xl:px-32 svelte-vgee67">`;
+  $$payload.out += `<div${attr("class", `absolute bg-black/50 backdrop-blur px-2 transition-opacity ${stringify("opacity-0")} svelte-1fpx7my`)}>That's me working on the next big thing!</div> <div id="home" class="h-full w-full flex pb-16 md:p-0 md:items-center items-end svelte-1fpx7my"><div class="flex flex-col gap-2 w-full z-10 svelte-1fpx7my"><div class="flex items-end text-4xl md:text-6xl md:w-[60%] px-6 md:px-10 xl:px-32 font-bold switzer h-40 align-text-bottom svelte-1fpx7my">This is me, Kavirajar B</div> <div class="flex flex-col gap-0 svelte-1fpx7my"><div class="text-2xl md:text-3xl text-doswhite switzer px-6 md:px-10 xl:px-32 svelte-1fpx7my">Distrupting the Ordinary, Building for a Better World</div></div> <div class="h-fit px-6 md:px-10 xl:px-32 svelte-1fpx7my">`;
   SocialIcons($$payload, { opacity: 50 });
-  $$payload.out += `<!----></div> <div class="flex flex-row gap-4 items-center px-6 md:px-10 xl:px-32 text-xl md:text-2xl mt-8 bg-transparent svelte-vgee67"><a class="p-2 px-6 border-2 hover:bg-white rounded-sm hover:text-black z-100 svelte-vgee67" href="https://flowcv.com/resume/pjasuoi5b2" target="_blank">View Resume</a></div></div> <div role="presentation" class="bg-black/0 right-[15%] top-[50%] md:absolute w-64 h-96 hidden md:block svelte-vgee67"></div></div> `;
+  $$payload.out += `<!----></div> <div class="flex flex-row gap-4 items-center px-6 md:px-10 xl:px-32 text-xl md:text-2xl mt-8 bg-transparent svelte-1fpx7my"><a class="p-2 px-6 border-2 hover:bg-white rounded-sm hover:text-black z-100 svelte-1fpx7my" href="https://flowcv.com/resume/pjasuoi5b2" target="_blank">View Resume</a></div></div> <div role="presentation" class="bg-black/0 right-[15%] top-[50%] md:absolute w-64 h-96 hidden md:block svelte-1fpx7my"></div></div> `;
   if (rss && rss.success) {
     $$payload.out += "<!--[-->";
     const each_array = ensure_array_like(rss.news);
     const each_array_1 = ensure_array_like(rss.news);
-    $$payload.out += `<div class="overflow-x-hidden flex h-hit relative -mt-4 bg-white text-black jersey font-bold text-xl svelte-vgee67"><div class="animate-marquee whitespace-nowrap h-fit w-fit svelte-vgee67"><!--[-->`;
+    $$payload.out += `<div class="overflow-x-hidden flex h-hit relative -mt-4 bg-white text-black jersey font-bold text-xl svelte-1fpx7my"><div class="animate-marquee whitespace-nowrap h-fit w-fit svelte-1fpx7my"><!--[-->`;
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
       let news = each_array[$$index];
-      $$payload.out += `<span class="mx-4 min-h-fit svelte-vgee67">${escape_html(news.toUpperCase())}</span>`;
+      $$payload.out += `<span class="mx-4 min-h-fit svelte-1fpx7my">${escape_html(news.toUpperCase())}</span>`;
     }
-    $$payload.out += `<!--]--></div> <div class="animate-marquee2 whitespace-nowrap h-fit absolute w-fit svelte-vgee67"><!--[-->`;
+    $$payload.out += `<!--]--></div> <div class="animate-marquee2 whitespace-nowrap h-fit absolute w-fit svelte-1fpx7my"><!--[-->`;
     for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
       let news = each_array_1[$$index_1];
-      $$payload.out += `<span class="mx-4 min-h-fit svelte-vgee67">${escape_html(news.toUpperCase())}</span>`;
+      $$payload.out += `<span class="mx-4 min-h-fit svelte-1fpx7my">${escape_html(news.toUpperCase())}</span>`;
     }
     $$payload.out += `<!--]--></div></div>`;
   } else {
@@ -75,94 +75,14 @@ function Resume($$payload) {
   }
   $$payload.out += `<!--]--></div></div></div> <div class="flex flex-row w-full justify-center p-4 svelte-1q6rcg1"><a class="apple bg-doswhite text-black border-2 border-black p-2 px-4 active:underline hover:text-doswhite hover:bg-black svelte-1q6rcg1" href="https://flowcv.com/resume/pjasuoi5b2" target="_blank" rel="noreferrer">View Full Resume</a></div></div>`;
 }
-const img1 = {
-  sources: {
-    avif: "/_app/immutable/assets/donationstation.C5lUUEKq.avif 946w, /_app/immutable/assets/donationstation.Dved3Loz.avif 1892w",
-    webp: "/_app/immutable/assets/donationstation.BdqKNBSu.webp 946w, /_app/immutable/assets/donationstation.DnXSkSZt.webp 1892w",
-    png: "/_app/immutable/assets/donationstation.DQGo7Z33.png 946w, /_app/immutable/assets/donationstation.uRWbimuD.png 1892w"
-  },
-  img: {
-    src: "/_app/immutable/assets/donationstation.uRWbimuD.png",
-    w: 1892,
-    h: 905
-  }
-};
-const img2 = {
-  sources: {
-    avif: "/_app/immutable/assets/cyberhakz.g2WqP9d4.avif 941w, /_app/immutable/assets/cyberhakz.BxYJ9bA7.avif 1882w",
-    webp: "/_app/immutable/assets/cyberhakz.C0UxtGTJ.webp 941w, /_app/immutable/assets/cyberhakz.yr6aOx9-.webp 1882w",
-    png: "/_app/immutable/assets/cyberhakz.CIxbnOlW.png 941w, /_app/immutable/assets/cyberhakz.BV6BKe6-.png 1882w"
-  },
-  img: {
-    src: "/_app/immutable/assets/cyberhakz.BV6BKe6-.png",
-    w: 1882,
-    h: 896
-  }
-};
-const img3 = {
-  sources: {
-    avif: "/_app/immutable/assets/indianinfra.Bl23w_ii.avif 773w, /_app/immutable/assets/indianinfra.B6zv1KuS.avif 1545w",
-    webp: "/_app/immutable/assets/indianinfra.BLx21vqJ.webp 773w, /_app/immutable/assets/indianinfra.cmfHPpFI.webp 1545w",
-    png: "/_app/immutable/assets/indianinfra.Cb4cvT20.png 773w, /_app/immutable/assets/indianinfra.CI4u-UiG.png 1545w"
-  },
-  img: {
-    src: "/_app/immutable/assets/indianinfra.CI4u-UiG.png",
-    w: 1545,
-    h: 903
-  }
-};
-const game1 = {
-  sources: {
-    avif: "/_app/immutable/assets/1.kzEQOGDE.avif 320w, /_app/immutable/assets/1.DNRKzSN5.avif 640w",
-    webp: "/_app/immutable/assets/1.TAKOf2GT.webp 320w, /_app/immutable/assets/1.CCj4WYA5.webp 640w",
-    jpeg: "/_app/immutable/assets/1.OaRGZSg-.jpeg 320w, /_app/immutable/assets/1.Da9CT01J.jpeg 640w"
-  },
-  img: {
-    src: "/_app/immutable/assets/1.Da9CT01J.jpeg",
-    w: 640,
-    h: 271
-  }
-};
-const game2 = {
-  sources: {
-    avif: "/_app/immutable/assets/2.CI4at4dh.avif 200w, /_app/immutable/assets/2.Ym9Q7BLV.avif 400w",
-    webp: "/_app/immutable/assets/2.D6ZMmZ8G.webp 200w, /_app/immutable/assets/2.AKFGLH-J.webp 400w",
-    jpeg: "/_app/immutable/assets/2.DxTd3mE_.jpeg 200w, /_app/immutable/assets/2.iRlYTdUR.jpeg 400w"
-  },
-  img: {
-    src: "/_app/immutable/assets/2.iRlYTdUR.jpeg",
-    w: 400,
-    h: 300
-  }
-};
-const game3 = {
-  sources: {
-    avif: "/_app/immutable/assets/3.BEyzWC3Q.avif 150w, /_app/immutable/assets/3.CcqrEouG.avif 300w",
-    webp: "/_app/immutable/assets/3.2QdWMtyG.webp 150w, /_app/immutable/assets/3.Tc4mx3a1.webp 300w",
-    jpeg: "/_app/immutable/assets/3.BsiyMpPC.jpeg 150w, /_app/immutable/assets/3.CbJYCwy4.jpeg 300w"
-  },
-  img: {
-    src: "/_app/immutable/assets/3.CbJYCwy4.jpeg",
-    w: 300,
-    h: 225
-  }
-};
+const img1 = "/_app/immutable/assets/donationstation.BbB2po_f.png";
+const img2 = "/_app/immutable/assets/cyberhakz.DhPrJWbp.png";
+const img3 = "/_app/immutable/assets/indianinfra.D2Boj4o0.png";
+const game1 = "/_app/immutable/assets/1.BsyCZDma.jpg";
+const game2 = "/_app/immutable/assets/2.CTgfnhaH.jpg";
+const game3 = "data:image/jpeg;base64,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";
 function card($$payload, img, title, desc, link) {
-  $$payload.out += `<div class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0">`;
-  if (typeof img === "string") {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"${attr("src", img.img.src)} alt="banner"${attr("width", img.img.w)}${attr("height", img.img.h)}>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-    const each_array = ensure_array_like(Object.entries(img.sources));
-    $$payload.out += `<picture><!--[-->`;
-    for (let $$index_4 = 0, $$length = each_array.length; $$index_4 < $$length; $$index_4++) {
-      let [format, srcset] = each_array[$$index_4];
-      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
-    }
-    $$payload.out += `<!--]--> <img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"${attr("src", img.img.src)} alt="banner"${attr("width", img.img.w)}${attr("height", img.img.h)}></picture>`;
-  }
-  $$payload.out += `<!--]--> <div class="p-4 flex flex-col gap-2"><div class="text-3xl">${escape_html(title)}</div> <div class="relative text-xl leading-5">${escape_html(desc)}</div> <a class="text-primary text-xl w-fit group hover:opacity-80"${attr("href", link)} target="_blank" rel="noreferrer">Visit Site <span class="group-hover:visible invisible">→</span></a></div></div>`;
+  $$payload.out += `<div class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"${attr("src", img)} alt="banner"> <div class="p-4 flex flex-col gap-2"><div class="text-3xl">${escape_html(title)}</div> <div class="relative text-xl leading-5">${escape_html(desc)}</div> <a class="text-primary text-xl w-fit group hover:opacity-80"${attr("href", link)} target="_blank" rel="noreferrer">Visit Site <span class="group-hover:visible invisible">→</span></a></div></div>`;
 }
 function Games($$payload, $$props) {
   push();
@@ -186,53 +106,11 @@ function Games($$payload, $$props) {
       link: "https://indianinfra.in/"
     }
   ];
-  const each_array_4 = ensure_array_like(projects);
+  const each_array = ensure_array_like(projects);
   $$payload.out += `<div class="h-fit svelte-1qrqq0h" id="games"><div class="absolute svelte-1qrqq0h" id="bg-layer-0"></div> <div id="bg-layer-1" class="absolute svelte-1qrqq0h"></div> <div id="bg-layer-2" class="absolute svelte-1qrqq0h"></div> <div id="bg-layer-3" class="absolute svelte-1qrqq0h"></div> <h2 data-aos="fade" data-aos-duration="1000" data-aos-delay="500" class="jersey uppercase opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[30%] text-xl md:text-9xl h-0">Welcome to my <br> Video Game Universe</h2> <div id="bg-layer-4" class="absolute svelte-1qrqq0h"></div></div> <section class="flex flex-col bg-black p-4 md:p-10 xl:px-32 xl:min-h-full"><div class="flex flex-col md:flex-row gap-8 p-4 md:p-0"><div class="text-primary text-6xl w-[50%] md:my-8">VIDEO GAMES</div> <p class="text-sm md:px-8 text-doswhite apple m-auto">I craft rich purpose driven experience that shares a story, dive into my video game universe!
-			Check out my games at <a href="https://dataoverflow.itch.io/" target="_blank" class="text-primary" rel="noreferrer">dataoverflow.itch.io</a></p></div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"><div class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1hZ2UvMjg0ODQzNS8xNzAzNDQwNC5naWY=/original/1hNkmZ.gif" alt="banner"> <div class="col-start-1 row-start-1">`;
-  if (typeof game1 === "string") {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 group-hover:invisible"${attr("src", game1.img.src)} alt="banner"${attr("width", game1.img.w)}${attr("height", game1.img.h)}>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-    const each_array_1 = ensure_array_like(Object.entries(game1.sources));
-    $$payload.out += `<picture><!--[-->`;
-    for (let $$index = 0, $$length = each_array_1.length; $$index < $$length; $$index++) {
-      let [format, srcset] = each_array_1[$$index];
-      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
-    }
-    $$payload.out += `<!--]--> <img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 group-hover:invisible"${attr("src", game1.img.src)} alt="banner"${attr("width", game1.img.w)}${attr("height", game1.img.h)}></picture>`;
-  }
-  $$payload.out += `<!--]--></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Cupid's Startup</div> <div class="relative top-[-0.5rem] text-xl">Are they really compatible?</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/cs" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div> <div class="group flex flex-col h-full w-full md:w-72 md:h-64 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif" alt="banner"> <div class="col-start-1 row-start-1">`;
-  if (typeof game2 === "string") {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game2.img.src)} alt="banner"${attr("width", game2.img.w)}${attr("height", game2.img.h)}>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-    const each_array_2 = ensure_array_like(Object.entries(game2.sources));
-    $$payload.out += `<picture><!--[-->`;
-    for (let $$index_1 = 0, $$length = each_array_2.length; $$index_1 < $$length; $$index_1++) {
-      let [format, srcset] = each_array_2[$$index_1];
-      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
-    }
-    $$payload.out += `<!--]--> <img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game2.img.src)} alt="banner"${attr("width", game2.img.w)}${attr("height", game2.img.h)}></picture>`;
-  }
-  $$payload.out += `<!--]--></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Notebook Game</div> <div class="relative top-[-0.5rem] text-xl">A satisfying platformer</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/notebook-game" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div> <div class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif" alt="banner"> <div class="col-start-1 row-start-1">`;
-  if (typeof game3 === "string") {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game3.img.src)} alt="banner"${attr("width", game3.img.w)}${attr("height", game3.img.h)}>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-    const each_array_3 = ensure_array_like(Object.entries(game3.sources));
-    $$payload.out += `<picture><!--[-->`;
-    for (let $$index_2 = 0, $$length = each_array_3.length; $$index_2 < $$length; $$index_2++) {
-      let [format, srcset] = each_array_3[$$index_2];
-      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
-    }
-    $$payload.out += `<!--]--> <img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game3.img.src)} alt="banner"${attr("width", game3.img.w)}${attr("height", game3.img.h)}></picture>`;
-  }
-  $$payload.out += `<!--]--></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Survive 60 Seconds</div> <div class="relative top-[-0.5rem] text-xl">Can you survive longer?</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/survive-60-seconds" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div></div></section> <section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:px-32 xl:min-h-full" id="projects"><div class="flex flex-col md:flex-row gap-8 p-4 md:p-0"><div class="text-primary text-6xl w-[50%] md:my-8">PROJECTS</div> <p class="text-sm md:px-8 text-doswhite apple m-auto">Check out my high performance fullstack projects here</p></div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"><!--[-->`;
-  for (let $$index_3 = 0, $$length = each_array_4.length; $$index_3 < $$length; $$index_3++) {
-    let project = each_array_4[$$index_3];
+			Check out my games at <a href="https://dataoverflow.itch.io/" target="_blank" class="text-primary" rel="noreferrer">dataoverflow.itch.io</a></p></div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"><div class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1hZ2UvMjg0ODQzNS8xNzAzNDQwNC5naWY=/original/1hNkmZ.gif" alt="banner"> <div class="col-start-1 row-start-1"><img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 group-hover:invisible"${attr("src", game1)} alt="banner"></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Cupid's Startup</div> <div class="relative top-[-0.5rem] text-xl">Are they really compatible?</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/cs" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div> <div class="group flex flex-col h-full w-full md:w-72 md:h-64 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif" alt="banner"> <div class="col-start-1 row-start-1"><img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game2)} alt="banner"></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Notebook Game</div> <div class="relative top-[-0.5rem] text-xl">A satisfying platformer</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/notebook-game" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div> <div class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"><div class="grid"><img loading="lazy" class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1" src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif" alt="banner"> <div class="col-start-1 row-start-1"><img loading="lazy" class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"${attr("src", game3)} alt="banner"></div></div> <div class="p-4 flex flex-col"><div class="text-3xl">Survive 60 Seconds</div> <div class="relative top-[-0.5rem] text-xl">Can you survive longer?</div> <a class="text-primary text-xl w-fit group hover:opacity-80" href="https://dataoverflow.itch.io/survive-60-seconds" target="_blank" rel="noreferrer">Play Game <span class="group-hover:visible invisible">→</span></a></div></div></div></section> <section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:px-32 xl:min-h-full" id="projects"><div class="flex flex-col md:flex-row gap-8 p-4 md:p-0"><div class="text-primary text-6xl w-[50%] md:my-8">PROJECTS</div> <p class="text-sm md:px-8 text-doswhite apple m-auto">Check out my high performance fullstack projects here</p></div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"><!--[-->`;
+  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+    let project = each_array[$$index];
     card($$payload, project.img, project.title, project.desc, project.link);
   }
   $$payload.out += `<!--]--></div></section>`;
@@ -327,18 +205,7 @@ function Projects($$payload, $$props) {
   $$payload.out += `<!--]--></ul></div> <div class="w-8 border-l-4 hidden md:flex border-[#0000B0] flex-col justify-between svelte-1pha16v"></div></div></div> <div class="flex flex-col h-full gap-8 lg:gap-2 justify-between svelte-1pha16v"><div class="px-2 py-2 md:px-8 flex flex-col gap-1 text-lg md:text-xl lg:text-2xl svelte-1pha16v"><div class="text-xl md:text-2xl dos svelte-1pha16v">${escape_html(projectDetails[tab].title.toUpperCase())}</div> <div class="text-[#FF0000] svelte-1pha16v">${escape_html(projectDetails[tab].techstack)}</div> <div class="svelte-1pha16v">${escape_html(projectDetails[tab].description)}</div> <a class="my-4 bg-[#00B000] hover:text-white active:ml-4 text-black w-fit px-4 pr-12 dos-shadow svelte-1pha16v"${attr("href", projectDetails[tab].link)} target="_blank" rel="noreferrer"><span class="text-[#FFFF50] svelte-1pha16v">E</span>xplore</a></div></div></div> <div class="bg-[#0000B0] text-[#00A8AF] p-2 flex flex-col md:text-2xl dos select-none svelte-1pha16v"><div class="svelte-1pha16v">C:\\TURBOC3\\BIN\\PROJECTS\\*CPP</div> <div class="flex flex-row justify-between svelte-1pha16v"><div class="svelte-1pha16v">${escape_html(projects[tab].toUpperCase())}</div> <div class="svelte-1pha16v">${escape_html(projectDetails[tab].date)}</div></div></div></div></div></div></div></div>`;
   pop();
 }
-const heart = {
-  sources: {
-    avif: "/_app/immutable/assets/heart.CV2f-wHv.avif 8w, /_app/immutable/assets/heart.BcBv0fpf.avif 16w",
-    webp: "/_app/immutable/assets/heart.CxJuprzV.webp 8w, /_app/immutable/assets/heart.BgNonreo.webp 16w",
-    png: "/_app/immutable/assets/heart.C3d-wACK.png 8w, /_app/immutable/assets/heart.iqOAQ3GE.png 16w"
-  },
-  img: {
-    src: "/_app/immutable/assets/heart.iqOAQ3GE.png",
-    w: 16,
-    h: 16
-  }
-};
+const heart = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAFJJREFUOI3tksEKACAIQ5f//83VRUFGmZHHdszlHjhA1YHRgYGD2NfskY2iM/9x5WlRqgQBzvOmkCCjZ4K/wJXl9hrWkTqCLAlXvJ5gR8LJZQQT6zIYB7qaB+EAAAAASUVORK5CYII=";
 function GameOver($$payload, $$props) {
   push();
   let time = 0;
@@ -348,35 +215,7 @@ function GameOver($$payload, $$props) {
   }
   tick();
   setInterval(tick, 1e3);
-  $$payload.out += `<div id="gameover" class="min-h-[60vh] md:h-[100vh] flex flex-col items-center"><div class="flex flex-col w-full m-auto p-10 bg-black text-white md:min-h-[100vh] lg:h-[100vh] md:text-lg lg:text-xl xl:text-3xl pstart"><div class="flex flex-row justify-between sticky top-16 pointer-events-none"><div class="flex flex-col z-50"><div>SCORE</div> <div${attr("class", clsx(""))}>${escape_html(scroll)}</div></div> <div class="flex flex-col"><div>TIME</div> <div class="text-right">${escape_html(time)}</div></div></div> <div class="relative -top-16 flex flex-col w-full py-32 xl:p-64 gap-8 items-center"><div class="text-center z-50">${escape_html("GAME OVER")}</div> <div class="flex flex-col text-left gap-4 z-10"><div class="flex flex-row gap-8 group">`;
-  if (typeof heart === "string") {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart.img.src)}${attr("width", heart.img.w)}${attr("height", heart.img.h)}>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-    const each_array = ensure_array_like(Object.entries(heart.sources));
-    $$payload.out += `<picture><!--[-->`;
-    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-      let [format, srcset] = each_array[$$index];
-      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
-    }
-    $$payload.out += `<!--]--> <img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart.img.src)}${attr("width", heart.img.w)}${attr("height", heart.img.h)}></picture>`;
-  }
-  $$payload.out += `<!--]--> <a class="text-doswhite group-hover:text-white group-active:text-[#fe0000]" href="#home">RETRY</a></div> <div class="flex flex-row gap-8 group">`;
-  if (typeof heart === "string") {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart.img.src)}${attr("width", heart.img.w)}${attr("height", heart.img.h)}>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-    const each_array_1 = ensure_array_like(Object.entries(heart.sources));
-    $$payload.out += `<picture><!--[-->`;
-    for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
-      let [format, srcset] = each_array_1[$$index_1];
-      $$payload.out += `<source${attr("srcset", srcset)}${attr("type", "image/" + format)}>`;
-    }
-    $$payload.out += `<!--]--> <img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart.img.src)}${attr("width", heart.img.w)}${attr("height", heart.img.h)}></picture>`;
-  }
-  $$payload.out += `<!--]--> <a class="text-doswhite group-hover:text-white group-active:text-[#fe0000]" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">END</a></div></div></div></div> <canvas class="relative h-[100vh] w-full top-[-100vh] hidden lg:block"></canvas></div>`;
+  $$payload.out += `<div id="gameover" class="min-h-[60vh] md:h-[100vh] flex flex-col items-center"><div class="flex flex-col w-full m-auto p-10 bg-black text-white md:min-h-[100vh] lg:h-[100vh] md:text-lg lg:text-xl xl:text-3xl pstart"><div class="flex flex-row justify-between sticky top-16 pointer-events-none"><div class="flex flex-col z-50"><div>SCORE</div> <div${attr("class", clsx(""))}>${escape_html(scroll)}</div></div> <div class="flex flex-col"><div>TIME</div> <div class="text-right">${escape_html(time)}</div></div></div> <div class="relative -top-16 flex flex-col w-full py-32 xl:p-64 gap-8 items-center"><div class="text-center z-50">${escape_html("GAME OVER")}</div> <div class="flex flex-col text-left gap-4 z-10"><div class="flex flex-row gap-8 group"><img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart)}> <a class="text-doswhite group-hover:text-white group-active:text-[#fe0000]" href="#home">RETRY</a></div> <div class="flex flex-row gap-8 group"><img class="w-4 h-4 lg:w-6 lg:h-6 xl:w-8 xl:h-8 group-hover:visible invisible hidden md:block" alt="heart"${attr("src", heart)}> <a class="text-doswhite group-hover:text-white group-active:text-[#fe0000]" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">END</a></div></div></div></div> <canvas class="relative h-[100vh] w-full top-[-100vh] hidden lg:block"></canvas></div>`;
   pop();
 }
 export {

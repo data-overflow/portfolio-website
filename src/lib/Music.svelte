@@ -17,7 +17,7 @@
 	</div>
 	<div class="flex flex-row md:gap-16">
 		<div class="w-[20%] hidden xl:block">
-			<enhanced:img class="h-full w-full object-cover" loading="lazy" src={bg} alt="bg" />
+			<img class="h-full w-full object-cover" loading="lazy" src={bg} alt="bg" />
 		</div>
 		<div class="flex flex-col grow">
 			<iframe

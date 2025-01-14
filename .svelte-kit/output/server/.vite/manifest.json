@@ -8,42 +8,6 @@
       "_internal.js"
     ]
   },
-  "1.avif": {
-    "file": "_app/immutable/assets/1.DNRKzSN5.avif",
-    "src": "1.avif"
-  },
-  "1.jpeg": {
-    "file": "_app/immutable/assets/1.Da9CT01J.jpeg",
-    "src": "1.jpeg"
-  },
-  "1.webp": {
-    "file": "_app/immutable/assets/1.CCj4WYA5.webp",
-    "src": "1.webp"
-  },
-  "2.avif": {
-    "file": "_app/immutable/assets/2.Ym9Q7BLV.avif",
-    "src": "2.avif"
-  },
-  "2.jpeg": {
-    "file": "_app/immutable/assets/2.iRlYTdUR.jpeg",
-    "src": "2.jpeg"
-  },
-  "2.webp": {
-    "file": "_app/immutable/assets/2.AKFGLH-J.webp",
-    "src": "2.webp"
-  },
-  "3.avif": {
-    "file": "_app/immutable/assets/3.CcqrEouG.avif",
-    "src": "3.avif"
-  },
-  "3.jpeg": {
-    "file": "_app/immutable/assets/3.CbJYCwy4.jpeg",
-    "src": "3.jpeg"
-  },
-  "3.webp": {
-    "file": "_app/immutable/assets/3.Tc4mx3a1.webp",
-    "src": "3.webp"
-  },
   "_Footer.js": {
     "file": "chunks/Footer.js",
     "name": "Footer",
@@ -55,12 +19,7 @@
       "_escaping.js"
     ],
     "assets": [
-      "_app/immutable/assets/matrix-gif.BYFL2GuP.avif",
-      "_app/immutable/assets/matrix-gif.Cm0conQ6.avif",
-      "_app/immutable/assets/matrix-gif.BnJlhhAc.webp",
-      "_app/immutable/assets/matrix-gif.CqAr7OeK.webp",
-      "_app/immutable/assets/matrix-gif.DRzvxihR.gif",
-      "_app/immutable/assets/matrix-gif.CZCAEpjM.gif"
+      "_app/immutable/assets/matrix-gif.CFrjL3yg.gif"
     ]
   },
   "_Footer.svelte_svelte_type_style_lang.js": {
@@ -74,8 +33,7 @@
     "file": "chunks/Music.js",
     "name": "Music",
     "imports": [
-      "_attributes.js",
-      "_index.js"
+      "_attributes.js"
     ],
     "assets": [
       "_app/immutable/assets/moutain_city.o2YZ7Jvx.png"
@@ -91,54 +49,17 @@
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/aos.DARSj-AG.css"
+      "_app/immutable/assets/aos.DNh1k--i.css"
     ],
     "assets": [
       "_app/immutable/assets/cognizant.Dm5Hl-7U.png",
       "_app/immutable/assets/fiverr.Cjn4SrRP.png",
       "_app/immutable/assets/teachafy.0phtI4wM.png",
-      "_app/immutable/assets/donationstation.C5lUUEKq.avif",
-      "_app/immutable/assets/donationstation.Dved3Loz.avif",
-      "_app/immutable/assets/donationstation.BdqKNBSu.webp",
-      "_app/immutable/assets/donationstation.DnXSkSZt.webp",
-      "_app/immutable/assets/donationstation.DQGo7Z33.png",
-      "_app/immutable/assets/donationstation.uRWbimuD.png",
-      "_app/immutable/assets/cyberhakz.g2WqP9d4.avif",
-      "_app/immutable/assets/cyberhakz.BxYJ9bA7.avif",
-      "_app/immutable/assets/cyberhakz.C0UxtGTJ.webp",
-      "_app/immutable/assets/cyberhakz.yr6aOx9-.webp",
-      "_app/immutable/assets/cyberhakz.CIxbnOlW.png",
-      "_app/immutable/assets/cyberhakz.BV6BKe6-.png",
-      "_app/immutable/assets/indianinfra.Bl23w_ii.avif",
-      "_app/immutable/assets/indianinfra.B6zv1KuS.avif",
-      "_app/immutable/assets/indianinfra.BLx21vqJ.webp",
-      "_app/immutable/assets/indianinfra.cmfHPpFI.webp",
-      "_app/immutable/assets/indianinfra.Cb4cvT20.png",
-      "_app/immutable/assets/indianinfra.CI4u-UiG.png",
-      "_app/immutable/assets/1.kzEQOGDE.avif",
-      "_app/immutable/assets/1.DNRKzSN5.avif",
-      "_app/immutable/assets/1.TAKOf2GT.webp",
-      "_app/immutable/assets/1.CCj4WYA5.webp",
-      "_app/immutable/assets/1.OaRGZSg-.jpeg",
-      "_app/immutable/assets/1.Da9CT01J.jpeg",
-      "_app/immutable/assets/2.CI4at4dh.avif",
-      "_app/immutable/assets/2.Ym9Q7BLV.avif",
-      "_app/immutable/assets/2.D6ZMmZ8G.webp",
-      "_app/immutable/assets/2.AKFGLH-J.webp",
-      "_app/immutable/assets/2.DxTd3mE_.jpeg",
-      "_app/immutable/assets/2.iRlYTdUR.jpeg",
-      "_app/immutable/assets/3.BEyzWC3Q.avif",
-      "_app/immutable/assets/3.CcqrEouG.avif",
-      "_app/immutable/assets/3.2QdWMtyG.webp",
-      "_app/immutable/assets/3.Tc4mx3a1.webp",
-      "_app/immutable/assets/3.BsiyMpPC.jpeg",
-      "_app/immutable/assets/3.CbJYCwy4.jpeg",
-      "_app/immutable/assets/heart.CV2f-wHv.avif",
-      "_app/immutable/assets/heart.BcBv0fpf.avif",
-      "_app/immutable/assets/heart.CxJuprzV.webp",
-      "_app/immutable/assets/heart.BgNonreo.webp",
-      "_app/immutable/assets/heart.C3d-wACK.png",
-      "_app/immutable/assets/heart.iqOAQ3GE.png",
+      "_app/immutable/assets/donationstation.BbB2po_f.png",
+      "_app/immutable/assets/cyberhakz.DhPrJWbp.png",
+      "_app/immutable/assets/indianinfra.D2Boj4o0.png",
+      "_app/immutable/assets/1.BsyCZDma.jpg",
+      "_app/immutable/assets/2.CTgfnhaH.jpg",
       "_app/immutable/assets/mood.1T_nwjs8.webp",
       "_app/immutable/assets/layer-1.BDfcLgU3.gif",
       "_app/immutable/assets/layer-3.zhfkxy6v.gif"
@@ -187,66 +108,6 @@
       "_equality.js"
     ]
   },
-  "cyberhakz.avif": {
-    "file": "_app/immutable/assets/cyberhakz.BxYJ9bA7.avif",
-    "src": "cyberhakz.avif"
-  },
-  "cyberhakz.png": {
-    "file": "_app/immutable/assets/cyberhakz.BV6BKe6-.png",
-    "src": "cyberhakz.png"
-  },
-  "cyberhakz.webp": {
-    "file": "_app/immutable/assets/cyberhakz.yr6aOx9-.webp",
-    "src": "cyberhakz.webp"
-  },
-  "donationstation.avif": {
-    "file": "_app/immutable/assets/donationstation.Dved3Loz.avif",
-    "src": "donationstation.avif"
-  },
-  "donationstation.png": {
-    "file": "_app/immutable/assets/donationstation.uRWbimuD.png",
-    "src": "donationstation.png"
-  },
-  "donationstation.webp": {
-    "file": "_app/immutable/assets/donationstation.DnXSkSZt.webp",
-    "src": "donationstation.webp"
-  },
-  "heart.avif": {
-    "file": "_app/immutable/assets/heart.BcBv0fpf.avif",
-    "src": "heart.avif"
-  },
-  "heart.png": {
-    "file": "_app/immutable/assets/heart.iqOAQ3GE.png",
-    "src": "heart.png"
-  },
-  "heart.webp": {
-    "file": "_app/immutable/assets/heart.BgNonreo.webp",
-    "src": "heart.webp"
-  },
-  "indianinfra.avif": {
-    "file": "_app/immutable/assets/indianinfra.B6zv1KuS.avif",
-    "src": "indianinfra.avif"
-  },
-  "indianinfra.png": {
-    "file": "_app/immutable/assets/indianinfra.CI4u-UiG.png",
-    "src": "indianinfra.png"
-  },
-  "indianinfra.webp": {
-    "file": "_app/immutable/assets/indianinfra.cmfHPpFI.webp",
-    "src": "indianinfra.webp"
-  },
-  "matrix-gif.avif": {
-    "file": "_app/immutable/assets/matrix-gif.Cm0conQ6.avif",
-    "src": "matrix-gif.avif"
-  },
-  "matrix-gif.gif": {
-    "file": "_app/immutable/assets/matrix-gif.CZCAEpjM.gif",
-    "src": "matrix-gif.gif"
-  },
-  "matrix-gif.webp": {
-    "file": "_app/immutable/assets/matrix-gif.CqAr7OeK.webp",
-    "src": "matrix-gif.webp"
-  },
   "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "name": "entries/fallbacks/error.svelte",
@@ -292,6 +153,14 @@
     "file": "_app/immutable/assets/fiverr.Cjn4SrRP.png",
     "src": "src/lib/assets/fiverr.png"
   },
+  "src/lib/assets/games/1.jpg": {
+    "file": "_app/immutable/assets/1.BsyCZDma.jpg",
+    "src": "src/lib/assets/games/1.jpg"
+  },
+  "src/lib/assets/games/2.jpg": {
+    "file": "_app/immutable/assets/2.CTgfnhaH.jpg",
+    "src": "src/lib/assets/games/2.jpg"
+  },
   "src/lib/assets/games/layer-1.gif": {
     "file": "_app/immutable/assets/layer-1.BDfcLgU3.gif",
     "src": "src/lib/assets/games/layer-1.gif"
@@ -299,6 +168,10 @@
   "src/lib/assets/games/layer-3.gif": {
     "file": "_app/immutable/assets/layer-3.zhfkxy6v.gif",
     "src": "src/lib/assets/games/layer-3.gif"
+  },
+  "src/lib/assets/matrix-gif.gif": {
+    "file": "_app/immutable/assets/matrix-gif.CFrjL3yg.gif",
+    "src": "src/lib/assets/matrix-gif.gif"
   },
   "src/lib/assets/mood.png": {
     "file": "_app/immutable/assets/mood.3QHnJzV2.png",
@@ -311,6 +184,18 @@
   "src/lib/assets/moutain_city.png": {
     "file": "_app/immutable/assets/moutain_city.o2YZ7Jvx.png",
     "src": "src/lib/assets/moutain_city.png"
+  },
+  "src/lib/assets/projects/cyberhakz.png": {
+    "file": "_app/immutable/assets/cyberhakz.DhPrJWbp.png",
+    "src": "src/lib/assets/projects/cyberhakz.png"
+  },
+  "src/lib/assets/projects/donationstation.png": {
+    "file": "_app/immutable/assets/donationstation.BbB2po_f.png",
+    "src": "src/lib/assets/projects/donationstation.png"
+  },
+  "src/lib/assets/projects/indianinfra.png": {
+    "file": "_app/immutable/assets/indianinfra.D2Boj4o0.png",
+    "src": "src/lib/assets/projects/indianinfra.png"
   },
   "src/lib/assets/teachafy.png": {
     "file": "_app/immutable/assets/teachafy.0phtI4wM.png",
