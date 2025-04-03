@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	font-family: 'VT323', monospace;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #222;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+
+	-webkit-tap-highlight-color: transparent;
+
+	cursor: url('$lib/assets/cursor.cur'), auto;
+	scroll-behavior: smooth;
+}
+
+::selection {
+	background-color: #61dd97;
+	color: black;
+}
+
+@font-face {
+	font-family: DOSVGA;
+	src: url('$lib/assets/PerfectDOSVGA437.ttf');
+}
+
+@font-face {
+	font-family: Apple;
+	src: url('$lib/assets/apple.ttf');
+}
+
+@font-face {
+	font-family: Upheaval;
+	src: url('$lib/assets/upheavtt.ttf');
+}
+
+.dos {
+	font-family: DOSVGA, 'VT323', monospace;
+}
+
+.pstart {
+	font-family: 'Press Start 2P', system-ui;
+}
+
+.apple {
+	font-family: Apple, system-ui;
+	letter-spacing: -0.2rem;
+}
+
+.upheaval {
+	font-family: Upheaval, 'Press Start 2P', monospace;
+}
+
+.switzer {
+	font-family: 'Switzer', sans-serif;
+}
+
+.jersey {
+	font-family: 'Jersey 15', serif;
+}
+
+a,
+button {
+	cursor: url('$lib/assets/cursor-pointer.cur'), pointer;
+}
+
+/* Extra large screens fix */
+@media only screen and (min-width: 1540px) {
+	body {
+		zoom: 125%;
+	}
+}
+
+@media only screen and (min-width: 2000px) {
+	body {
+		font-size: 125%;
+	}
+}
+
+@media only screen and (min-width: 2400px) {
+	body {
+		font-size: 133%;
+		zoom: 133%;
+	}
+}
+
+@media only screen and (min-width: 3080px) {
+	body {
+		zoom: 150%;
+		max-width: 60vw;
+		padding-left: 5vw;
+		/* padding-right: 5vw; */
+		font-size: 140%;
+	}
+}
+
+@media only screen and (min-width: 4000px) {
+	body {
+		font-size: larger;
+	}
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/hi.gif" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Data Overflow" />
+		<meta
+			name="description"
+			content="Hi! I'm a 21 year old student, technologist & Entrepreneurial Hacker with a geek towards computer science from an early age. I've worked on video games and random projects I find interesting, right from the age of 14."
+		/>
+		<meta
+			name="msapplication-TileImage"
+			content="https://data-overflow.github.io/archive/2023/assets/mood.png"
+		/>
+		<meta property="og:site_name" content="DataOverflow" />
+		<meta property="og:title" content="DataOverflow" />
+		<meta
+			property="og:description"
+			content="Hi! I'm a 21 year old student, technologist & Entrepreneurial Hacker with a geek towards computer science from an early age. I've worked on video games and random projects I find interesting, right from the age of 14."
+		/>
+		<meta property="og:locale" content="en_GB" />
+		<meta
+			property="og:image"
+			content="https://data-overflow.github.io/archive/2023/assets/mood.png"
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="300" />
+		<meta property="og:image:height" content="200" />
+		<meta property="og:url" content="https://dataoverflow.vercel.app" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<title>DataOverflow</title>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+
+		<div class="tv" id="tv">
+			<div id="terminal"></div>
+			<div class="collection external terminal"></div>
+			<div class="flicker" id="flicker"></div>
+			<div class="scanlines"></div>
+			<div id="noise" class="noise"></div>
+		</div>
+	</body>
+	<script defer async src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+	<!-- Animate On Scroll Library -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+	<script defer async src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+	<!-- Our stylesheet and script
+  <link rel="stylesheet" href="./style.css" />
+  <script defer async src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer async src="./script.js"></script> -->
+
+	<!-- Terminal Effects -->
+	<script defer async src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<link rel="stylesheet" href="./terminal/terminal-style.css" />
+	<script defer async src="./terminal/terminal.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+	<script defer>
+		//window.addEventListener('resize', function (event) {
+
+		if (window.innerWidth < 640) {
+			document.getElementById('noise').classList.toggle('noise');
+			console.log('noise removed!');
+		}
+
+		//});
+	</script>
+</html>

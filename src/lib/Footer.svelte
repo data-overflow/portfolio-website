@@ -144,7 +144,7 @@
 					<li>
 						<a 
 							class="text-doswhite hover:text-primary transition-colors dos" 
-							href="/archive-2024"
+							href="/2024Q4"
 							>2024</a
 						>
 					</li>
