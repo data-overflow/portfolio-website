@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	
 	import img1 from '$lib/assets/projects/donationstation.png';
 	import img2 from '$lib/assets/projects/cyberhakz.png';
 	import img3 from '$lib/assets/projects/indianinfra.png';
@@ -113,7 +114,7 @@
 		data-aos="fade"
 		data-aos-duration="1000"
 		data-aos-delay="500"
-		class="editundo uppercase opacity-80 relative bg-layer-3 w-full text-center top-[10%] xl:top-[8%] md:top-[30%] text-xl md:text-9xl h-0"
+		class="editundo uppercase opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[30%] xl:top-[20%] text-xl md:text-9xl h-0"
 	>
 		Welcome to my <br /> Video Game Universe
 	</h2>
@@ -136,8 +137,8 @@
 	<div
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"
 	>
-		{#each games as game}
-			<a href={game.link} target="_blank" rel="noreferrer" class="card-container group" aria-label="View {game.title}">
+		{#each games as game, index}
+			<a href={game.link} target="_blank" rel="noreferrer" class="card-container group" aria-label="View {game.title}" data-aos="fade-up" data-aos-delay={index * 100 + 300} data-aos-duration="1000">
 				<div class="card-image-wrapper">
 					<img
 						loading="lazy"
@@ -164,8 +165,8 @@
 	<div
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"
 	>
-		{#each projects as project}
-			<a href={project.link} target="_blank" rel="noreferrer" class="card-container group" aria-label="View {project.title}">
+		{#each projects as project, index}
+			<a href={project.link} target="_blank" rel="noreferrer" class="card-container group" aria-label="View {project.title}" data-aos="fade-up" data-aos-delay={index * 100 + 300} data-aos-duration="1000">
 				<div class="card-image-wrapper">
 					<img
 						loading="lazy"

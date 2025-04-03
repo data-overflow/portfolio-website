@@ -27,87 +27,87 @@
 
 @keyframes flicker {
   0% {
-    opacity: 0.552;
+    opacity: 0.252;
   }
 
   5% {
-    opacity: 0.48287;
+    opacity: 0.28287;
   }
 
   10% {
-    opacity: 0.59134;
+    opacity: 0.29134;
   }
 
   15.0% {
-    opacity: 0.79543;
+    opacity: 0.39543;
   }
 
   20% {
-    opacity: 0.75134;
+    opacity: 0.35134;
   }
 
   25% {
-    opacity: 0.1956;
+    opacity: 0.0956;
   }
 
   30.0% {
-    opacity: 0.90687;
+    opacity: 0.50687;
   }
 
   35% {
-    opacity: 0.122;
+    opacity: 0.022;
   }
 
   40% {
-    opacity: 0.62254;
+    opacity: 0.32254;
   }
 
   45% {
-    opacity: 0.56977;
+    opacity: 0.26977;
   }
 
   50% {
-    opacity: 0.9925;
+    opacity: 0.4925;
   }
 
   55.0% {
-    opacity: 0.55487;
+    opacity: 0.25487;
   }
 
   60.0% {
-    opacity: 0.16607;
+    opacity: 0.06607;
   }
 
   65% {
-    opacity: 0.12353;
+    opacity: 0.02353;
   }
 
   70% {
-    opacity: 0.2214;
+    opacity: 0.1214;
   }
 
   75% {
-    opacity: 0.67908;
+    opacity: 0.37908;
   }
 
   80% {
-    opacity: 0.97163;
+    opacity: 0.47163;
   }
 
   85.0% {
-    opacity: 0.1275;
+    opacity: 0.0275;
   }
 
   90% {
-    opacity: 0.37186;
+    opacity: 0.17186;
   }
 
   95% {
-    opacity: 0.24475;
+    opacity: 0.14475;
   }
 
   100% {
-    opacity: 0.37221;
+    opacity: 0.17221;
   }
 }
 
@@ -125,7 +125,7 @@
   position: fixed;
   pointer-events: none;
   z-index: 100;
-  opacity: 20%;
+  opacity: 12%;
 }
 
 .scanlines:before {

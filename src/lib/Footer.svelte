@@ -77,7 +77,7 @@
 <footer id="connect" class="bg-black border-t-4 border-primary pt-16 pb-8 px-6 md:px-10">
 	<div class="container mx-auto">
 		<!-- Footer top -->
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 mb-12">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 xl:gap-8 mb-12">
 			<!-- Column 1: About & Social -->
 			<div class="flex flex-col" data-aos="fade-up">
 				<div class="text-primary text-3xl dos mb-4">DATAOVERFLOW</div>
@@ -198,7 +198,10 @@
 						<p class="mt-2 text-sm dos {subscriptionStatus === 'success' ? 'text-primary' : 'text-red-500'}">
 							[ {subscriptionMessage} ]
 						</p>
+					{:else}
+						<p class="mt-2 text-sm dos text-transparent">[ Hehhehehe what ye looking at? ]</p>
 					{/if}
+
 				</div>
 				<form 
 					on:submit|preventDefault={subscribeToNewsletter}
@@ -229,7 +232,7 @@
 		<!-- Footer bottom -->
 		<div class="border-t border-doswhite/10 pt-8 flex flex-col md:flex-row justify-between items-center">
 			<div class="text-doswhite/70 text-sm dos mb-4 md:mb-0">
-				Made with <span class="text-secondary animate-pulse inline-block">[❤]</span> by Kavirajar B | &copy; {currentYear}
+				Made with <span class="text-secondary animate-pulse inline-block">&lt;3</span> by Kavirajar B | <span class="switzer">&copy;</span> {currentYear}
 			</div>
 			<div class="text-doswhite/50 text-sm dos">
 				<a href="/privacy-policy" class="hover:text-primary transition-colors">PRIVACY POLICY</a> | 

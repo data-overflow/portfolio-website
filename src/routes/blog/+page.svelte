@@ -67,7 +67,7 @@
 <div id="blog" class="bg-black py-16 min-h-screen px-4 md:px-10">
 	<div class="container mx-auto">
 		<div class="flex flex-col gap-8 mb-12">
-			<div class="text-primary text-6xl" data-aos="fade">BLOG</div>
+			<div class="text-primary text-6xl" data-aos="fade">BLOG (THIS PAGE IS A WORK IN PROGRESS!!!)</div>
 			<div class="flex items-center gap-2 text-doswhite text-sm mb-4 overflow-x-auto pb-2">
 				<span class="dos text-secondary">[FILTER]:</span>
 				{#each categories as category}
