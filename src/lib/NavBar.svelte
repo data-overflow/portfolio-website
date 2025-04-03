@@ -3,6 +3,7 @@
 	import matrix from './assets/matrix-gif.gif';
 	import { graphics, menuState } from './stores';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
 	const GRAPHICS_NAME = {
 		0: 'LOW',
@@ -10,7 +11,6 @@
 		2: 'HIGH',
 		3: 'ULTRA'
 	};
-	// let $menuState = false;
 
 	function toggleGraphics() {
 		graphics.update((n) => {
@@ -22,6 +22,23 @@
 		});
 	}
 
+	// Handle active link tracking
+	$: pathname = $page.url.pathname;
+	$: currentSection = pathname === '/' ? 'home' : pathname.substring(1).split('/')[0];
+
+	function isActive(path) {
+		if (path === '/#about' && pathname === '/') return true;
+		if (path.startsWith('/#') && pathname === '/') return false;
+		return path.includes(currentSection);
+	}
+
+	// Close menu when clicking outside
+	function handleClickOutside(event) {
+		if ($menuState && !event.target.closest('#mobile-menu') && !event.target.closest('#menu-toggle')) {
+			$menuState = false;
+		}
+	}
+
 	onMount(() => {
 		const graphicsCache = sessionStorage.getItem('graphics');
 		if (graphicsCache) {
@@ -30,146 +47,171 @@
 		graphics.subscribe((val) => {
 			sessionStorage.setItem('graphics', JSON.stringify(val));
 		});
+
+		// Add click outside listener
+		document.addEventListener('click', handleClickOutside);
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
 	});
 </script>
 
-<header id="navigation fixed w-full">
+<header id="navigation" class="w-full">
 	<nav
 		id="navbar"
 		class="flex flex-row w-full text-primary bg-black/80 backdrop-blur-xl text-2xl fixed z-[256]"
+		aria-label="Main navigation"
 	>
 		<button
+			id="menu-toggle"
 			on:click={() => {
-				$menuState = true;
+				$menuState = !$menuState;
 			}}
 			class="p-4 block md:hidden transition-all {$menuState ? 'rotate-90' : 'rotate-0'}"
+			aria-controls="mobile-nav-menu"
+			aria-expanded={$menuState}
+			aria-label="Toggle navigation menu"
 			>&#9776;</button
 		>
 		<ul
-			class="flex-col {$menuState
-				? 'hidden'
-				: 'hidden'} md:flex md:flex-row md:gap-8 px-8 md:grow my-auto"
+			class="hidden md:flex md:flex-row md:gap-8 px-8 md:grow my-auto"
+			aria-label="Desktop navigation links"
 		>
-			<li class="active:bg-primary active:text-black">
-				<a href="/#about" class="p-2 hover:first-letter:underline hover:bg-gray-500/20"
+			<li class:active={isActive('/#about')}>
+				<a href="/#about" class="p-2 hover:first-letter:underline hover:bg-gray-500/20 {isActive('/#about') ? 'text-secondary' : ''}"
 					><span class="first-letter">A</span>BOUT</a
 				>
 			</li>
-			<li class="active:bg-primary active:text-black">
-				<a class="p-2 hover:bg-gray-500/20" href="/#games"
+			<li class:active={isActive('/#games')}>
+				<a class="p-2 hover:bg-gray-500/20 {isActive('/#games') ? 'text-secondary' : ''}" href="/#games"
 					><span class="first-letter">G</span>AMES</a
 				>
 			</li>
-			<li class="active:bg-primary active:text-black">
-				<a class="p-2 hover:bg-gray-500/20" href="/#projects"
+			<li class:active={isActive('/#projects')}>
+				<a class="p-2 hover:bg-gray-500/20 {isActive('/#projects') ? 'text-secondary' : ''}" href="/#projects"
 					><span class="first-letter">P</span>ROJECTS</a
 				>
 			</li>
-			<li class="active:bg-primary active:text-black hidden 2xl:block">
-				<a class="p-2 hover:bg-gray-500/20" href="/music"><span class="first-letter">M</span>USIC</a
+			<li class:active={isActive('/music')}>
+				<a class="p-2 hover:bg-gray-500/20 {isActive('/music') ? 'text-secondary' : ''}" href="/music"><span class="first-letter">M</span>USIC</a
 				>
 			</li>
-			<li class="active:bg-primary active:text-black">
-				<a class="p-2 hover:bg-gray-500/20" href="/blog"><span class="first-letter">B</span>LOG</a>
+			<li class:active={isActive('/blog')}>
+				<a class="p-2 hover:bg-gray-500/20 {isActive('/blog') ? 'text-secondary' : ''}" href="/blog"><span class="first-letter">B</span>LOG</a>
 			</li>
-			<li class="active:bg-primary active:text-black hidden xl:block">
-				<a class="p-2 hover:bg-gray-500/20" href="/#connect"
+			<li class:active={isActive('/#connect')}>
+				<a class="p-2 hover:bg-gray-500/20 {isActive('/#connect') ? 'text-secondary' : ''}" href="/#connect"
 					><span class="first-letter">C</span>ONNECT</a
 				>
 			</li>
 		</ul>
-		<div class="md:px-8 my-auto"><a href="/">DATAOVERFLOW</a></div>
+		<div class="px-4 md:px-8 my-auto ml-auto md:ml-0">
+			<a href="/" class="text-primary font-bold hover:text-secondary transition-colors">DATAOVERFLOW</a>
+		</div>
 	</nav>
 </header>
 
 <div
+	id="mobile-menu"
 	class="fixed {$graphics >= 1
 		? $graphics >= 2
-			? 'bg-black/50 backdrop-blur-md'
-			: 'bg-black/90'
+			? 'bg-black/90 backdrop-blur-md'
+			: 'bg-black/95'
 		: 'bg-black'} text-2xl w-full h-[100dvh] z-[300] flex flex-col {$menuState ? '' : 'hidden'}"
+	aria-hidden={!$menuState}
 >
 	<img
 		loading="lazy"
 		src={matrix}
-		alt="matrix-bg"
+		alt=""
 		class="fixed bottom-0 top-0 h-full -z-30 opacity-20 {$graphics >= 2 ? '' : 'hidden'}"
+		aria-hidden="true"
 	/>
-	<div class="flex flex-row">
+	<div class="flex flex-row justify-between p-4">
 		<button
-			class="p-4 block md:hidden {$menuState ? 'rotate-0' : 'rotate-90'}"
+			class="block md:hidden {$menuState ? 'rotate-0' : 'rotate-90'}"
 			on:click={() => {
 				$menuState = false;
 			}}
+			aria-label="Close navigation menu"
 		>
 			[ <span class="text-primary">X</span> ]
 		</button>
-		<div class="md:px-8 my-auto text-primary">DATAOVERFLOW</div>
+		<div class="text-primary font-bold">DATAOVERFLOW</div>
 	</div>
 
-	<ul class="flex-col md:flex md:flex-row md:gap-8 px-8 md:grow my-auto">
+	<ul id="mobile-nav-menu" class="flex flex-col gap-6 px-8 py-8 grow">
 		{#key $menuState}
-			<li in:slide={{ duration: 300 }} class="hover:bg-gray-500/20 p-2">
+			<li in:slide={{ duration: 200 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
 					}}
 					href="/#about"
-					class="hover:first-letter:underline"><span class="first-letter">A</span>BOUT</a
+					class="hover:first-letter:underline {isActive('/#about') ? 'text-secondary' : ''}"
+					><span class="first-letter">A</span>BOUT</a
 				>
 			</li>
-			<li in:slide={{ duration: 300, delay: 100 }} class="active:bg-primary active:text-black">
+			<li in:slide={{ duration: 200, delay: 50 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
 					}}
-					class="p-2 hover:bg-gray-500/20"
-					href="/#games"><span class="first-letter">G</span>AMES</a
+					href="/#games"
+					class="{isActive('/#games') ? 'text-secondary' : ''}"
+					><span class="first-letter">G</span>AMES</a
 				>
 			</li>
-			<li in:slide={{ duration: 300, delay: 200 }} class="active:bg-primary active:text-black">
+			<li in:slide={{ duration: 200, delay: 100 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
 					}}
-					class="p-2 hover:bg-gray-500/20"
-					href="/#projects"><span class="first-letter">P</span>ROJECTS</a
+					href="/#projects"
+					class="{isActive('/#projects') ? 'text-secondary' : ''}"
+					><span class="first-letter">P</span>ROJECTS</a
 				>
 			</li>
-			<li in:slide={{ duration: 300, delay: 300 }} class="active:bg-primary active:text-black">
+			<li in:slide={{ duration: 200, delay: 150 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
 					}}
-					class="p-2 hover:bg-gray-500/20"
-					href="/music"><span class="first-letter">M</span>USIC</a
+					href="/music"
+					class="{isActive('/music') ? 'text-secondary' : ''}"
+					><span class="first-letter">M</span>USIC</a
 				>
 			</li>
-			<li in:slide={{ duration: 300, delay: 400 }} class="active:bg-primary active:text-black">
+			<li in:slide={{ duration: 200, delay: 200 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
 					}}
-					class="p-2 hover:bg-gray-500/20"
-					href="/blog"><span class="first-letter">B</span>LOG</a
+					href="/blog"
+					class="{isActive('/blog') ? 'text-secondary' : ''}"
+					><span class="first-letter">B</span>LOG</a
 				>
 			</li>
-
-			<li in:slide={{ duration: 300, delay: 500 }} class="active:bg-primary active:text-black">
+			<li in:slide={{ duration: 200, delay: 250 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
 					}}
-					class="p-2 hover:bg-gray-500/20"
-					href="/#connect"><span class="first-letter">C</span>ONNECT</a
+					href="/#connect"
+					class="{isActive('/#connect') ? 'text-secondary' : ''}"
+					><span class="first-letter">C</span>ONNECT</a
 				>
 			</li>
 		{/key}
 	</ul>
-	<div class="flex flex-col-reverse grow p-8">
-		<button class="text-md text-secondary text-left" on:click={toggleGraphics}
-			>GRAPHICS: {GRAPHICS_NAME[$graphics]}</button
+	<div class="flex flex-col-reverse p-8">
+		<button 
+			class="text-md text-secondary text-left border border-secondary px-4 py-2 hover:bg-secondary/10 transition-colors" 
+			on:click={toggleGraphics}
+			aria-label="Toggle graphics quality"
 		>
+			GRAPHICS: [ <span class="text-primary">{GRAPHICS_NAME[$graphics]}</span> ]
+		</button>
 	</div>
 </div>
 
@@ -179,13 +221,18 @@
 	}
 	a:hover:first-letter {
 		text-decoration: underline;
-		color: yellow;
+		color: #e9d05e; /* Secondary color */
 		animation: blinker 0.9s step-start infinite;
 	}
 	a:active:first-letter {
-		background-color: yellow;
-		color: blue;
+		background-color: #e9d05e;
+		color: black;
 	}
+	
+	.active a {
+		color: #e9d05e;
+	}
+	
 	@keyframes blinker {
 		50% {
 			text-decoration: none;
@@ -194,48 +241,4 @@
 			text-decoration: underline;
 		}
 	}
-	/* nav {
-    width: 100%;
-    background-color: #400;
-  }
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #111;
-  }
-
-  li {
-    float: left;
-  }
-
-  li a {
-    display: block;
-    color: white;
-    font-size: 2vw;
-    text-align: center;
-    padding: 14px 24px;
-    text-decoration: none;
-  }
-
-  li a:hover {
-    background-color: #222;
-  }
-  a:hover::first-letter {
-    text-decoration: underline;
-    animation: blinker 1s step-start infinite; 
-  }
-  .scroll-up {
-    transform: translateY(0);
-    position: fixed;
-    width: 100%;
-  }
-
-  .scroll-down {
-    transform: translateY(-100%);
-    position: unset;
-  }
-
-  */
 </style>

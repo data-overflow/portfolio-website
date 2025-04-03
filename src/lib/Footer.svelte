@@ -8,105 +8,247 @@
 	import telegram from '$lib/assets/social/telegram.svg';
 	import x from '$lib/assets/social/x.svg';
 	import youtube from '$lib/assets/social/youtube.svg';
+	import { onMount } from 'svelte';
+	import AOS from 'aos';
 
-	const icons = [
-		[linkedin, 'https://in.linkedin.com/in/kavirajar'],
-		[github, 'https://github.com/data-overflow'],
-		[x, 'https://twitter.com/kvrjr'],
-		[telegram, 'https://t.me/kvrjr'],
-		[fiverr, 'https://www.fiverr.com/dataoverflow/'],
-		[instagram, 'https://instagram.com/data.overflow'],
-		[itch, 'https://dataoverflow.itch.io'],
-		[soundcloud, 'https://soundcloud.com/data-overflow'],
-		[youtube, 'https://www.youtube.com/@kavirajar']
+	const currentYear = new Date().getFullYear();
+
+	const socialLinks = [
+		{ icon: linkedin, url: 'https://in.linkedin.com/in/kavirajar', name: 'LinkedIn' },
+		{ icon: github, url: 'https://github.com/data-overflow', name: 'GitHub' },
+		{ icon: x, url: 'https://twitter.com/kvrjr', name: 'Twitter' },
+		{ icon: telegram, url: 'https://t.me/kvrjr', name: 'Telegram' },
+		{ icon: fiverr, url: 'https://www.fiverr.com/dataoverflow/', name: 'Fiverr' },
+		{ icon: instagram, url: 'https://instagram.com/data.overflow', name: 'Instagram' },
+		{ icon: itch, url: 'https://dataoverflow.itch.io', name: 'Itch.io' },
+		{ icon: soundcloud, url: 'https://soundcloud.com/data-overflow', name: 'SoundCloud' },
+		{ icon: youtube, url: 'https://www.youtube.com/@kavirajar', name: 'YouTube' }
 	];
-	const style = {
-		a: 'hover:underline active:text-secondary'
-	};
+
+	// Newsletter subscription
+	let email = '';
+	let subscribing = false;
+	let subscriptionMessage = '';
+	let subscriptionStatus = '';
+
+	async function subscribeToNewsletter() {
+		if (!email) {
+			subscriptionMessage = 'Please enter a valid email address';
+			subscriptionStatus = 'error';
+			return;
+		}
+
+		try {
+			subscribing = true;
+			subscriptionMessage = '';
+			
+			const response = await fetch('/api/subscribe', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ email })
+			});
+			
+			const result = await response.json();
+			
+			if (response.ok) {
+				subscriptionMessage = result.message;
+				subscriptionStatus = 'success';
+				email = ''; // Clear the input on success
+			} else {
+				subscriptionMessage = result.message;
+				subscriptionStatus = 'error';
+			}
+		} catch (error) {
+			console.error('Subscription error:', error);
+			subscriptionMessage = 'An error occurred. Please try again later.';
+			subscriptionStatus = 'error';
+		} finally {
+			subscribing = false;
+		}
+	}
+
+	onMount(() => {
+		AOS.init();
+	});
 </script>
 
-<footer id="connect" class="bg-[#0000B0] flex flex-col p-10 lg:pr-32 text-2xl lg:gap-0 gap-10">
-	<div
-		class="flex flex-col md:flex-wrap md:flex-row justify-between gap-8 lg:gap-0 text-center lg:text-left"
-	>
-		<div class="flex flex-col lg:w-1/4 w-full text-left">
-			<div class="text-4xl">DATAOVERFLOW</div>
-			<div class="flex flex-row flex-wrap gap-4 lg:gap-2">
-				{#each icons as icon}
-					<a class="w-8 h-8 md:w-6 md:h-6" href={icon[1]} target="_blank" rel="noreferrer">
-						<img class="fill-black" src={icon[0]} alt={icon[1]} />
-					</a>
-				{/each}
+<footer id="connect" class="bg-black border-t-4 border-primary pt-16 pb-8 px-6 md:px-10">
+	<div class="container mx-auto">
+		<!-- Footer top -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 mb-12">
+			<!-- Column 1: About & Social -->
+			<div class="flex flex-col" data-aos="fade-up">
+				<div class="text-primary text-3xl dos mb-4">DATAOVERFLOW</div>
+				<p class="text-doswhite text-sm mb-4 apple">
+					Game developer, web designer, and creative coder focused on retro aesthetics and modern technologies.
+				</p>
+				<div class="flex flex-wrap gap-3 mt-2">
+					{#each socialLinks as link}
+						<a 
+							href={link.url} 
+							target="_blank" 
+							rel="noreferrer"
+							class="w-8 h-8 flex items-center justify-center border border-doswhite/30 hover:border-primary transition-colors bg-black/50 rounded-sm"
+							aria-label={link.name}
+						>
+							<img src={link.icon} alt="" class="w-4 h-4" />
+						</a>
+					{/each}
+				</div>
 			</div>
-			<!-- <div>Want websites likes this one? DM!</div> -->
+
+			<!-- Column 2: Navigation -->
+			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="100">
+				<div class="text-secondary dos text-xl mb-4">[ LEVEL SELECT ]</div>
+				<nav aria-label="Footer navigation">
+					<ul class="flex flex-col gap-2">
+						<li><a href="/#about" class="text-doswhite hover:text-primary transition-colors dos">ABOUT</a></li>
+						<li><a href="/#games" class="text-doswhite hover:text-primary transition-colors dos">GAMES</a></li>
+						<li><a href="/#projects" class="text-doswhite hover:text-primary transition-colors dos">PROJECTS</a></li>
+						<li><a href="/music" class="text-doswhite hover:text-primary transition-colors dos">MUSIC</a></li>
+						<li><a href="/blog" class="text-doswhite hover:text-primary transition-colors dos">BLOG</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Column 3: Resources -->
+			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="200">
+				<div class="text-secondary dos text-xl mb-4">[ RESOURCES ]</div>
+				<ul class="flex flex-col gap-2">
+					<li>
+						<a
+							class="text-doswhite hover:text-primary transition-colors dos"
+							target="_blank"
+							rel="noreferrer"
+							href="https://docs.google.com/presentation/d/1OkTRtbzJCZRIzMU_4zev6jRgl67bUtxe/edit?usp=sharing&ouid=102067098286536378623&rtpof=true&sd=true"
+							>BROCHURE</a
+						>
+					</li>
+					<li>
+						<a
+							class="text-doswhite hover:text-primary transition-colors dos"
+							target="_blank"
+							rel="noreferrer"
+							href="https://flowcv.com/resume/pjasuoi5b2">RESUME</a
+						>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Column 4: Archive -->
+			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="300">
+				<div class="text-secondary dos text-xl mb-4">[ ARCHIVE ]</div>
+				<ul class="flex flex-col gap-2">
+					<li>
+						<a 
+							class="text-doswhite hover:text-primary transition-colors dos" 
+							href="/archive-2024"
+							>2024</a
+						>
+					</li>
+					<li>
+						<a
+							class="text-doswhite hover:text-primary transition-colors dos"
+							href="https://data-overflow.github.io/archive/2023"
+							target="_blank"
+							rel="noreferrer"
+							>2023</a
+						>
+					</li>
+					<li>
+						<a
+							class="text-doswhite hover:text-primary transition-colors dos"
+							href="https://data-overflow.github.io/archive/2022"
+							target="_blank"
+							rel="noreferrer"
+							>2022</a
+						>
+					</li>
+					<li>
+						<a
+							class="text-doswhite hover:text-primary transition-colors dos"
+							href="https://data-overflow.github.io/archive/2021"
+							target="_blank"
+							rel="noreferrer"
+							>2021</a
+						>
+					</li>
+					<li>
+						<a
+							class="text-doswhite hover:text-primary transition-colors dos"
+							href="https://data-overflow.github.io/archive/2020"
+							target="_blank"
+							rel="noreferrer"
+							>2020</a
+						>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="flex flex-col">
-			<div class="text-white/80">LEVEL SELECT</div>
-			<a class={style.a} href="/#about">About</a>
-			<a class={style.a} href="/#games">Games</a>
-			<a class={style.a} href="/#projects">Projects</a>
-			<a class={style.a} href="/music">Music</a>
-			<a class={style.a} href="/blog">Blog</a>
+
+		<!-- Newsletter signup -->
+		<div class="border-2 border-doswhite/30 p-6 mb-12" data-aos="fade-up">
+			<div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+				<div class="flex-1">
+					<h3 class="text-primary dos text-xl mb-2">SUBSCRIBE TO MY NEWSLETTER</h3>
+					<p class="text-doswhite text-sm apple">Get updates on new projects, blogs and game releases direct to your inbox!</p>
+					{#if subscriptionMessage}
+						<p class="mt-2 text-sm dos {subscriptionStatus === 'success' ? 'text-primary' : 'text-red-500'}">
+							[ {subscriptionMessage} ]
+						</p>
+					{/if}
+				</div>
+				<form 
+					on:submit|preventDefault={subscribeToNewsletter}
+					class="flex flex-col md:flex-row gap-2 w-full md:w-auto"
+				>
+					<input 
+						type="email" 
+						bind:value={email}
+						placeholder="YOUR EMAIL ADDRESS"
+						class="bg-black border-2 border-doswhite/50 px-4 py-2 text-doswhite dos w-full md:w-auto placeholder:text-doswhite/50 focus:border-primary focus:outline-none"
+						required
+					/>
+					<button 
+						type="submit"
+						class="bg-primary text-black border-2 border-primary px-6 py-2 dos hover:bg-primary/80 transition-colors {subscribing ? 'opacity-50 cursor-not-allowed' : ''}"
+						disabled={subscribing}
+					>
+						{#if subscribing}
+							SENDING...
+						{:else}
+							SUBSCRIBE
+						{/if}
+					</button>
+				</form>
+			</div>
 		</div>
-		<div class="flex flex-col">
-			<div class="text-white/80">RESOURCES</div>
-			<a
-				class={style.a}
-				target="_blank"
-				rel="noreferrer"
-				href="https://docs.google.com/presentation/d/1OkTRtbzJCZRIzMU_4zev6jRgl67bUtxe/edit?usp=sharing&ouid=102067098286536378623&rtpof=true&sd=true"
-				>Brochure</a
-			>
-			<a
-				class={style.a}
-				target="_blank"
-				rel="noreferrer"
-				href="https://flowcv.com/resume/pjasuoi5b2">Resume</a
-			>
+
+		<!-- Footer bottom -->
+		<div class="border-t border-doswhite/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+			<div class="text-doswhite/70 text-sm dos mb-4 md:mb-0">
+				Made with <span class="text-secondary animate-pulse inline-block">[❤]</span> by Kavirajar B | &copy; {currentYear}
+			</div>
+			<div class="text-doswhite/50 text-sm dos">
+				<a href="/privacy-policy" class="hover:text-primary transition-colors">PRIVACY POLICY</a> | 
+				<a href="/cookies" class="hover:text-primary transition-colors">COOKIES</a> | 
+				<a href="/legal" class="hover:text-primary transition-colors">LEGAL</a>
+			</div>
 		</div>
-		<div class="flex flex-col">
-			<div class="text-white/80">ARCHIVE</div>
-			<a class={style.a} target="_blank" rel="noreferrer" href="/archive-2024">2024</a>
-			<a
-				class={style.a}
-				target="_blank"
-				rel="noreferrer"
-				href="https://data-overflow.github.io/archive/2023">2023</a
-			>
-			<a
-				class={style.a}
-				target="_blank"
-				rel="noreferrer"
-				href="https://data-overflow.github.io/archive/2022">2022</a
-			>
-			<a
-				class={style.a}
-				target="_blank"
-				rel="noreferrer"
-				href="https://data-overflow.github.io/archive/2021">2021</a
-			>
-			<a
-				class={style.a}
-				target="_blank"
-				rel="noreferrer"
-				href="https://data-overflow.github.io/archive/2020">2020</a
-			>
-		</div>
-	</div>
-	<div class="text-center lg:text-left">
-		Made with <span class="text-secondary">&lt;3</span> by Kavirajar B
 	</div>
 </footer>
 
 <style>
-	img {
-		/* filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
-        filter: invert(72%) sepia(6%) saturate(21%) hue-rotate(251deg)
-            brightness(98%) contrast(94%); */
-		opacity: 80%;
+	/* Subtle social icon hover effect */
+	a img {
+		opacity: 0.8;
+		transition: all 0.2s ease;
 	}
 
-	img:hover {
-		opacity: 100%;
+	a:hover img {
+		opacity: 1;
+		transform: translateY(-2px);
 	}
 </style>
