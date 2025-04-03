@@ -3,6 +3,9 @@
 	import img1 from '$lib/assets/projects/donationstation.png';
 	import img2 from '$lib/assets/projects/cyberhakz.png';
 	import img3 from '$lib/assets/projects/indianinfra.png';
+	import img4 from '$lib/assets/projects/datable.png';
+	import img5 from '$lib/assets/projects/lumos.png';
+	import img6 from '$lib/assets/projects/ifm.png';
 
 	import game1 from '$lib/assets/games/1.jpg';
 	import game2 from '$lib/assets/games/2.jpg';
@@ -12,14 +15,20 @@
 
 	const projects = [
 		{
+			title: 'Datable',
+			desc: 'A social platform for meeting new people',
+			img: img4,
+			link: 'https://datable.web.app/'
+		},
+		{
 			title: 'The Do-Nation Station',
-			desc: 'Social Media + Centralized Platform for Donations',
+			desc: 'Centralized Platform for Donations',
 			img: img1,
 			link: 'https://the-do-nation-station.vercel.app/'
 		},
 		{
 			title: 'CyberHakz',
-			desc: 'Cybersecurity Company',
+			desc: 'Website for a cybersecurity company',
 			img: img2,
 			link: 'https://cyberhakz.com/'
 		},
@@ -28,7 +37,52 @@
 			desc: 'Construction Company',
 			img: img3,
 			link: 'https://indianinfra.in/'
+		},
+		{
+			title: 'Hikari No Matsuri',
+			desc: 'Website for anime x japanese event',
+			img: img5,
+			link: 'https://lumos-web-sigma.vercel.app/'
+		},
+		{
+			title: 'IFM Scaff & Forms',
+			desc: 'Website for a product company',
+			img: img6,
+			link: 'https://indianfasteners.in/'
 		}
+	];
+
+	const games = [
+		{
+			title: 'Cupid\'s Startup',
+			desc: 'Are they really compatible?',
+			img: game1,
+			gif: 'https://img.itch.zone/aW1hZ2UvMjg0ODQzNS8xNzAzNDQwNC5naWY=/original/1hNkmZ.gif',
+			link: 'https://dataoverflow.itch.io/cs',
+			detailLink: '/projects/cupids-startup',
+			type: 'DATING SIM',
+			technologies: ['Godot', 'GDScript', 'Pixel Art']
+		},
+		{
+			title: 'Notebook Game',
+			desc: 'A satisfying platformer',
+			img: game2,
+			gif: 'https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif',
+			link: 'https://dataoverflow.itch.io/notebook-game',
+			detailLink: '/projects/notebook-game',
+			type: 'PUZZLE',
+			technologies: ['Unity', 'C#', '2D']
+		},
+		{
+			title: 'Survive 60 Seconds',
+			desc: 'Can you survive longer?',
+			img: game3,
+			gif: 'https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif',
+			link: 'https://dataoverflow.itch.io/survive-60-seconds',
+			detailLink: '/projects/survive-60-seconds',
+			type: 'PLATFORM',
+			technologies: ['Unity', 'C#', 'Pixel Art']
+		},
 	];
 
 	onMount(() => {
@@ -59,7 +113,7 @@
 		data-aos="fade"
 		data-aos-duration="1000"
 		data-aos-delay="500"
-		class="jersey uppercase opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[30%] text-xl md:text-9xl h-0"
+		class="editundo uppercase opacity-80 relative bg-layer-3 w-full text-center top-[10%] xl:top-[8%] md:top-[30%] text-xl md:text-9xl h-0"
 	>
 		Welcome to my <br /> Video Game Universe
 	</h2>
@@ -82,109 +136,22 @@
 	<div
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"
 	>
-		<div
-			class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
-		>
-			<div class="grid">
-				<img
-					loading="lazy"
-					class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1"
-					src="https://img.itch.zone/aW1hZ2UvMjg0ODQzNS8xNzAzNDQwNC5naWY=/original/1hNkmZ.gif"
-					alt="banner"
-				/>
-				<div class="col-start-1 row-start-1">
+		{#each games as game}
+			<a href={game.link} target="_blank" rel="noreferrer" class="card-container group" aria-label="View {game.title}">
+				<div class="card-image-wrapper">
 					<img
 						loading="lazy"
-						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 group-hover:invisible"
-						src={game1}
-						alt="banner"
+						class="card-image"
+						src={game.gif}
+						alt={game.title}
 					/>
 				</div>
-			</div>
-			<div class="p-4 flex flex-col">
-				<div class="text-3xl">Cupid's Startup</div>
-				<div class="relative top-[-0.5rem] text-xl">Are they really compatible?</div>
-				<a
-					class="text-primary text-xl w-fit group hover:opacity-80"
-					href="https://dataoverflow.itch.io/cs"
-					target="_blank"
-					rel="noreferrer">Play Game <span class="group-hover:visible invisible">&rarr;</span></a
-				>
-			</div>
-		</div>
-		<div
-			class="group flex flex-col h-full w-full md:w-72 md:h-64 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
-		>
-			<div class="grid">
-				<img
-					loading="lazy"
-					class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1"
-					src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif"
-					alt="banner"
-				/>
-				<div class="col-start-1 row-start-1">
-					<img
-						loading="lazy"
-						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"
-						src={game2}
-						alt="banner"
-					/>
+				<div class="card-content">
+					<h3 class="card-title text-3xl group-hover:text-secondary">{game.title}</h3>
+					<p class="card-subtitle text-xl">{game.desc}</p>
 				</div>
-			</div>
-			<!-- <img  
-				loading="lazy"
-				class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
-				src="https://img.itch.zone/aW1nLzUzNDc0NTAuZ2lm/315x250%23c/PgWGSy.gif"
-				alt="banner"
-			/> -->
-			<div class="p-4 flex flex-col">
-				<div class="text-3xl">Notebook Game</div>
-				<div class="relative top-[-0.5rem] text-xl">A satisfying platformer</div>
-				<a
-					class="text-primary text-xl w-fit group hover:opacity-80"
-					href="https://dataoverflow.itch.io/notebook-game"
-					target="_blank"
-					rel="noreferrer">Play Game <span class="group-hover:visible invisible">&rarr;</span></a
-				>
-			</div>
-		</div>
-		<div
-			class="group flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
-		>
-			<div class="grid">
-				<img
-					loading="lazy"
-					class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1"
-					src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif"
-					alt="banner"
-				/>
-				<div class="col-start-1 row-start-1">
-					<img
-						loading="lazy"
-						class="inline-block h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover col-start-1 row-start-1 invisible md:visible group-hover:opacity-0 transition-all duration-300"
-						src={game3}
-						alt="banner"
-					/>
-				</div>
-			</div>
-			<!-- <img  
-				loading="lazy"
-				class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
-				src="https://img.itch.zone/aW1hZ2UvNjk2ODc5LzM4NzY0NDYuZ2lm/original/8Y0UXz.gif"
-				alt="banner"
-			/> -->
-			<div class="p-4 flex flex-col">
-				<div class="text-3xl">Survive 60 Seconds</div>
-				<div class="relative top-[-0.5rem] text-xl">Can you survive longer?</div>
-				<a
-					class="text-primary text-xl w-fit group hover:opacity-80"
-					href="https://dataoverflow.itch.io/survive-60-seconds"
-					target="_blank"
-					rel="noreferrer"
-					>Play Game <span class="group-hover:visible invisible">&rarr;</span>
-				</a>
-			</div>
-		</div>
+			</a>
+		{/each}
 	</div>
 </section>
 <section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:px-32 xl:min-h-full" id="projects">
@@ -198,33 +165,23 @@
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"
 	>
 		{#each projects as project}
-			{@render card(project.img, project.title, project.desc, project.link)}
+			<a href={project.link} target="_blank" rel="noreferrer" class="card-container group" aria-label="View {project.title}">
+				<div class="card-image-wrapper">
+					<img
+						loading="lazy"
+						class="card-image"
+						src={project.img}
+						alt={project.title}
+					/>
+				</div>
+				<div class="card-content">
+					<h3 class="card-title text-3xl group-hover:text-secondary">{project.title}</h3>
+					<p class="card-subtitle text-xl">{project.desc}</p>
+				</div>
+			</a>
 		{/each}
 	</div>
 </section>
-
-{#snippet card(img, title, desc, link)}
-	<div
-		class="flex flex-col h-full w-full md:w-72 md:h-72 xl:w-96 xl:h-96 py-4 hover:text-secondary border-b-2 border-transparent hover:border-doswhite/40 transition-all 2xl:grayscale hover:grayscale-0"
-	>
-		<img
-			loading="lazy"
-			class="h-full w-full md:w-72 md:h-32 xl:w-96 xl:h-56 object-cover"
-			src={img}
-			alt="banner"
-		/>
-		<div class="p-4 flex flex-col gap-2">
-			<div class="text-3xl">{title}</div>
-			<div class="relative text-xl leading-5">{desc}</div>
-			<a
-				class="text-primary text-xl w-fit group hover:opacity-80"
-				href={link}
-				target="_blank"
-				rel="noreferrer">Visit Site <span class="group-hover:visible invisible">&rarr;</span></a
-			>
-		</div>
-	</div>
-{/snippet}
 
 <style>
 	#bg-layer-0 {
@@ -371,6 +328,67 @@
 
 		#bg-layer-4 {
 			background-size: 110%;
+		}
+	}
+
+	/* New Card Styles */
+	.card-container {
+		display: flex;
+		flex-direction: column;
+		background-color: rgba(0, 0, 0, 0.2);
+		border-radius: 0.25rem;
+		overflow: hidden;
+		height: 100%;
+		width: 100%;
+		max-width: 24rem;
+		margin: 0 auto;
+		text-decoration: none;
+		color: inherit;
+	}
+	
+	.card-container:focus {
+		outline: 2px solid #edb336;
+		outline-offset: 2px;
+	}
+	
+	.card-image-wrapper {
+		position: relative;
+		height: 12rem;
+		overflow: hidden;
+	}
+	
+	.card-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	.card-content {
+		padding: 1rem;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.card-title {
+		margin: 0 0 0.1rem;
+		color: #ffffff;
+	}
+	
+	.card-subtitle {
+		margin: 0;
+		color: rgba(255, 255, 255, 0.7);
+	}
+	
+	@media (min-width: 768px) {
+		.card-image-wrapper {
+			height: 10rem;
+		}
+	}
+	
+	@media (min-width: 1280px) {
+		.card-image-wrapper {
+			height: 14rem;
 		}
 	}
 </style>

@@ -140,7 +140,7 @@
 		<div class="text-primary font-bold">DATAOVERFLOW</div>
 	</div>
 
-	<ul id="mobile-nav-menu" class="flex flex-col gap-6 px-8 py-8 grow">
+	<ul id="mobile-nav-menu" class="flex flex-col gap-2 px-8 py-8 grow">
 		{#key $menuState}
 			<li in:slide={{ duration: 200 }} class="hover:bg-gray-500/20 p-2">
 				<a
@@ -152,7 +152,7 @@
 					><span class="first-letter">A</span>BOUT</a
 				>
 			</li>
-			<li in:slide={{ duration: 200, delay: 50 }} class="hover:bg-gray-500/20 p-2">
+			<li in:slide={{ duration: 200, delay: 100 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
@@ -162,7 +162,7 @@
 					><span class="first-letter">G</span>AMES</a
 				>
 			</li>
-			<li in:slide={{ duration: 200, delay: 100 }} class="hover:bg-gray-500/20 p-2">
+			<li in:slide={{ duration: 200, delay: 200 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
@@ -172,7 +172,7 @@
 					><span class="first-letter">P</span>ROJECTS</a
 				>
 			</li>
-			<li in:slide={{ duration: 200, delay: 150 }} class="hover:bg-gray-500/20 p-2">
+			<li in:slide={{ duration: 200, delay: 300 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
@@ -182,7 +182,7 @@
 					><span class="first-letter">M</span>USIC</a
 				>
 			</li>
-			<li in:slide={{ duration: 200, delay: 200 }} class="hover:bg-gray-500/20 p-2">
+			<li in:slide={{ duration: 200, delay: 400 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;
@@ -192,7 +192,7 @@
 					><span class="first-letter">B</span>LOG</a
 				>
 			</li>
-			<li in:slide={{ duration: 200, delay: 250 }} class="hover:bg-gray-500/20 p-2">
+			<li in:slide={{ duration: 200, delay: 500 }} class="hover:bg-gray-500/20 p-2">
 				<a
 					on:click={() => {
 						$menuState = false;

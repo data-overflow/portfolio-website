@@ -1,6 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import SocialIcons from './SocialIcons.svelte';
+	import { fly, fade, scale } from 'svelte/transition';
+	import { cubicOut, elasticOut } from 'svelte/easing';
+	import art from "$lib/assets/art.mp4"
 
 	let { rss } = $props();
 	let showMessage = $state(false);
@@ -8,130 +11,217 @@
 	let home = $state();
 	let message = $state();
 	let typewriter = $state();
+	let animationComplete = $state(false);
+	let textVisible = $state(false);
+
+	// Animated text content
+	// const phrases = [
+	// 	'I write Code.',
+	// 	'I create Games.',
+	// 	'I design UIs.',
+	// 	'I love Pixel Art.'
+	// ];
+	const phrases = [
+		'I write Code.',
+		'I am Creative.\n\n\n\n\n\n\n\n\n\n\n\nI guess.',
+		'I Love Design. Pixel Art. 8 Bit Music. And Creating Video Games.',
+		'Humans call me Kavirajar B',
+		'Scroll Down!\n\n\n\n\n\n\n\n And witness pure magic',
+		'Wait you are still here?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Lmao.',
+		'This text is just going to loop itself, nothing fancy to see here. Scroll down.',
+		"You can't be stuck here pls. Move on to the rest of the site!"
+	];
+	let currentPhraseIndex = $state(0);
+	let typingText = $state('');
+	let isDeleting = $state(false);
+	let typingDelay = $state(150);
+
+	// Parallax elements
+	let parallaxElements = $state([]);
+	
+	// Typing animation
+	function typeText() {
+		const currentPhrase = phrases[currentPhraseIndex];
+		
+		if (!isDeleting && typingText === currentPhrase) {
+			// Pause at the end of typing
+			isDeleting = true;
+			typingDelay = 1000;
+		} else if (isDeleting && typingText === '') {
+			// Move to the next phrase
+			isDeleting = false;
+			currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+			typingDelay = 250;
+		} else {
+			// Type or delete one character
+			if (isDeleting) {
+				typingText = currentPhrase.substring(0, typingText.length - 1);
+				typingDelay = 25;
+			} else {
+				typingText = currentPhrase.substring(0, typingText.length + 1);
+				typingDelay = 75 - Math.random() * 50;
+			}
+		}
+		
+		setTimeout(typeText, typingDelay);
+	}
 
 	onMount(() => {
-		// let TxtType = function (el, toRotate, period) {
-		// 	this.toRotate = toRotate;
-		// 	this.el = el;
-		// 	this.loopNum = 0;
-		// 	this.period = period;
-		// 	this.txt = '';
-		// 	this.tick();
-		// 	this.isDeleting = false;
-		// };
-
-		// TxtType.prototype.tick = function () {
-		// 	var i = this.loopNum % this.toRotate.length;
-		// 	var fullTxt = this.toRotate[i];
-
-		// 	if (this.isDeleting) {
-		// 		this.txt = fullTxt.substring(0, this.txt.length - 1);
-		// 	} else {
-		// 		this.txt = fullTxt.substring(0, this.txt.length + 1);
-		// 	}
-
-		// 	this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-		// 	var that = this;
-		// 	var delta = 90 - Math.random() * 100;
-
-		// 	if (this.isDeleting) {
-		// 		delta /= 2;
-		// 	}
-
-		// 	if (!this.isDeleting && this.txt === fullTxt) {
-		// 		delta = this.period;
-		// 		this.isDeleting = true;
-		// 	} else if (this.isDeleting && this.txt.length == 1) {
-		// 		this.isDeleting = false;
-		// 		this.loopNum++;
-		// 		delta = 500;
-		// 	}
-
-		// 	setTimeout(function () {
-		// 		that.tick();
-		// 	}, delta);
-		// };
-
-		// var toRotate = [
-		// 	'I write Code.',
-		// 	'I am Creative.\n\n\n\n\n\n\n\n\n\n\n\nI guess.',
-		// 	'I Love Design. Pixel Art. 8 Bit Music. And Creating Video Games.',
-		// 	'Humans call me Kavirajar B',
-		// 	'Scroll Down!\n\n\n\n\n\n\n\n And witness pure magic',
-		// 	'Wait you are still here?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Lmao.',
-		// 	'This text is just going to loop itself, nothing fancy to see here. Scroll down.',
-		// 	"You can't be stuck here pls. Move on to the rest of the site!"
-		// ];
-		// var period = 1800;
-		// if (toRotate && typewriter) {
-		// 	new TxtType(typewriter, toRotate, period);
-		// }
-		// var css = document.createElement('style');
-		// css.innerHTML = '.typewrite > .wrap { border-right: 0.08em solid #fff}';
-		// document.body.appendChild(css);
-
+		// Start typing animation
+		setTimeout(() => {
+			typeText();
+		}, 1500);
+		
+		// Set animated elements to complete after intro animation
+		setTimeout(() => {
+			animationComplete = true;
+			textVisible = true;
+		}, 800);
+		
+		// Parallax effect
 		window.addEventListener('scroll', function () {
 			if (home) {
 				home.style.backgroundPositionY = (-20 + this.scrollY * 0.2).toString() + '%';
 			}
 		});
-
+		
+		// Cursor following message
 		document.addEventListener('mousemove', function (e) {
-			let left = e.screenX - 125;
-			let top = e.screenY - 20;
-			left = Math.max(0, Math.min(left, window.innerWidth * 0.75));
+			const mouseX = e.clientX;
+			const mouseY = e.clientY;
+			let left;
+			if (message && message.offsetWidth) {
+				left = mouseX - (message.offsetWidth / 2) //- 125;
+			} else {
+				left = mouseX - 125;
+			}
+			let top = mouseY;
+			left = Math.max(0, Math.min(left, window.innerWidth * 0.6));
 			if (message) {
 				message.style.left = left + 'px';
 				message.style.top = top + 'px';
 			}
+		});
+		
+		// Mouse parallax effect for decorative elements
+		document.addEventListener('mousemove', function(e) {
+			const mouseX = e.clientX;
+			const mouseY = e.clientY;
+			
+			document.querySelectorAll('.parallax-element').forEach((element, index) => {
+				const speed = 0.03 + (index * 0.01);
+				const x = (window.innerWidth / 2 - mouseX) * speed;
+				const y = (window.innerHeight / 2 - mouseY) * speed;
+				element.style.transform = `translateX(${x}px) translateY(${y}px)`;
+			});
 		});
 	});
 </script>
 
 <div
 	bind:this={message}
-	class="absolute bg-black/50 backdrop-blur px-2 transition-opacity {showMessage
+	class="absolute bg-black/50 backdrop-blur px-4 py-2 rounded transition-opacity z-50 text-doswhite dos {showMessage
 		? 'opacity-100'
 		: 'opacity-0'}"
 >
-	That's me working on the next big thing!
+<div class="flex flex-row">
+	<video
+		autoplay
+		loop
+		muted
+		playsinline
+		class="absolute inset-0 object-cover opacity-50 min-w-1/3 min-h-1/3"
+	>
+		<source src="{art}" type="video/mp4" />
+		Your browser does not support the video tag.
+	</video>
+	<span class="opacity-0"><span class="text-primary text-xs">&gt;</span> That's me working on the next big thing!</span>
 </div>
-<div id="home" bind:this={home} class="h-full w-full flex pb-16 md:p-0 md:items-center items-end">
-	<!-- <div class="absolute h-full w-full backdrop-blur-sm pointer-events-none"></div> -->
-	<div class="flex flex-col gap-2 w-full z-10">
-		<div
-			class="flex items-end text-4xl md:text-6xl md:w-[60%] px-6 md:px-10 xl:px-32 font-bold switzer h-40 align-text-bottom"
-		>
-			This is me, Kavirajar B
-		</div>
-		<div class="flex flex-col gap-0">
-			<div class="text-2xl md:text-3xl text-doswhite switzer px-6 md:px-10 xl:px-32">
-				Distrupting the Ordinary, Building for a Better World
-			</div>
-			<!-- <div class="px-6 md:px-10 xl:px-32">
-				<p bind:this={typewriter} class="typewrite text-left text-doswhite text-2xl md:text-2xl">
-					<span class="wrap"></span>
-				</p>
-			</div> -->
-		</div>
-		<div class="h-fit px-6 md:px-10 xl:px-32">
-			<SocialIcons opacity={50} />
-		</div>
-		<div
-			class="flex flex-row gap-4 items-center px-6 md:px-10 xl:px-32 text-xl md:text-2xl mt-8 bg-transparent"
-		>
-			<a
-				class="p-2 px-6 border-2 hover:bg-white rounded-sm hover:text-black z-100"
-				href="https://flowcv.com/resume/pjasuoi5b2"
-				target="_blank">View Resume</a
+</div>
+
+<div id="home" bind:this={home} class="h-full w-full flex items-center relative overflow-hidden">
+	
+	
+	<!-- Background video -->
+	
+	<!-- <div class="backdrop-blur bg-black/50 absolute inset-0 h-full w-full pointer-events-none"></div> -->
+	
+	<!-- Decorative elements -->
+	<div class="absolute inset-0 pointer-events-none overflow-hidden">
+		<!-- Animated grid background -->
+		<div class="absolute inset-0 grid-animation opacity-30"></div>
+		
+		<!-- Pixelated decorative elements with parallax -->
+		<!-- <div class="parallax-element absolute top-[15%] left-[10%] w-16 h-16 pixel-square opacity-30"></div>
+		<div class="parallax-element absolute top-[25%] right-[15%] w-8 h-8 pixel-square opacity-20"></div>
+		<div class="parallax-element absolute bottom-[20%] left-[20%] w-12 h-12 pixel-square opacity-25"></div>
+		<div class="parallax-element absolute bottom-[30%] right-[25%] w-10 h-10 pixel-square opacity-30"></div> -->
+		
+		<!-- Animated scanlines -->
+		<div class="scanlines absolute inset-0 pointer-events-none"></div>
+	</div>
+	
+	<!-- Main content -->
+	<div class="flex flex-col justify-end md:justify-center h-full md:h-auto gap-6 w-full z-10 px-6 md:px-10 xl:px-32 py-16 md:py-0">
+		{#if animationComplete}
+			<div 
+				in:fly={{ y: -50, duration: 800, delay: 100, easing: cubicOut }}
+				class="text-6xl md:text-7xl font-bold switzer max-w-4xl text-doswhite"
 			>
-		</div>
+				This is me, <span class="text-primary">Kavirajar B</span>
+			</div>
+			
+			<div class="flex flex-col gap-6">
+				<div 
+					in:fly={{ y: 50, duration: 800, delay: 300, easing: cubicOut }}
+					class="text-2xl md:text-3xl text-doswhite/90 switzer max-w-2xl"
+				>
+					Also known as Data Overflow. <br />Welcome to my portfolio site!
+				</div>
+				
+				<div 
+					in:fade={{ duration: 800, delay: 500 }}
+					class="h-14 flex items-center"
+				>
+					<span class="text-xl md:text-2xl text-primary dos">&gt;</span>
+					<span class="text-xl md:text-2xl text-doswhite/90 dos ml-2">{typingText}</span>
+					<span class="text-xl md:text-2xl text-doswhite/90 typing-cursor">|</span>
+				</div>
+				
+				<div 
+					in:fade={{ duration: 800, delay: 700 }}
+					class="h-fit"
+				>
+					<SocialIcons opacity={80} />
+				</div>
+				
+				<div
+					in:fade={{ duration: 800, delay: 900 }}
+					class="flex flex-col md:flex-row w-full md:w-auto gap-4 items-center text-xl md:text-2xl mt-4 bg-transparent"
+				>
+					<a
+						class="p-2 px-6 border-2 w-full md:w-auto border-primary text-primary hover:bg-primary/20 transition-all rounded-sm"
+						href="https://flowcv.com/resume/pjasuoi5b2"
+						target="_blank"
+					>
+						View_Resume.exe
+					</a>
+					
+					<a 
+						class="p-2 px-6 border-2 w-full md:w-auto border-doswhite text-doswhite hover:border-primary hover:text-primary transition-all rounded-sm"
+						href="#about"
+					>
+						Explore_Work.bat
+					</a>
+				</div>
+			</div>
+		{/if}
 	</div>
 
+	<!-- Animated pointer element -->
 	<div
 		role="presentation"
-		class="bg-black/0 right-[15%] top-[50%] md:absolute w-64 h-96 hidden md:block"
+		class="bg-transparent right-[15%] top-[50%] md:absolute w-64 h-96 hidden md:block z-50"
 		onmouseenter={() => {
 			showMessage = true;
 		}}
@@ -140,18 +230,10 @@
 		}}
 	></div>
 </div>
+
 {#if rss && rss.success}
-	<!-- <div
-		class="marquee flex items-center justify-center h-4 relative -mt-4 bg-white text-black jersey font-bold text-xl"
-	>
-		<p class="text-ellipsis flex flex-row">
-			{#each rss.news as news}
-				<span class="w-fit">{news.toUpperCase() + ' | '}</span>
-			{/each}
-		</p>
-	</div> -->
 	<div
-		class="overflow-x-hidden flex h-hit relative -mt-4 bg-white text-black jersey font-bold text-xl"
+		class="overflow-x-hidden flex h-fit relative bg-primary text-black jersey font-bold text-xl"
 	>
 		<div class="animate-marquee whitespace-nowrap h-fit w-fit">
 			{#each rss.news as news}
@@ -171,81 +253,69 @@
 		background-color: #e9d05e;
 		color: black;
 	}
+	
 	#home {
-		/* background-image: url('./assets/mood.png'); */
 		background-size: cover;
-		background-image: linear-gradient(0deg, rgb(0, 0, 0), rgba(43, 57, 42, 0.073)),
+		background-image: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(20, 21, 21, 0.5)),
 			url('./assets/mood.webp');
 		background-position-y: -20%;
 		background-position-x: 80%;
-		height: 99vh;
+		/* background-size: 125%; */
+		height: 90vh;
 		width: 100%;
 	}
-
-	.marquee {
-		height: 50px;
-		position: relative;
-		background: #fefefe;
-		color: #333;
-		border: 1px solid #4a4a4a;
+	
+	/* Typing cursor animation */
+	.typing-cursor {
+		display: inline-block;
+		animation: cursor-blink 1s infinite;
 	}
-
-	.marquee p {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		margin: 0;
-		line-height: 50px;
-		text-align: center;
-		-moz-transform: translateX(100%);
-		-webkit-transform: translateX(100%);
-		transform: translateX(100%);
-		-moz-animation: scroll-left 2s linear infinite;
-		-webkit-animation: scroll-left 2s linear infinite;
-		animation: scroll-left 10s linear infinite;
+	
+	@keyframes cursor-blink {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0; }
 	}
-
-	@media screen and (min-width: 640px) {
+	
+	/* Grid background animation */
+	.grid-animation {
+		background-image: 
+			linear-gradient(rgba(50, 50, 50, 0.1) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(50, 50, 50, 0.1) 1px, transparent 1px);
+		background-size: 40px 40px;
+		animation: grid-scroll 20s linear infinite;
+	}
+	
+	@keyframes grid-scroll {
+		0% { background-position: 0px 0px; }
+		100% { background-position: 40px 40px; }
+	}
+	
+	/* Scanlines effect */
+	.scanlines {
+		background: linear-gradient(
+			to bottom,
+			transparent 0%,
+			rgba(255, 255, 255, 0.05) 50%,
+			transparent 100%
+		);
+		background-size: 100% 4px;
+		animation: scanline 8s linear infinite;
+	}
+	
+	@keyframes scanline {
+		0% { background-position: 0 0; }
+		100% { background-position: 0 100%; }
+	}
+	
+	/* Pixel squares */
+	/* .pixel-square {
+		background-image: url('./assets/heart.png');
+		background-size: 100% 100%;
+		transition: transform 0.2s ease-out;
+	} */
+	 @media only screen and (min-width: 1540px) {
 		#home {
-			background-image: linear-gradient(120deg, rgba(0, 0, 0, 0.811), rgba(255, 219, 135, 0.032)),
-				url('./assets/mood.webp');
+			background-size: 125%;
 		}
-	}
-
-	@media screen and (min-width: 1800px) {
-		#home {
-			height: 90vh;
-		}
-	}
-
-	@-moz-keyframes scroll-left {
-		0% {
-			-moz-transform: translateX(100%);
-		}
-		100% {
-			-moz-transform: translateX(-100%);
-		}
-	}
-
-	@-webkit-keyframes scroll-left {
-		0% {
-			-webkit-transform: translateX(100%);
-		}
-		100% {
-			-webkit-transform: translateX(-100%);
-		}
-	}
-
-	@keyframes scroll-left {
-		0% {
-			-moz-transform: translateX(100%);
-			-webkit-transform: translateX(100%);
-			transform: translateX(100%);
-		}
-		100% {
-			-moz-transform: translateX(-100%);
-			-webkit-transform: translateX(-100%);
-			transform: translateX(-100%);
-		}
-	}
+	 }
 </style>

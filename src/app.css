@@ -48,6 +48,11 @@
 	src: url('$lib/assets/upheavtt.ttf');
 }
 
+@font-face {
+	font-family: EditUndo;
+	src: url('$lib/assets/fonts/editundo.ttf');
+}
+
 .dos {
 	font-family: DOSVGA, 'VT323', monospace;
 }
@@ -71,6 +76,10 @@
 
 .jersey {
 	font-family: 'Jersey 15', serif;
+}
+
+.editundo {
+	font-family: EditUndo, sans-serif;
 }
 
 a,
