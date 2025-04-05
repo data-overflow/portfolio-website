@@ -80,9 +80,9 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 xl:gap-8 mb-12">
 			<!-- Column 1: About & Social -->
 			<div class="flex flex-col" data-aos="fade-up">
-				<div class="text-primary text-3xl dos mb-4">DATAOVERFLOW</div>
+				<div class="text-primary text-3xl mb-4">DATAOVERFLOW</div>
 				<p class="text-doswhite text-sm mb-4 apple">
-					Game developer, web designer, and creative coder focused on retro aesthetics and modern technologies.
+					AI Developer, Game Developer, Web Designer, and Creative Coder focused on building a better world for humanity.
 				</p>
 				<div class="flex flex-wrap gap-3 mt-2">
 					{#each socialLinks as link}
@@ -192,7 +192,7 @@
 		<div class="border-2 border-doswhite/30 p-6 mb-12" data-aos="fade-up">
 			<div class="flex flex-col md:flex-row gap-6 items-center justify-between">
 				<div class="flex-1">
-					<h3 class="text-primary dos text-xl mb-2">SUBSCRIBE TO MY NEWSLETTER</h3>
+					<h3 class="text-primary text-2xl mb-2">SUBSCRIBE TO MY NEWSLETTER</h3>
 					<p class="text-doswhite text-sm apple">Get updates on new projects, blogs and game releases direct to your inbox!</p>
 					{#if subscriptionMessage}
 						<p class="mt-2 text-sm dos {subscriptionStatus === 'success' ? 'text-primary' : 'text-red-500'}">
@@ -211,12 +211,12 @@
 						type="email" 
 						bind:value={email}
 						placeholder="YOUR EMAIL ADDRESS"
-						class="bg-black border-2 border-doswhite/50 px-4 py-2 text-doswhite dos w-full md:w-auto placeholder:text-doswhite/50 focus:border-primary focus:outline-none"
+						class="bg-black border-2 border-doswhite/50 px-4 py-2 text-doswhite w-full md:w-auto placeholder:text-doswhite/50 focus:border-primary focus:outline-none"
 						required
 					/>
 					<button 
 						type="submit"
-						class="bg-primary text-black border-2 border-primary px-6 py-2 dos hover:bg-primary/80 transition-colors {subscribing ? 'opacity-50 cursor-not-allowed' : ''}"
+						class="bg-primary text-black border-2 border-primary px-6 py-2 hover:bg-primary/80 transition-colors {subscribing ? 'opacity-50 cursor-not-allowed' : ''}"
 						disabled={subscribing}
 					>
 						{#if subscribing}
@@ -231,10 +231,10 @@
 
 		<!-- Footer bottom -->
 		<div class="border-t border-doswhite/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-			<div class="text-doswhite/70 text-sm dos mb-4 md:mb-0">
+			<div class="text-doswhite/70 text-sm mb-4 md:mb-0">
 				Made with <span class="text-secondary animate-pulse inline-block">&lt;3</span> by Kavirajar B | <span class="switzer">&copy;</span> {currentYear}
 			</div>
-			<div class="text-doswhite/50 text-sm dos">
+			<div class="text-doswhite/50 text-sm">
 				<a href="/privacy-policy" class="hover:text-primary transition-colors">PRIVACY POLICY</a> | 
 				<a href="/cookies" class="hover:text-primary transition-colors">COOKIES</a> | 
 				<a href="/legal" class="hover:text-primary transition-colors">LEGAL</a>

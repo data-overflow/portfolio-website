@@ -3,10 +3,44 @@
 	import AOS from 'aos';
 	import 'aos/dist/aos.css';
 	import { page } from '$app/stores';
+	import mood from '$lib/assets/mood.png';
 
 	// In a real implementation, you'd fetch blog post data based on the slug
 	// This is a placeholder with sample content
 	const blogPosts = {
+		'making-it-at-21': {
+			title: 'What It\'s Like Trying to Make It at 21',
+			date: '2025-04-05',
+			content: `
+				<h2>What It Feels Like to Be 21, Ambitious, and Running Out of Doors to Knock On</h2>
+				<p>I'm a Gen Z. I was born in 2003. I've been programming since the age of 14. Before I even left school, I had already published two video games, developed an app for my physics professor, and written machine learning algorithms from scratch.</p>
+				
+				<p>Then the pandemic hit, and little did I know it would be virtually impossible to get into tier 1 universities—because I had to compete with a million other candidates preparing for their JEE from top coaching institutes.</p>
+				
+				<p>I got into a tier 3 university, where my passion for learning and research was never satiated. Undeterred, I decided to pursue higher studies abroad. But it turns out the golden age was over; Indians face closed doors globally, and one needs an exceptional profile with a 9+ GPA to stand a chance.</p>
+				
+				<p>I ventured into entrepreneurship because I could build great projects and had studied design, psychology, and the basics of how businesses work. Yet I couldn't stand out. I tried raising money, and it turns out that "ideas," "solving problems," and "traction" don't even matter anymore.</p>
+				
+				<p>VCs always ask: "What if some large company decides to copy your product?"</p>
+				<p>In other words, they're questioning the leverage we have to compete against these behemoths if they decide to imitate our product.</p>
+				
+				<p>One form of leverage could be a large audience.</p>
+				<p>So I tried content creation. But again, I was competing against veterans who have mastered the art of engaging content. It's not 2015. Authentic content alone can never overcome survivorship bias—you need to create highly stimulating, unpredictable content with a strong hook, thanks to ever-diminishing attention spans.</p>
+				
+				<p>I was practically screaming at a wall.</p>
+				
+				<p>Eventually, I decided to get employed. I had a highly polished, 85+ ATS scoring resume. I thought I was prepared—with my cracked list of projects and internship experiences. I applied to 100+ companies, but their positions were filled before a real person even got to glance at my profile.</p>
+				
+				<p>I wish older generations could fully comprehend the sheer level of competency we need to operate at to stand out—constantly adapting to rapid changes and higher standards—all amidst loneliness, rising prices, deteriorating pollution levels, and challenging standards of living.</p>
+				
+				<p>This isn't a success story. Not yet. But I'll keep trying anyway.</p>
+			`,
+			author: 'Kavi',
+			category: 'Personal',
+			tags: ['career', 'gen z', 'entrepreneurship', 'personal growth'],
+			readTime: '6 min',
+			coverImage: mood
+		},
 		'retro-game-dev-tips': {
 			title: 'Retro Game Development Tips',
 			date: '2025-04-01',
@@ -311,11 +345,15 @@ class RetroAudioManager {
 			
 			<!-- Featured image placeholder -->
 			<div 
-				class="w-full aspect-video bg-gray-800 flex items-center justify-center mb-8 border-2 border-doswhite"
+				class="w-full aspect-video bg-gray-800 flex items-center justify-center mb-8 border-2 border-doswhite overflow-hidden"
 				data-aos="fade-up"
 				data-aos-delay="300"
 			>
-				<span class="text-secondary text-2xl dos">[FEATURED IMAGE]</span>
+				{#if slug === 'making-it-at-21' && mood}
+					<img src={mood} alt="{post.title}" class="w-full h-full object-cover" />
+				{:else}
+					<span class="text-secondary text-2xl dos">[FEATURED IMAGE]</span>
+				{/if}
 			</div>
 		</div>
 		

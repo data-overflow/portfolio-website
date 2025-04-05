@@ -157,7 +157,7 @@
 </section>
 <section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:px-32 xl:min-h-full" id="projects">
 	<div class="flex flex-col md:flex-row gap-8 p-4 md:p-0">
-		<div class="text-primary text-6xl w-[50%] md:my-8">PROJECTS</div>
+		<div class="text-primary text-6xl w-[50%] md:my-8">WEB PROJECTS</div>
 		<p class="text-sm md:px-8 text-doswhite apple m-auto">
 			Check out my high performance fullstack projects here
 		</p>

@@ -26,14 +26,14 @@
 				logoAlt: "cit logo",
 				institution: "Chennai Institute of Technology",
 				detail: "B.Tech Artificial Intelligence & Data Science",
-				period: "2021-2025 (Can't wait)"
+				period: "Oct 2021 - May 2025 (Can't wait) | Chennai, India"
 			},
 			{
 				logo: dav,
 				logoAlt: "dav logo",
 				institution: "DAV Boys Senior Secondary School, Gopalapuram",
 				detail: "Grade: SSC - 464/500 | HSC - 432/500",
-				period: "2009-2021"
+				period: "2009 - 2021"
 			}
 		],
 		experience: [
@@ -41,144 +41,112 @@
 				logo: teachafy,
 				logoAlt: "teachafy logo",
 				company: "Teachafy Labs",
-				position: "ML & Backend Developer Intern",
-				period: "Dec 2024 - Present",
+				position: "Machine Learning Developer Intern",
+				period: "Dec 2024 - Present | Chennai, India",
 				responsibilities: [
-					"Working on building a platform that connects students with teachers for personalized learning.",
-					"Built the ML model for matching students with teachers.",
-					"Also working on the backend for the platform using Node.js and Express."
-				]
-			},
-			{
-				logo: lumos,
-				logoAlt: "lumos logo",
-				company: "Lumos Code",
-				position: "FullStack Developer Intern",
-				period: "Aug 2023 - Nov 2023",
-				responsibilities: [
-					"Built a platform for tracking and managing expenses. My focus was creating the login, payment, and admin portals",
-					"Worked on the frontend using React and backend using Node.js and Express.",
-					"Improved user retention by ~72%",
-					"Redesigned sign up flow reducing bounce rate by 43%",
-					"Added new features including recurring payment, payment reminders, expense categorization, and more."
-				]
-			},
-			{
-				logo: cognizant,
-				logoAlt: "cognizant logo",
-				company: "Cognizant",
-				position: "Technical Co-author",
-				period: "Jul 2022 - Oct 2022",
-				responsibilities: [
-					"Technical writer for a Cognizant whitepaper",
-					"Created comprehensive documentation and wrote user guides for Cognizant's proprietary AI product.",
-					"Built a proof-of-concept using Python Tensorflow."
+					"Created agentic workflows from scratch using OpenAI function calling, LangChain, FastAPI, PostgreSQL and Docker Compose",
+					"Engineered a two-way database synchronization system for disparate schemas, ensuring 100% consistency and efficiency",
+					"Lead the development of Robin: AI powered tasks & meetings copilot within a month, adding $5000 MRR to the company"
 				]
 			},
 			{
 				logo: fiverr,
 				logoAlt: "fiverr logo",
 				company: "Fiverr",
-				position: "Technical Writer & Bot Developer",
-				period: "Jun 2022 - Jul 2023",
+				position: "Freelance Full Stack Developer",
+				period: "Dec 2023 - Nov 2024 | Remote, Global",
 				responsibilities: [
-					"Achieved a rating of 5 stars on Fiverr.",
-					"Built Discord bots and technical documentation for multiple projects, including my own documentation for my game.",
-					"Collaborated with clients from diverse backgrounds, delivering high-quality solutions that met their specific requirements.",
-					"Designed and implemented custom bots for community management, content moderation, and user engagement."
+					"Delivered 5+ client websites using SvelteKit with 100% on-time completion, and $1.2K revenue in 2 weeks",
+					"Deployed frontend websites with 95-97% mobile performance using optimizations such as caching, lazy loading and splitting"
+				]
+			},
+			{
+				logo: cognizant,
+				logoAlt: "cognizant logo",
+				company: "Cognizant",
+				position: "Research & Development Intern",
+				period: "Jun 2023 - Aug 2023 | Chennai, India",
+				responsibilities: [
+					"Innovated an AR navigation app for Vuzix m400 using Unity3D, reducing warehouse navigation time by 50% for clients",
+					"Optimized pathfinding algorithms, enabling error-free routing in complex environments and boosting client productivity"
 				]
 			}
 		],
 		extracurricular: [
 			{
-				title: "GDSC Lead",
-				description: "Led a team of 100+ to conduct workshops, hackathons, and developer events."
+				title: "Intel Student Ambassador for oneAPI",
+				description: "Spearheaded workshops and technical sessions to educate 200+ students on oneAPI's AI tools, driving adoption of cross-architecture development"
 			},
 			{
-				title: "Hackathon Organiser",
-				description: "Organised a hackathon in my college with 80+ participants and 25 teams."
+				title: "Technical Head, Lumos Magazine",
+				description: "Led cross-functional teams to build the Lumos App and Hikari No Matsuri website, driving engagement for 1,500+ students and 1K+ event attendees"
 			},
 			{
-				title: "SIH Finalist",
-				description: "Was a part of Smart India Hackathon 2023 working on a problem given by the Ministry of Housing and Urban Affairs."
-			},
-			{
-				title: "Participated in Hackathons",
-				description: "Participated in 20+ hackathons and won or got prizes in 12 of them."
-			},
-			{
-				title: "Community Leader",
-				description: "Led and engaged with multiple tech communities including:",
+				title: "Competitive Coding",
+				description: "Active participant in coding competitions with impressive rankings:",
 				list: [
-					"Active contributor to open-source communities",
-					"Created and led student developer communities in college",
-					"Organised weekly coding sessions and tech talks for beginners"
+					"Leetcode (data-overflow), Contest Rating 1649, Best Rank 2711, Solved 475+ Problems",
+					"CodeChef (data_overflow), Div 3, Contest Rating 1481, Best Rank 217 Globally",
+					"CodeForces (data-overflow), Newbie, Contest Rating 1064, Best Rank 3749 globally",
+					"Rank 2, Coding Ninjas Code-a-thon 2022 among 1000+ students in university"
 				]
 			}
 		],
 		skills: [
 			{
 				category: "Programming Languages",
-				items: "Python, JavaScript (Node.js), TypeScript, Java, C, C++, SQL, Bash, Dart"
+				items: "C#, C++, Python, HTML, JavaScript, TypeScript"
 			},
 			{
 				category: "Frameworks/Libraries",
 				subCategories: [
 					{
-						name: "Backend",
-						items: "Express, Flask, Django, FastAPI"
+						name: "Frontend",
+						items: "SvelteKit, React, Next.js, Tailwind CSS, Material UI"
 					},
 					{
-						name: "Frontend",
-						items: "React, Next.js, Svelte, SvelteKit, Flutter"
+						name: "Backend",
+						items: "Express.js, FastAPI, Flask"
 					},
 					{
 						name: "Database",
-						items: "MongoDB, PostgreSQL, MySQL, Redis, Firestore"
+						items: "MySQL, Pocketbase, Supabase, PostgreSQL"
 					}
 				]
 			},
 			{
-				category: "Tools & Skills",
-				items: "Docker, Kubernetes, AWS, Terraform, CI/CD, Git, Technical Writing, Application Architecture, API Design, OAuth"
+				category: "AI & Machine Learning",
+				items: "Pandas, NumPy, Scikit-learn, Tensorflow, Keras, OpenCV, LangChain, OpenAI API"
 			},
 			{
-				category: "MLOps & Data Science",
-				items: "Tensorflow, PyTorch, Scikit-learn, Hugging Face, LangChain, MLflow, Pandas, NumPy"
+				category: "Tools & Skills",
+				items: "Docker, Git & GitHub, Google Cloud Platform, Unix & Linux, TCP/IP, CI/CD, Figma (UI/UX)"
 			},
 			{
 				category: "Game Development",
-				items: "Unity, Godot, Pixel Art, Game Design, 2D Animation"
+				items: "Godot Engine, Unity 3D, Game Programming"
 			}
 		],
 		achievements: [
 			{
-				title: "AWS Community Builder (2023)",
-				description: "Selected as one of the AWS Community Builders for Technical Writing."
+				title: "Hack4Change Charcha 2024 by Google and The Nudge Institute National Finalist",
+				description: "Selected for final round (top 40/6000+ submissions) in Hack4Change Charcha 2024 by Google, The Nudge Institute."
 			},
 			{
-				title: "Presidential Award 🏅 (2018)",
-				description: "Got a medal from the then President of India for a design thinking innovation."
+				title: "Special Mention at IGDC Game Jam 2024",
+				description: "Organized by WTF, Nikhil Kamath - ranked among top 11 from 350+ submissions"
 			},
 			{
-				title: "Kubernetes Certified (2023)",
-				description: "Certified Kubernetes Application Developer. Solid knowledge of deployments, services, pods and networking."
+				title: "Best Game Award at Global Game Jam 2024",
+				description: "Also received 'Most Innovative Game' title among 30+ teams in Chennai"
 			},
 			{
-				title: "GCP Certified (2022)",
-				description: "Completed GCP certifications for Cloud Engineering and Architecture."
+				title: "Google DSC WOW 2023 Hackathon National Finalist",
+				description: "Top 30 out of 3800+ teams (nation wide) for solar energy prediction tool"
 			},
 			{
-				title: "GitHub Campus Expert (2023)",
-				description: "One of the 100 GitHub Campus Experts in India as of 2023."
-			},
-			{
-				title: "SIH Finalist 2023",
-				description: "Finalist in Smart India Hackathon 2023, working on a problem for Ministry of Housing and Urban Affairs."
-			},
-			{
-				title: "5⭐ Hackerrank (2022)",
-				description: "5 star coder on Hackerrank for Problem Solving and Python."
+				title: "Rank 42 in Global Game Jam",
+				description: "Ranked 42nd globally among 1K+ entries for a responsive platformer game made in 72 hours, garnering 12K+ plays on itch"
 			}
 		],
 		tabs: [
@@ -419,7 +387,13 @@
 			<div class="text-black font-bold">
 				Selected: {resumeData.tabs[tab - 1]}
 			</div>
-			<div class="text-black font-bold">{MAX_TAB} Items</div>
+			<div class="text-black font-bold">{
+				// Get the length of the array for the current tab
+				(() => {
+					const currentTab = resumeData.tabs[tab - 1].toLowerCase();
+					return resumeData[currentTab]?.length || 0;
+				})()
+			} Items</div>
 		</div>
 	</div>
 	<!-- Mobile download button -->

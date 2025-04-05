@@ -164,4 +164,47 @@
       </div> -->
 		</div>
 	</div>
+	
+	<!-- YouTube Piano Covers Section -->
+	<div class="flex flex-col md:flex-row gap-8 p-4 md:p-0 mt-16">
+		<div class="text-primary text-6xl w-[20%] md:my-8">COVERS</div>
+		<p class="text-sm md:px-24 text-doswhite apple m-auto">
+			I also create piano covers of popular songs on my YouTube channel. Subscribe at <a
+				href="https://www.youtube.com/@kavirajar"
+				target="_blank"
+				class="text-primary"
+				rel="noreferrer">youtube.com/@kavirajar</a>
+		</p>
+	</div>
+	<div class="flex flex-row md:gap-16 mt-4">
+		<div class="w-[20%] hidden xl:block">
+			<!-- Placeholder for potential side image -->
+		</div>
+		<div class="flex flex-col grow">
+			<div class="w-full aspect-video mb-8">
+				<iframe 
+					class="w-full h-full"
+					src="https://www.youtube.com/embed/DLZeQSV_qEQ?si=fmjDk519UQpHC_RK" 
+					title="YouTube video player" 
+					frameborder="0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+					referrerpolicy="strict-origin-when-cross-origin" 
+					allowfullscreen
+				></iframe>
+			</div>
+			
+			<!-- YouTube Channel Section
+			<div class="w-full mb-8">
+				<iframe 
+					class="w-full aspect-video"
+					src="https://www.youtube.com/embed/?listType=user_uploads&list=kavirajar" 
+					title="YouTube channel player" 
+					frameborder="0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+					referrerpolicy="strict-origin-when-cross-origin" 
+					allowfullscreen
+				></iframe>
+			</div> -->
+		</div>
+	</div>
 </section>

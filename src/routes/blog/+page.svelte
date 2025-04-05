@@ -1,9 +1,19 @@
 <script>
 	import { onMount } from 'svelte';
+	import mood from '$lib/assets/mood.png';
 	import AOS from 'aos';
 
 	// Sample blog posts data - in a real implementation, you'd fetch these from an API or markdown files
 	const blogPosts = [
+		{
+			id: 'making-it-at-21',
+			title: 'What It\'s Like Trying to Make It at 21',
+			date: '2025-04-05',
+			excerpt: 'What it feels like to be 21, ambitious, and running out of doors to knock on.',
+			category: 'Personal',
+			coverImage: mood,
+			readTime: '6 min'
+		},
 		{
 			id: 'retro-game-dev-tips',
 			title: 'Retro Game Development Tips',
@@ -47,20 +57,44 @@
 	
 	// Filter state
 	let selectedCategory = 'All';
-	let filteredPosts = [...blogPosts];
+	let filteredPosts = [];
+	
+	// Pagination
+	let postsPerPage = 3;
+	let currentPage = 1;
+	let displayedPosts = [];
 	
 	// Filter function
 	function filterPosts(category) {
 		selectedCategory = category;
+		currentPage = 1; // Reset to first page when filtering
+		
 		if (category === 'All') {
 			filteredPosts = [...blogPosts];
 		} else {
 			filteredPosts = blogPosts.filter(post => post.category === category);
 		}
+		
+		updateDisplayedPosts();
+	}
+	
+	// Update displayed posts based on current page
+	function updateDisplayedPosts() {
+		const startIndex = 0;
+		const endIndex = currentPage * postsPerPage;
+		displayedPosts = filteredPosts.slice(startIndex, endIndex);
+	}
+	
+	// Load more posts function
+	function loadMorePosts() {
+		currentPage += 1;
+		updateDisplayedPosts();
 	}
 
+	// Initialize with all posts
 	onMount(() => {
 		AOS.init();
+		filterPosts('All'); // Initialize with all posts
 	});
 </script>
 
@@ -82,22 +116,26 @@
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-			{#each filteredPosts as post}
-				<div class="group" data-aos="fade-up">
-					<a href={`/blog/${post.id}`} class="block bg-black border-2 border-doswhite hover:border-primary transition-all">
+			{#each displayedPosts as post}
+				<div class="group h-full" data-aos="fade-up">
+					<a href={`/blog/${post.id}`} class="flex bg-black border-2 border-doswhite hover:border-primary transition-all h-full flex-col">
 						<div class="aspect-video bg-black/50 relative flex items-center justify-center overflow-hidden group-hover:brightness-110 transition-all">
 							<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 z-10"></div>
-							<div class="bg-gray-800 w-full h-full flex items-center justify-center">
-								<span class="text-secondary text-2xl dos animate-pulse">[IMAGE]</span>
-							</div>
+							{#if post.id === 'making-it-at-21' && post.coverImage}
+								<img src={post.coverImage} alt="{post.title}" class="w-full h-full object-cover" />
+							{:else}
+								<div class="bg-gray-800 w-full h-full flex items-center justify-center">
+									<span class="text-secondary text-2xl dos animate-pulse">[ Placeholder Blog ]</span>
+								</div>
+							{/if}
 							<div class="absolute bottom-0 left-0 right-0 p-4 z-20">
 								<span class="text-xs text-secondary dos">{post.category}</span>
 								<h3 class="text-white text-xl font-bold mt-1 dos">{post.title}</h3>
 							</div>
 						</div>
-						<div class="p-4">
-							<p class="text-doswhite text-sm apple mb-4">{post.excerpt}</p>
-							<div class="flex justify-between items-center">
+						<div class="p-4 flex-grow flex flex-col">
+							<p class="text-doswhite text-sm apple mb-4 flex-grow">{post.excerpt}</p>
+							<div class="flex justify-between items-center mt-auto">
 								<div class="text-secondary text-xs dos">{post.date}</div>
 								<div class="text-primary text-xs dos">{post.readTime} READ</div>
 							</div>
@@ -111,9 +149,12 @@
 			{/each}
 		</div>
 
-		{#if filteredPosts.length >= 4}
+		{#if displayedPosts.length < filteredPosts.length}
 			<div class="flex justify-center mt-12">
-				<button class="px-6 py-2 border-2 border-primary text-primary dos hover:bg-primary/20 transition-all text-xl">
+				<button 
+					class="px-6 py-2 border-2 border-primary text-primary dos hover:bg-primary/20 transition-all text-xl"
+					on:click={loadMorePosts}
+				>
 					LOAD MORE POSTS [ ... ]
 				</button>
 			</div>

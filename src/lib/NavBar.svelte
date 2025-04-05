@@ -24,12 +24,21 @@
 
 	// Handle active link tracking
 	$: pathname = $page.url.pathname;
+	$: hash = $page.url.hash || '';
 	$: currentSection = pathname === '/' ? 'home' : pathname.substring(1).split('/')[0];
 
 	function isActive(path) {
-		if (path === '/#about' && pathname === '/') return true;
-		if (path.startsWith('/#') && pathname === '/') return false;
-		return path.includes(currentSection);
+		// For hash links on the home page (/#something)
+		if (path.startsWith('/#') && pathname === '/') {
+			// If no hash is present in the URL, don't highlight anything
+			if (!hash) return false;
+			
+			// Compare the hash portion of the path with the current hash
+			return path.substring(1) === hash;
+		}
+		
+		// For non-hash links (like /blog, /music)
+		return path.includes(currentSection) && !path.startsWith('/#');
 	}
 
 	// Close menu when clicking outside

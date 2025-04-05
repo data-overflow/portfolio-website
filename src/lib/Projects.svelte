@@ -10,81 +10,72 @@
 	let tab = 0;
 
 	let projects = [
+		'Datable.cpp',
 		'DoNationStation.cpp',
 		'CyberHakz.cpp',
-		'GlobalArticle.cpp',
-		'IndianInfra.cpp',
-		'WhatsAppTLDR.cpp',
+		'NotebookGame.cpp',
+		'AmazonML.cpp',
 		'RAWatts.cpp',
-		'CalendarApp.cpp',
-		'Datable.cpp'
+		'IndianInfra.cpp',
+		'GlobalArticle.cpp'
 	];
 
 	let projectDetails = [
 		{
-			title: 'The Do-Nation Station - Social Media + Centralized Donation Platform',
-			techstack: 'Next.js, Appwrite, Tailwind, Material UI, GCP',
-			description: `A platform for transparent donations to charitable organizations, offers search filters, history, leaderboard, profiles, etc.`,
+			title: 'Datable - Geolocation Social App',
+			techstack: 'SvelteKit 5, Tailwind CSS, Capacitor, Pocketbase, GCP, Docker',
+			description: `Built a community driven platform to augment real life places or events, implementing a recommeder system to meet people. Achieved 99.9% uptime using Docker and GCP, enabling real-time interactions for 100+ active users on the app.`,
+			link: 'https://datable.web.app/',
+			date: '2024'
+		},
+		{
+			title: 'The Do-Nation Station - Centralized Donation Platform',
+			techstack: 'Next.js, Appwrite, Tailwind CSS, Material UI, GCP',
+			description: `A platform for transparent donations to charitable organizations, offers search filters, history, leaderboard, profiles, etc. Selected for final round (top 40/6000+ submissions) in Hack4Change Charcha 2024 by Google, The Nudge Institute.`,
 			link: 'https://the-do-nation-station.vercel.app/',
 			date: 'Aug, 2024'
 		},
 		{
 			title: 'CyberHakz Professional Website',
-			techstack: 'SvelteKit 5, Tailwind, NocoDB, Docker, Figma (UI/UX)',
-			description: `Designed a fast, multipage, responsive web app with dark & light themes, caching & API integration for a cybersecurity company in 2 weeks. Scores 100% on Best Practices, 97% on Performance, 93% on Accessibility and 91% on SEO in Chrome's Lighthouse`,
+			techstack: 'SvelteKit 5, Tailwind CSS, Restful APIs, Oracle Cloud, NocoDB, Docker, Figma (UI/UX)',
+			description: `Designed a multithemed web app with API integration in 10 days, boosting organic traffic 4x via SEO-optimized design. Achieved 100% Best Practices and 97% Performance on Lighthouse, ensuring top-tier accessibility and search ranking.`,
 			link: 'https://cyberhakz.com',
 			date: 'Jun, 2024'
 		},
 		{
-			title: 'Global Article Summarization and Link Analysis',
-			techstack: 'Intel oneAPI, Python, Pandas, Huggingface Transformers, NumPy, Scikit-learn',
-			description: `Created a tool to find relevant articles, summarize them, and recommend related articles, improving information retrieval and relevance`,
-			link: 'https://github.com/data-overflow/article-summarization',
-			date: 'Feb, 2024'
+			title: 'Notebook Game - Godot Game Engine',
+			techstack: 'Godot Game Engine, Game Programming, Aseprite',
+			description: `Ranked 42nd globally among 1K+ entries for a responsive platformer game made in 72 hours, garnering 12K+ plays on itch.`,
+			link: 'https://github.com/data-overflow/notebook-game',
+			date: '2021'
 		},
 		{
-			title: 'Indian Infra Professional Website',
-			techstack: 'Svelte, Tailwind, HTML, CSS, JavaScript',
-			description: `A high-performance website for a global construction company.
-            The site incorporates a mobile responsive design that also fluidly
-            rescales to every screen size`,
-			link: 'https://indianinfra.in',
-			date: 'Dec, 2023'
-		},
-		{
-			title: 'WhatsApp TLDR',
-			techstack: 'Python, Hugging Face Transformers, Bart',
-			description: `WhatsApp TLDR helps you to summarize thousands of unread messages,
-            reducing content by up to 90%, so that you
-            can always stay on the loop and be productive.`,
-			link: 'https://github.com/data-overflow/whatsapp-tldr',
-			date: 'May, 2023'
+			title: 'Amazon ML Challenge',
+			techstack: 'OpenCV, Pandas, NumPy, Torch, Image Processing, RegEx, OCR',
+			description: `Developed a pipeline to extract measurements from product images using OCR and computer vision, achieving an F1-score of 0.83 (top 5% in the challenge).`,
+			link: 'https://github.com/data-overflow/AmazonML',
+			date: 'Mar, 2024'
 		},
 		{
 			title: 'RA Watts: Solar Output Predictor',
 			techstack: 'Flask, RESTful API, PvLib, GeoPy, SQLAlchemy, Godot Engine',
-			description: `A mobile app to predict the energy produced by solar panels,
-            using at any given location and timespan in a
-            user-friendly interface, encouraging its wider adoption`,
+			description: `A mobile app to predict the energy produced by solar panels, using at any given location and timespan in a user-friendly interface, encouraging its wider adoption.`,
 			link: 'https://github.com/data-overflow/solar-output-predictor',
 			date: 'Apr, 2023'
 		},
 		{
-			title: 'The Calendar App',
-			techstack: 'Python, Tkinter',
-			description: `Okay this is some dummy project I did in school, someone
-            remind me to replace this placeholder with some other project :,)`,
-			link: 'https://github.com/data-overflow/the-calendar-app',
-			date: 'Feb, 2021'
+			title: 'Indian Infra Professional Website',
+			techstack: 'Svelte, Tailwind, HTML, CSS, JavaScript',
+			description: `A high-performance website for a global construction company. The site incorporates a mobile responsive design that also fluidly rescales to every screen size.`,
+			link: 'https://indianinfra.in',
+			date: 'Dec, 2023'
 		},
 		{
-			title: 'Datable',
-			techstack: 'React Native, Tailwind, Supabase, FastAPI',
-			description: `Th3 NeX7 b1g t8i7G?? Watch this space
-            > :/ Meet people the OG way, IRL! shush, visit - https://datable.web.app/
-            `,
-			link: 'https://media1.tenor.com/m/qRpNbT_IhBAAAAAC/appurajosh-appu.gif',
-			date: '???, 20XX'
+			title: 'Global Article Summarization and Link Analysis',
+			techstack: 'Intel oneAPI, Python, Pandas, Huggingface Transformers, NumPy, Scikit-learn',
+			description: `Created a tool to find relevant articles, summarize them, and recommend related articles, improving information retrieval and relevance.`,
+			link: 'https://github.com/data-overflow/article-summarization',
+			date: 'Feb, 2024'
 		}
 	];
 
