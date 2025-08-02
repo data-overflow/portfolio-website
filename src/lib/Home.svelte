@@ -120,17 +120,24 @@
 
 <div
 	bind:this={message}
-	class="absolute bg-black/50 backdrop-blur px-4 py-2 rounded transition-opacity z-50 text-doswhite dos {showMessage
+	class="absolute bg-black/50 backdrop-blur px-4 py-2 rounded transition-opacity z-10 text-doswhite dos {showMessage
 		? 'opacity-100'
 		: 'opacity-0'}"
 >
 <div class="flex flex-row">
+	<div 
+		class="h-14 w-fit absolute -mt-12 -ml-4 flex items-center"
+	>
+		<span class="text-xs md:text-sm text-primary">&gt;</span>
+		<span class="text-xs md:text-sm text-doswhite/90 opacity-50 sf ml-2">{typingText}</span>
+		<span class="text-xs md:text-sm text-doswhite/90 sf typing-cursor">|</span>
+	</div>
 	<video
 		autoplay
 		loop
 		muted
 		playsinline
-		class="absolute inset-0 object-cover opacity-50 min-w-1/3 min-h-1/3"
+		class="absolute inset-0 object-cover backdrop-blur-xl opacity-50 min-w-1/3 min-h-1/3 max-h-1/2 max-w-1/2"
 	>
 		<source src="{art}" type="video/mp4" />
 		Your browser does not support the video tag.
@@ -162,33 +169,32 @@
 	</div>
 	
 	<!-- Main content -->
-	<div class="flex flex-col justify-end md:justify-center h-full md:h-auto gap-6 w-full z-10 px-6 md:px-10 xl:px-32 py-16 md:py-0">
+	<div class="flex flex-col justify-end  h-full w-full z-20 px-6 md:px-10 xl:px-32 py-16">
 		{#if animationComplete}
 			<div 
-				in:fly={{ y: -50, duration: 800, delay: 100, easing: cubicOut }}
-				class="text-6xl md:text-7xl font-bold switzer max-w-4xl text-doswhite"
+				in:fly={{ y: 50, duration: 800, delay: 300, easing: cubicOut }}
+				class="text-2xl md:text-3xl text-doswhite/60 sf"
 			>
-				This is me, <span class="text-primary">Kavirajar B</span>
+			Technologist & Indie Hacker
+			</div>
+			<div 
+				in:fly={{ y: -50, duration: 800, delay: 100, easing: cubicOut }}
+				class="text-6xl md:text-[min(12vw,_20rem)] font-semibold sf text-doswhite"
+			>
+				<span class="text-primary sf">Kavirajar B</span>
 			</div>
 			
 			<div class="flex flex-col gap-6">
-				<div 
+				<!-- <div 
 					in:fly={{ y: 50, duration: 800, delay: 300, easing: cubicOut }}
-					class="text-2xl md:text-3xl text-doswhite/90 switzer max-w-2xl"
+					class="text-2xl md:text-3xl text-doswhite/90 sf"
 				>
-					Also known as Data Overflow. <br />Welcome to my portfolio site!
-				</div>
+					Technologist & Indie Hacker 
+				</div> -->
 				
-				<div 
-					in:fade={{ duration: 800, delay: 500 }}
-					class="h-14 flex items-center"
-				>
-					<span class="text-xl md:text-2xl text-primary dos">&gt;</span>
-					<span class="text-xl md:text-2xl text-doswhite/90 dos ml-2">{typingText}</span>
-					<span class="text-xl md:text-2xl text-doswhite/90 typing-cursor">|</span>
-				</div>
 				
-				<div 
+				
+				<!-- <div 
 					in:fade={{ duration: 800, delay: 700 }}
 					class="h-fit"
 				>
@@ -197,10 +203,10 @@
 				
 				<div
 					in:fade={{ duration: 800, delay: 900 }}
-					class="flex flex-col md:flex-row w-full md:w-auto gap-4 items-center text-xl md:text-2xl mt-4 bg-transparent"
+					class="flex z-100 pointer-events-auto flex-col md:flex-row w-full md:w-auto gap-4 items-center text-xl md:text-2xl mt-4 bg-transparent"
 				>
 					<a
-						class="p-2 px-6 border-2 w-full md:w-auto border-primary text-primary hover:bg-primary/20 transition-all rounded-sm"
+						class="p-2 z-[1000] px-6 border-2 w-full md:w-auto border-primary text-primary hover:bg-primary/20 transition-all rounded-sm"
 						href="https://flowcv.com/resume/pjasuoi5b2"
 						target="_blank"
 					>
@@ -208,12 +214,12 @@
 					</a>
 					
 					<a 
-						class="p-2 px-6 border-2 w-full md:w-auto border-doswhite text-doswhite hover:border-primary hover:text-primary transition-all rounded-sm"
+						class="p-2 z-[1000] px-6 border-2 w-full md:w-auto border-doswhite text-doswhite hover:border-primary hover:text-primary transition-all rounded-sm"
 						href="#about"
 					>
 						Explore_Work.bat
 					</a>
-				</div>
+				</div> -->
 			</div>
 		{/if}
 	</div>
@@ -233,16 +239,16 @@
 
 {#if rss && rss.success}
 	<div
-		class="overflow-x-hidden flex h-fit relative bg-primary text-black jersey font-bold text-xl"
+		class="overflow-x-hidden flex h-fit relative bg-black text-white/60 windows font-bold text-base"
 	>
 		<div class="animate-marquee whitespace-nowrap h-fit w-fit">
 			{#each rss.news as news}
-				<span class="mx-4 min-h-fit">{news.toUpperCase()}</span>
+				<span class="mx-2 min-h-fit">{news} <span class="mx-4">/</span> </span>
 			{/each}
 		</div>
 		<div class="animate-marquee2 whitespace-nowrap h-fit absolute w-fit">
 			{#each rss.news as news}
-				<span class="mx-4 min-h-fit">{news.toUpperCase()}</span>
+				<span class="mx-2 min-h-fit">{news} <span class="mx-4">/</span> </span>
 			{/each}
 		</div>
 	</div>
@@ -261,7 +267,7 @@
 		background-position-y: -20%;
 		background-position-x: 80%;
 		/* background-size: 125%; */
-		height: 90vh;
+		height: 96vh;
 		width: 100%;
 	}
 	

@@ -23,8 +23,6 @@
 	-webkit-text-size-adjust: 100%;
 
 	-webkit-tap-highlight-color: transparent;
-
-	cursor: url('$lib/assets/cursor.cur'), auto;
 	scroll-behavior: smooth;
 }
 
@@ -51,6 +49,16 @@
 @font-face {
 	font-family: EditUndo;
 	src: url('$lib/assets/fonts/editundo.ttf');
+}
+
+@font-face {
+	font-family: WindowsRegular;
+	src: url('$lib/assets/fonts/Windows Regular.ttf');
+}
+
+@font-face {
+	font-family: SFProDisplay;
+	src: url('$lib/assets/fonts/SFPRODISPLAYREGULAR.OTF');
 }
 
 .dos {
@@ -82,9 +90,31 @@
 	font-family: EditUndo, sans-serif;
 }
 
+.windows {
+	font-family: WindowsRegular, sans-serif;
+}
+
+.sf {
+	font-family: SFProDisplay, sans-serif;
+}
+
+/* Base cursor for the page */
+:root {
+    cursor: url('$lib/assets/cursor.cur'), auto;
+}
+
 a,
 button {
-	cursor: url('$lib/assets/cursor-pointer.cur'), pointer;
+    cursor: url('$lib/assets/cursor-pointer.cur'), pointer !important;
+    position: relative;
+    z-index: 10;
+}
+
+/* Ensure buttons remain clickable */
+a:active,
+button:active {
+    position: relative;
+    z-index: 10;
 }
 
 /* Extra large screens fix */

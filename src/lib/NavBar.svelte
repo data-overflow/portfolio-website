@@ -65,10 +65,10 @@
 	});
 </script>
 
-<header id="navigation" class="w-full">
+<header id="navigation" class="w-full ">
 	<nav
 		id="navbar"
-		class="flex flex-row w-full text-primary bg-black/80 backdrop-blur-xl text-2xl fixed z-[256]"
+		class="flex flex-row w-full text-primary bg-black/80 backdrop-blur-xl text-2xl fixed z-[256] px-6 md:px-10 xl:px-32"
 		aria-label="Main navigation"
 	>
 		<button
@@ -83,33 +83,33 @@
 			>&#9776;</button
 		>
 		<ul
-			class="hidden md:flex md:flex-row md:gap-8 px-8 md:grow my-auto"
+			class="hidden md:flex md:flex-row md:grow my-auto"
 			aria-label="Desktop navigation links"
 		>
 			<li class:active={isActive('/#about')}>
-				<a href="/#about" class="p-2 hover:first-letter:underline hover:bg-gray-500/20 {isActive('/#about') ? 'text-secondary' : ''}"
+				<a href="/#about" class="-ml-4 p-1 px-4 hover:first-letter:underline hover:bg-gray-500/20 {isActive('/#about') ? 'text-secondary' : ''}"
 					><span class="first-letter">A</span>BOUT</a
 				>
 			</li>
 			<li class:active={isActive('/#games')}>
-				<a class="p-2 hover:bg-gray-500/20 {isActive('/#games') ? 'text-secondary' : ''}" href="/#games"
+				<a class="p-1 px-4 hover:bg-gray-500/20 {isActive('/#games') ? 'text-secondary' : ''}" href="/#games"
 					><span class="first-letter">G</span>AMES</a
 				>
 			</li>
 			<li class:active={isActive('/#projects')}>
-				<a class="p-2 hover:bg-gray-500/20 {isActive('/#projects') ? 'text-secondary' : ''}" href="/#projects"
+				<a class="p-1 px-4 hover:bg-gray-500/20 {isActive('/#projects') ? 'text-secondary' : ''}" href="/#projects"
 					><span class="first-letter">P</span>ROJECTS</a
 				>
 			</li>
 			<li class:active={isActive('/music')}>
-				<a class="p-2 hover:bg-gray-500/20 {isActive('/music') ? 'text-secondary' : ''}" href="/music"><span class="first-letter">M</span>USIC</a
+				<a class="p-1 px-4 hover:bg-gray-500/20 {isActive('/music') ? 'text-secondary' : ''}" href="/music"><span class="first-letter">M</span>USIC</a
 				>
 			</li>
 			<li class:active={isActive('/blog')}>
-				<a class="p-2 hover:bg-gray-500/20 {isActive('/blog') ? 'text-secondary' : ''}" href="/blog"><span class="first-letter">B</span>LOG</a>
+				<a class="p-1 px-4 hover:bg-gray-500/20 {isActive('/blog') ? 'text-secondary' : ''}" href="/blog"><span class="first-letter">B</span>LOG</a>
 			</li>
 			<li class:active={isActive('/#connect')}>
-				<a class="p-2 hover:bg-gray-500/20 {isActive('/#connect') ? 'text-secondary' : ''}" href="/#connect"
+				<a class="p-1 px-4 hover:bg-gray-500/20 {isActive('/#connect') ? 'text-secondary' : ''}" href="/#connect"
 					><span class="first-letter">C</span>ONNECT</a
 				>
 			</li>
