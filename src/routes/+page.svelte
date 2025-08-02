@@ -61,16 +61,16 @@
 				aimed at fostering genuine connections. I am seeking challenging internships to leverage my diverse
 				expertise and contribute to innovative projects
 			</p> -->
-			<p class="whitespace-pre-line text-sm text-doswhite apple" data-aos="fade">
-				{`Hi, I'm Kavi, a final year student pursuing my B. Tech in AI & Data Science. I have been making`}
+			<p class="whitespace-pre-line text-xl text-doswhite sf" data-aos="fade">
+				{`Hi I'm Kavi! Recent graduate of Bachelors in Technology in Artificial Intelligence & Data Science. I have been making`}
 				<a class="text-primary" href="#games">video games</a>
-				{`from the age of 14, an experience that gave me strong foundations in computer science and design.
+				{`from the age of 14, an experience that gave me strong foundations in computer science and design. I'm currently building AI native B2B SaaS Products and exploring the world of quantitative finance
 				
 				Some quick stats:
-					- Worked on 10+ video games
+					- Developed 10+ video games
 					- Finalist in 3+ national level hackathons
-					- Served 5+ freelancing clients, charging 30k-2L INR per project
-					- Solved 450+ problems on leetcode`}
+					- Served 10+ freelancing clients, valued $300-$5000 per project
+					- Solved 475+ problems on leetcode`}
 			</p>
 		</div>
 		<Resume />

@@ -6,8 +6,10 @@
 	import fiverr from '$lib/assets/fiverr.png';
 	import lumos from '$lib/assets/lumos.png';
 	import teachafy from '$lib/assets/teachafy.png';
+	import quantegies from '$lib/assets/quantegies.png';
 
 	const MAX_TAB = 5;
+	const RESUME_LINK = "https://drive.google.com/file/d/1Iufwcex0A8wS0pBlGnAzqO1xxuQPpTWW/view?usp=sharing";
 	let tab = 2;
 
 	$: {
@@ -38,15 +40,27 @@
 		],
 		experience: [
 			{
+				logo: quantegies,
+				logoAlt: "quantegies logo",
+				company: "Quantegies",
+				position: "AI/ML Developer",
+				period: "July 2025 - Present | CA, United States (Remote)",
+				responsibilities: [
+					"Working on areas such as quantitative finance, algorithmic trading and machine learning using C++"
+				]
+			},
+
+			{
 				logo: teachafy,
 				logoAlt: "teachafy logo",
 				company: "Teachafy Labs",
 				position: "Machine Learning Developer Intern",
 				period: "Dec 2024 - Present | Chennai, India",
 				responsibilities: [
-					"Created agentic workflows from scratch using OpenAI function calling, LangChain, FastAPI, PostgreSQL and Docker Compose",
-					"Engineered a two-way database synchronization system for disparate schemas, ensuring 100% consistency and efficiency",
-					"Lead the development of Robin: AI powered tasks & meetings copilot within a month, adding $5000 MRR to the company"
+					"Designed & engineered the product to production, and setup CI/CD pipelines using Git, Docker Compose & AWS",
+					"Ensured 100% consistency integrating 3rd party platforms such as Notion & Frappe, using a two-way database sync system",
+					"Awarded Most Valuable Player of the organization, for completing a four-month project in one month",
+					"Technologies Used: OpenAI Assistants API, Google Agent Development Kit, LangChain, FastAPI, PostgreSQL, Docker Compose, AWS, Composio, Notion, Frappe, Supabase, DevOps, CI/CD"
 				]
 			},
 			{
@@ -67,8 +81,9 @@
 				position: "Research & Development Intern",
 				period: "Jun 2023 - Aug 2023 | Chennai, India",
 				responsibilities: [
-					"Innovated an AR navigation app for Vuzix m400 using Unity3D, reducing warehouse navigation time by 50% for clients",
-					"Optimized pathfinding algorithms, enabling error-free routing in complex environments and boosting client productivity"
+					"Reduced warehouse navigation time by 50% for clients by innovating an AR navigation app (for Vuzix m400) using Unity3D",
+					"Optimized pathfinding algorithms to enable error-free routing in complex environments, boosting client productivity",
+					"Presented a demo to the President EMEA of Cognizant following internal recognition by high-level executives for work"
 				]
 			}
 		],
@@ -165,7 +180,7 @@
 		class="resume-window bg-doswhite h-fit max-h-[90vh] xl:max-h-[90vh] 3xl:max-h-[70vh] w-[95%] md:w-[90%] xl:w-[80%] mx-auto border-2 border-black "
 	>
 		<!-- Topbar -->
-		<div class="flex flex-col items-center apple">
+		<div class="flex flex-col items-center windows">
 			<div class="flex flex-row justify-between w-full">
 				<div class="relative z-[10] border-x-4 top-[4px] left-[20px] border-doswhite">
 					<div class="border-2 border-black w-6 h-6 bg-doswhite"></div>
@@ -191,18 +206,18 @@
 			</div>
 		</div>
 
-		<div class="flex flex-col lg:flex-row h-[calc(90vh-80px)] xl:h-[calc(90vh-80px)] 3xl:h-[calc(70vh-80px)] apple text-black p-2 md:p-4 gap-4">
+		<div class="flex flex-col lg:flex-row h-[calc(90vh-80px)] xl:h-[calc(90vh-80px)] 3xl:h-[calc(70vh-80px)] windows text-black p-2 md:p-4 gap-4">
 			<!-- Sidebar Navigation -->
 			<div
-				class="flex flex-col gap-1 sticky min-w-[30%] lg:min-w-[25%] xl:min-w-[20%] top-0 h-fit overflow-hidden z-50 bg-doswhite border-4 border-doswhite text-sm md:text-base"
+				class="flex flex-col gap-1 sticky min-w-[30%] lg:min-w-[25%] xl:min-w-[20%] top-0 h-fit overflow-hidden z-50 bg-doswhite border-4 border-doswhite text-base md:text-xl lg:text-2xl"
 			>
 				<div class="flex items-center justify-between border-b-2 border-black py-1">
 					<div class="flex-1">Disk: /C</div>
-					<div class="w-8 border-2 border-black flex items-center justify-center text-xs py-1">?</div>
+					<div class="w-8 border-2 border-black flex items-center justify-center text-base py-1">?</div>
 				</div>
 				<div class="flex flex-col md:flex-row w-full">
 					<div class="border-2 border-black w-full">
-						<ul class="grid grid-cols-2 text-xs md:text-sm lg:text-base md:flex md:flex-col">
+						<ul class="grid grid-cols-2 text-xs md:text-sm sf lg:text-base md:flex md:flex-col">
 							{#each resumeData.tabs as tabName, index}
 								<li
 									class="border-{index === 0 ? 'b' : index === MAX_TAB-1 ? 't' : 'y'}-2 border-transparent hover:border-black {tab === index+1
@@ -256,8 +271,8 @@
 				<!-- Download button in desktop view -->
 				<div class="hidden lg:block mt-4">
 					<a
-						class="apple bg-doswhite text-black border-2 border-black p-2 px-4 block text-center active:underline hover:text-doswhite hover:bg-black"
-						href="https://flowcv.com/resume/pjasuoi5b2"
+						class="sf text-xl bg-doswhite text-black border-2 border-black p-2 px-4 block text-center active:underline hover:text-doswhite hover:bg-black"
+						href={RESUME_LINK}
 						target="_blank"
 						rel="noreferrer"
 					>
@@ -268,23 +283,23 @@
 			
 			<!-- Content Area -->
 			<div
-				class="flex-1 flex flex-col gap-2 justify-between text-sm lg:text-base content-container h-full md:pb-8"
+				class="flex-1 flex flex-col gap-2 justify-between text-base md:text-xl lg:text-2xl content-container h-full md:pb-8"
 			>
 				{#if tab == 1}
 					<div class="px-2 py-2 md:px-4 flex flex-col gap-4 h-full">
 						<div
-							class="text-xl apple sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
+							class="text-2xl sf sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
 						>
 							{resumeData.tabs[0]}
 						</div>
-						<div class="flex flex-col gap-8 apple content-scrollable">
+						<div class="flex flex-col gap-8 sf content-scrollable">
 							{#each resumeData.education as item}
 								<div class="flex flex-col md:flex-row gap-2 md:gap-6">
 									<img src={item.logo} class="h-20 w-20 md:h-24 md:w-24 border-2 border-black" alt={item.logoAlt} />
 									<div class="flex flex-col">
-										<div class="text-sm font-bold text-black">{item.institution}</div>
-										<div class="text-sm text-black">{item.detail}</div>
-										<div class="text-sm text-black">{item.period}</div>
+										<div class="text-xl font-bold text-black">{item.institution}</div>
+										<div class="text-xl text-black">{item.detail}</div>
+										<div class="text-xl text-black">{item.period}</div>
 									</div>
 								</div>
 							{/each}
@@ -293,19 +308,19 @@
 				{:else if tab == 2}
 					<div class="px-2 py-2 md:px-4 flex flex-col gap-4 h-full">
 						<div
-							class="text-xl apple sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
+							class="text-2xl sf sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
 						>
 							{resumeData.tabs[1]}
 						</div>
-						<div class="flex flex-col gap-8 apple content-scrollable">
+						<div class="flex flex-col gap-8 sf content-scrollable">
 							{#each resumeData.experience as job}
 								<div class="flex flex-col md:flex-row gap-2 md:gap-6">
 									<img src={job.logo} class="h-20 w-20 md:h-24 md:w-24 border-2 border-black" alt={job.logoAlt} />
 									<div class="flex flex-col">
-										<div class="text-sm font-bold text-black">{job.company}</div>
-										<div class="text-sm text-black">{job.position}</div>
-										<div class="text-sm text-black">{job.period}</div>
-										<ul class="text-xs pl-4 mt-1 list-disc">
+										<div class="text-xl font-bold text-black">{job.company}</div>
+										<div class="text-xl text-black">{job.position}</div>
+										<div class="text-xl text-black">{job.period}</div>
+										<ul class="text-lg pl-4 mt-1 list-disc">
 											{#each job.responsibilities as responsibility}
 												<li>{responsibility}</li>
 											{/each}
@@ -318,18 +333,18 @@
 				{:else if tab == 3}
 					<div class="px-2 py-2 md:px-4 flex flex-col gap-4 h-full">
 						<div
-							class="text-xl apple sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
+							class="text-2xl sf sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
 						>
 							{resumeData.tabs[2]}
 						</div>
-						<div class="flex flex-col gap-8 apple content-scrollable">
+						<div class="flex flex-col gap-8 sf content-scrollable">
 							{#each resumeData.extracurricular as activity}
 								<div class="flex flex-col">
-									<div class="text-sm font-bold text-black">{activity.title}</div>
-									<div class="text-sm text-black">
+									<div class="text-xl font-bold text-black">→ {activity.title}</div>
+									<div class="text-xl text-black">
 										{activity.description}
 										{#if activity.list}
-											<ul class="text-xs pl-4 mt-1 list-disc">
+											<ul class="text-xl pl-4 mt-1 list-disc">
 												{#each activity.list as item}
 													<li>{item}</li>
 												{/each}
@@ -343,19 +358,19 @@
 				{:else if tab == 4}
 					<div class="px-2 py-2 md:px-4 flex flex-col gap-4 h-full">
 						<div
-							class="text-xl apple sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
+							class="text-2xl sf sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
 						>
 							{resumeData.tabs[3]}
 						</div>
-						<div class="flex flex-col gap-8 apple content-scrollable">
+						<div class="flex flex-col gap-8 sf content-scrollable">
 							{#each resumeData.skills as skill}
 								<div class="flex flex-col">
-									<div class="text-sm font-bold text-black">{skill.category}</div>
+									<div class="text-xl font-bold text-black">→ {skill.category}</div>
 									{#if skill.items}
-										<div class="text-sm text-black">{skill.items}</div>
+										<div class="text-xl text-black">{skill.items}</div>
 									{:else if skill.subCategories}
 										{#each skill.subCategories as subCat}
-											<div class="text-sm text-black">{subCat.name}: {subCat.items}</div>
+											<div class="text-xl text-black">{subCat.name}: {subCat.items}</div>
 										{/each}
 									{/if}
 								</div>
@@ -365,15 +380,15 @@
 				{:else if tab == 5}
 					<div class="px-2 py-2 md:px-4 flex flex-col gap-4 h-full">
 						<div
-							class="text-xl apple sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
+							class="text-2xl sf sticky top-0 pt-2 z-10 bg-doswhite border-b-2 border-black"
 						>
 							{resumeData.tabs[4]}
 						</div>
-						<div class="flex flex-col gap-8 apple content-scrollable">
+						<div class="flex flex-col gap-8 sf content-scrollable">
 							{#each resumeData.achievements as achievement}
 								<div class="flex flex-col">
-									<div class="text-sm font-bold text-black">{achievement.title}</div>
-									<div class="text-sm text-black">{achievement.description}</div>
+									<div class="text-xl font-bold text-black">→ {achievement.title}</div>
+									<div class="text-xl text-black">{achievement.description}</div>
 								</div>
 							{/each}
 						</div>
@@ -399,7 +414,7 @@
 	<!-- Mobile download button -->
 	<div class="flex flex-row w-full justify-center p-2 lg:hidden">
 		<a
-			class="apple bg-doswhite text-black border-2 border-black p-2 px-4 active:underline hover:text-doswhite hover:bg-black"
+			class="sf bg-doswhite text-black border-2 border-black p-2 px-4 active:underline hover:text-doswhite hover:bg-black"
 			href="https://flowcv.com/resume/pjasuoi5b2"
 			target="_blank"
 			rel="noreferrer"
