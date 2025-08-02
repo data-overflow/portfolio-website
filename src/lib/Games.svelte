@@ -120,8 +120,8 @@
 	<div id="bg-layer-3" class="absolute" bind:this={layer3}></div>
 	<h2
 		data-aos="fade"
-		data-aos-duration="1000"
-		data-aos-delay="500"
+		data-aos-duration="750"
+		data-aos-delay="100"
 		class="windows font-bold opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[30%] xl:top-[35%] text-4xl md:text-8xl h-0"
 	>
 		Welcome to my <br /> Video Game Universe

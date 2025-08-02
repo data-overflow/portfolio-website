@@ -101,7 +101,7 @@
 			</div>
 
 			<!-- Column 2: Navigation -->
-			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="100">
+			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="50">
 				<div class="text-secondary windows text-xl mb-4">LEVEL SELECT</div>
 				<nav aria-label="Footer navigation">
 					<ul class="flex flex-col gap-2 windows text-xl">
@@ -115,7 +115,7 @@
 			</div>
 
 			<!-- Column 3: Resources -->
-			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="200">
+			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="100">
 				<div class="text-secondary windows text-xl mb-4">RESOURCES</div>
 				<ul class="flex flex-col gap-2 windows text-xl">
 					<li>
@@ -140,7 +140,7 @@
 			</div>
 
 			<!-- Column 4: Archive -->
-			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="300">
+			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="150">
 				<div class="text-secondary windows text-xl mb-4">ARCHIVE</div>
 				<ul class="flex flex-col gap-2 windows text-xl">
 					<li>
