@@ -26,7 +26,7 @@
 				data-aos="fade-right"
 			>
 				<span class="text-2xl mr-1">←</span> 
-				<span>[RETURN HOME]</span>
+				<!-- <span>[RETURN HOME]</span> -->
 			</a>
 		</div>
 		
@@ -35,13 +35,13 @@
 			<h1 class="text-4xl md:text-5xl text-primary mb-4" data-aos="fade-up">
 				PRIVACY POLICY
 			</h1>
-			<p class="text-secondary" data-aos="fade-up" data-aos-delay="100">
+			<p class="text-secondary sf" data-aos="fade-up" data-aos-delay="100">
 				LAST UPDATED: {lastUpdated}
 			</p>
 		</div>
 		
 		<!-- Content -->
-		<div class="text-doswhite" data-aos="fade-up" data-aos-delay="200">
+		<div class="text-doswhite sf" data-aos="fade-up" data-aos-delay="200">
 			<div class="mb-8 text-lg">
 				<p class="text-xl mb-6">
 					This is the world's shortest privacy policy. I respect your privacy as much as I want others to respect mine.
@@ -76,7 +76,7 @@
 					Congratulations! You've reached the end of possibly the shortest privacy policy on the internet.
 				</p>
 				<p class="mb-6">
-					If you have any questions, just <a href="/#connect" class="text-primary hover:underline">shoot me an email</a>.
+					If you have any questions, just <a href="mailto:kavirajar27@gmail.com" class="text-primary hover:underline">shoot me an email</a>.
 				</p>
 			</div>
 		</div>

@@ -26,7 +26,7 @@
 				data-aos="fade-right"
 			>
 				<span class="text-2xl mr-1">←</span> 
-				<span>[RETURN HOME]</span>
+				<span></span>
 			</a>
 		</div>
 		
@@ -35,25 +35,25 @@
 			<h1 class="text-4xl md:text-5xl text-primary mb-4" data-aos="fade-up">
 				COOKIE POLICY
 			</h1>
-			<p class="text-secondary" data-aos="fade-up" data-aos-delay="100">
+			<p class="text-secondary sf text-xl" data-aos="fade-up" data-aos-delay="100">
 				LAST UPDATED: {lastUpdated}
 			</p>
 		</div>
 		
 		<!-- Content -->
-		<div class="text-doswhite" data-aos="fade-up" data-aos-delay="200">
+		<div class="text-doswhite sf text-2xl" data-aos="fade-up" data-aos-delay="200">
 			<div class="mb-8 text-lg">
-				<p class="text-xl mb-6">
+				<p class="mb-3">
 					Not the chocolate chip kind, unfortunately. These are the digital ones.
 				</p>
 				
-				<h2 class="text-secondary text-2xl mb-4">WHAT ARE COOKIES?</h2>
-				<p class="mb-6">
+				<h2 class="text-secondary text-2xl mb-2 mt-12">WHAT ARE COOKIES?</h2>
+				<p class="mb-3">
 					Cookies are small text files stored on your device when you visit websites. They're not the delicious kind that come out of ovens, sadly.
 				</p>
 				
-				<h2 class="text-secondary text-2xl mb-4 mt-12">DO I USE COOKIES?</h2>
-				<p class="mb-6">
+				<h2 class="text-secondary text-2xl mb-2 mt-12">DO I USE COOKIES?</h2>
+				<p class="mb-3">
 					Yes, but very minimally. This website uses cookies for:
 				</p>
 				<ul class="list-disc pl-8 mb-8">
@@ -62,8 +62,8 @@
 					<li class="mb-2">That's pretty much it</li>
 				</ul>
 				
-				<h2 class="text-secondary text-2xl mb-4 mt-12">HOW TO CONTROL COOKIES</h2>
-				<p class="mb-6">
+				<h2 class="text-secondary text-2xl mb-2 mt-12">HOW TO CONTROL COOKIES</h2>
+				<p class="mb-2">
 					Most browsers let you control cookies through their settings. You can:
 				</p>
 				<ul class="list-disc pl-8 mb-8">
@@ -72,11 +72,11 @@
 					<li class="mb-2">Browse in "incognito" or "private" mode</li>
 				</ul>
 				
-				<h2 class="text-secondary text-2xl mb-4 mt-12">THAT'S IT</h2>
-				<p class="mb-6">
+				<h2 class="text-secondary text-2xl mb-2 mt-12">THAT'S IT</h2>
+				<p class="mb-2">
 					Congrats on reading a cookie policy! You deserve an actual cookie for that. 🍪
 				</p>
-				<p class="mb-6">
+				<p class="mb-2">
 					If you have questions, just <a href="/#connect" class="text-primary hover:underline">shoot me an email</a>.
 				</p>
 			</div>

@@ -12,6 +12,7 @@
 	import AOS from 'aos';
 
 	const currentYear = new Date().getFullYear();
+	const RESUME_LINK = "https://drive.google.com/file/d/1Iufwcex0A8wS0pBlGnAzqO1xxuQPpTWW/view?usp=sharing";
 
 	const socialLinks = [
 		{ icon: linkedin, url: 'https://in.linkedin.com/in/kavirajar', name: 'LinkedIn' },
@@ -81,16 +82,16 @@
 			<!-- Column 1: About & Social -->
 			<div class="flex flex-col" data-aos="fade-up">
 				<div class="text-primary text-3xl mb-4">DATAOVERFLOW</div>
-				<p class="text-doswhite text-sm mb-4 apple">
-					AI Developer, Game Developer, Web Designer, and Creative Coder focused on building a better world for humanity.
+				<p class="text-doswhite text-lg mb-4 sf">
+					22 | Technologist & Indie Hacker | Game Development | Agentic AI | Web 2.0 | Quantitative Finance
 				</p>
-				<div class="flex flex-wrap gap-3 mt-2">
+				<div class="flex flex-wrap gap-1 mt-2">
 					{#each socialLinks as link}
 						<a 
 							href={link.url} 
 							target="_blank" 
 							rel="noreferrer"
-							class="w-8 h-8 flex items-center justify-center border border-doswhite/30 hover:border-primary transition-colors bg-black/50 rounded-sm"
+							class="w-8 h-8 flex items-center justify-center border border-doswhite/20 hover:border-primary transition-colors bg-black/50 rounded-sm"
 							aria-label={link.name}
 						>
 							<img src={link.icon} alt="" class="w-4 h-4" />
@@ -101,25 +102,25 @@
 
 			<!-- Column 2: Navigation -->
 			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="100">
-				<div class="text-secondary dos text-xl mb-4">[ LEVEL SELECT ]</div>
+				<div class="text-secondary windows text-xl mb-4">LEVEL SELECT</div>
 				<nav aria-label="Footer navigation">
-					<ul class="flex flex-col gap-2">
-						<li><a href="/#about" class="text-doswhite hover:text-primary transition-colors dos">ABOUT</a></li>
-						<li><a href="/#games" class="text-doswhite hover:text-primary transition-colors dos">GAMES</a></li>
-						<li><a href="/#projects" class="text-doswhite hover:text-primary transition-colors dos">PROJECTS</a></li>
-						<li><a href="/music" class="text-doswhite hover:text-primary transition-colors dos">MUSIC</a></li>
-						<li><a href="/blog" class="text-doswhite hover:text-primary transition-colors dos">BLOG</a></li>
+					<ul class="flex flex-col gap-2 windows text-xl">
+						<li><a href="/#about" class="text-doswhite hover:text-primary transition-colors">ABOUT</a></li>
+						<li><a href="/#games" class="text-doswhite hover:text-primary transition-colors">GAMES</a></li>
+						<li><a href="/#projects" class="text-doswhite hover:text-primary transition-colors">PROJECTS</a></li>
+						<li><a href="/music" class="text-doswhite hover:text-primary transition-colors">MUSIC</a></li>
+						<li><a href="/blog" class="text-doswhite hover:text-primary transition-colors">BLOG</a></li>
 					</ul>
 				</nav>
 			</div>
 
 			<!-- Column 3: Resources -->
 			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="200">
-				<div class="text-secondary dos text-xl mb-4">[ RESOURCES ]</div>
-				<ul class="flex flex-col gap-2">
+				<div class="text-secondary windows text-xl mb-4">RESOURCES</div>
+				<ul class="flex flex-col gap-2 windows text-xl">
 					<li>
 						<a
-							class="text-doswhite hover:text-primary transition-colors dos"
+							class="text-doswhite hover:text-primary transition-colors windows"
 							target="_blank"
 							rel="noreferrer"
 							href="https://docs.google.com/presentation/d/1OkTRtbzJCZRIzMU_4zev6jRgl67bUtxe/edit?usp=sharing&ouid=102067098286536378623&rtpof=true&sd=true"
@@ -128,10 +129,11 @@
 					</li>
 					<li>
 						<a
-							class="text-doswhite hover:text-primary transition-colors dos"
+							class="text-doswhite hover:text-primary transition-colors windows"
 							target="_blank"
 							rel="noreferrer"
-							href="https://flowcv.com/resume/pjasuoi5b2">RESUME</a
+							href={RESUME_LINK}
+							>RESUME</a
 						>
 					</li>
 				</ul>
@@ -139,18 +141,18 @@
 
 			<!-- Column 4: Archive -->
 			<div class="flex flex-col" data-aos="fade-up" data-aos-delay="300">
-				<div class="text-secondary dos text-xl mb-4">[ ARCHIVE ]</div>
-				<ul class="flex flex-col gap-2">
+				<div class="text-secondary windows text-xl mb-4">ARCHIVE</div>
+				<ul class="flex flex-col gap-2 windows text-xl">
 					<li>
 						<a 
-							class="text-doswhite hover:text-primary transition-colors dos" 
+							class="text-doswhite hover:text-primary transition-colors windows" 
 							href="/2024Q4"
 							>2024</a
 						>
 					</li>
 					<li>
 						<a
-							class="text-doswhite hover:text-primary transition-colors dos"
+							class="text-doswhite hover:text-primary transition-colors windows"
 							href="https://data-overflow.github.io/archive/2023"
 							target="_blank"
 							rel="noreferrer"
@@ -159,7 +161,7 @@
 					</li>
 					<li>
 						<a
-							class="text-doswhite hover:text-primary transition-colors dos"
+							class="text-doswhite hover:text-primary transition-colors windows"
 							href="https://data-overflow.github.io/archive/2022"
 							target="_blank"
 							rel="noreferrer"
@@ -168,7 +170,7 @@
 					</li>
 					<li>
 						<a
-							class="text-doswhite hover:text-primary transition-colors dos"
+							class="text-doswhite hover:text-primary transition-colors windows"
 							href="https://data-overflow.github.io/archive/2021"
 							target="_blank"
 							rel="noreferrer"
@@ -177,7 +179,7 @@
 					</li>
 					<li>
 						<a
-							class="text-doswhite hover:text-primary transition-colors dos"
+							class="text-doswhite hover:text-primary transition-colors windows"
 							href="https://data-overflow.github.io/archive/2020"
 							target="_blank"
 							rel="noreferrer"
@@ -193,9 +195,9 @@
 			<div class="flex flex-col md:flex-row gap-6 items-center justify-between">
 				<div class="flex-1">
 					<h3 class="text-primary text-2xl mb-2">SUBSCRIBE TO MY NEWSLETTER</h3>
-					<p class="text-doswhite text-sm apple">Get updates on new projects, blogs and game releases direct to your inbox!</p>
+					<p class="text-doswhite text-lg sf">Get updates on new projects, blogs and game releases direct to your inbox!</p>
 					{#if subscriptionMessage}
-						<p class="mt-2 text-sm dos {subscriptionStatus === 'success' ? 'text-primary' : 'text-red-500'}">
+						<p class="mt-2 text-lg dos {subscriptionStatus === 'success' ? 'text-primary' : 'text-red-500'}">
 							[ {subscriptionMessage} ]
 						</p>
 					{:else}
