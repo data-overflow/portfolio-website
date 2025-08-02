@@ -7,6 +7,7 @@
 	import img4 from '$lib/assets/projects/datable.png';
 	import img5 from '$lib/assets/projects/lumos.png';
 	import img6 from '$lib/assets/projects/ifm.png';
+	import img7 from '$lib/assets/projects/float.png';
 
 	import game1 from '$lib/assets/games/1.jpg';
 	import game2 from '$lib/assets/games/2.jpg';
@@ -15,6 +16,13 @@
 	let layer0, layer1, layer2, layer3, layer4;
 
 	const projects = [
+		{
+			title: 'The Float',
+			desc: 'Luxury Waterfront Resort in Ghana',
+			img: img7,
+			link: 'https://thefloatgh.com/'
+		},
+
 		{
 			title: 'Datable',
 			desc: 'A social platform for meeting new people',
@@ -45,12 +53,12 @@
 			img: img5,
 			link: 'https://lumos-web-sigma.vercel.app/'
 		},
-		{
-			title: 'IFM Scaff & Forms',
-			desc: 'Website for a product company',
-			img: img6,
-			link: 'https://indianfasteners.in/'
-		}
+		// {
+		// 	title: 'IFM Scaff & Forms',
+		// 	desc: 'Website for a product company',
+		// 	img: img6,
+		// 	link: 'https://indianfasteners.in/'
+		// }
 	];
 
 	const games = [
@@ -114,7 +122,7 @@
 		data-aos="fade"
 		data-aos-duration="1000"
 		data-aos-delay="500"
-		class="editundo uppercase opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[30%] xl:top-[20%] text-xl md:text-9xl h-0"
+		class="windows font-bold opacity-80 relative bg-layer-3 w-full text-center top-[10%] md:top-[30%] xl:top-[35%] text-4xl md:text-8xl h-0"
 	>
 		Welcome to my <br /> Video Game Universe
 	</h2>
@@ -124,7 +132,7 @@
 	<!-- <div class="text-primary text-6xl w-[50%] ">VIDEO GAMES</div> -->
 	<div class="flex flex-col md:flex-row gap-8 p-4 md:p-0">
 		<div class="text-primary text-6xl w-[50%] md:my-8">VIDEO GAMES</div>
-		<p class="text-sm md:px-8 text-doswhite apple m-auto">
+		<p class="text-xl md:px-8 text-doswhite sf m-auto">
 			I craft rich purpose driven experience that shares a story, dive into my video game universe!
 			Check out my games at <a
 				href="https://dataoverflow.itch.io/"
@@ -158,7 +166,7 @@
 <section class="flex flex-col bg-black p-4 md:p-10 md:pt-0 xl:px-32 xl:min-h-full" id="projects">
 	<div class="flex flex-col md:flex-row gap-8 p-4 md:p-0">
 		<div class="text-primary text-6xl w-[50%] md:my-8">WEB PROJECTS</div>
-		<p class="text-sm md:px-8 text-doswhite apple m-auto">
+		<p class="text-xl md:px-8 text-doswhite sf m-auto">
 			Check out my high performance fullstack projects here
 		</p>
 	</div>
@@ -166,7 +174,7 @@
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-6 4xl:justify-center md:py-8 lg:py-16"
 	>
 		{#each projects as project, index}
-			<a href={project.link} target="_blank" rel="noreferrer" class="card-container group" aria-label="View {project.title}" data-aos="fade-up" data-aos-delay={index * 100 + 300} data-aos-duration="1000">
+			<a href={project.link} target="_blank" rel="noreferrer" class="card-container group" aria-label="View {project.title}" data-aos="fade-up" data-aos-delay={index * 50 + 150} data-aos-duration="750">
 				<div class="card-image-wrapper">
 					<img
 						loading="lazy"
