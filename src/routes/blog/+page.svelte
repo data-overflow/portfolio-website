@@ -103,10 +103,10 @@
 		<div class="flex flex-col gap-8 mb-12">
 			<div class="text-primary text-6xl" data-aos="fade">BLOG (THIS PAGE IS A WORK IN PROGRESS!!!)</div>
 			<div class="flex items-center gap-2 text-doswhite text-sm mb-4 overflow-x-auto pb-2">
-				<span class="dos text-secondary">[FILTER]:</span>
+				<span class="windows text-xl text-secondary">FILTER:</span>
 				{#each categories as category}
 					<button 
-						class="px-3 py-1 border {selectedCategory === category ? 'border-primary text-primary bg-primary/20' : 'border-doswhite hover:border-primary hover:text-primary'} transition-all"
+						class="windows text-xl px-3 py-1 border {selectedCategory === category ? 'border-primary text-primary bg-primary/20' : 'border-doswhite hover:border-primary hover:text-primary'} transition-all"
 						on:click={() => filterPosts(category)}
 					>
 						{category}
@@ -129,15 +129,15 @@
 								</div>
 							{/if}
 							<div class="absolute bottom-0 left-0 right-0 p-4 z-20">
-								<span class="text-xs text-secondary dos">{post.category}</span>
-								<h3 class="text-white text-xl font-bold mt-1 dos">{post.title}</h3>
+								<span class="text-xl text-secondary windows">{post.category}</span>
+								<h3 class="text-white text-xl md:text-3xl font-bold mt-1 windows">{post.title}</h3>
 							</div>
 						</div>
 						<div class="p-4 flex-grow flex flex-col">
-							<p class="text-doswhite text-sm apple mb-4 flex-grow">{post.excerpt}</p>
+							<p class="text-doswhite text-base overflow-ellipsis sf mb-4 flex-grow">{post.excerpt}</p>
 							<div class="flex justify-between items-center mt-auto">
-								<div class="text-secondary text-xs dos">{post.date}</div>
-								<div class="text-primary text-xs dos">{post.readTime} READ</div>
+								<div class="text-secondary text-xs windows">{post.date}</div>
+								<div class="text-primary text-xs windows">{post.readTime} READ</div>
 							</div>
 						</div>
 					</a>
@@ -152,7 +152,7 @@
 		{#if displayedPosts.length < filteredPosts.length}
 			<div class="flex justify-center mt-12">
 				<button 
-					class="px-6 py-2 border-2 border-primary text-primary dos hover:bg-primary/20 transition-all text-xl"
+					class="windows text-xl px-6 py-2 border-2 border-primary text-primary dos hover:bg-primary/20 transition-all text-xl"
 					on:click={loadMorePosts}
 				>
 					LOAD MORE POSTS [ ... ]
