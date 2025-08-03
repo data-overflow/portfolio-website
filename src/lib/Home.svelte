@@ -262,8 +262,9 @@
 	
 	#home {
 		background-size: cover;
-		background-image: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(20, 21, 21, 0.5)),
-			url('./assets/mood.webp');
+		background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0.9) 10%, rgba(20, 21, 21, 0.5) 33%, rgba(20, 21, 21, 0) 66%, rgba(10, 11, 11, 1) 96%),
+			url('./assets/slow-mood.gif');
+			/* url('./assets/mood.webp'); */
 		background-position-y: -20%;
 		background-position-x: 80%;
 		/* background-size: 125%; */
