@@ -323,6 +323,15 @@
 	 @media only screen and (min-width: 1540px) {
 		#home {
 			background-size: 125%;
+			height: 78vh;
+		}
+	 } 
+
+	@media only screen and (min-width: 1900px) {
+		#home {
+			height: 78vh;
 		}
 	 }
+
+	 
 </style>

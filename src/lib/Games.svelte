@@ -126,13 +126,13 @@
 	>
 		Welcome to my <br /> Video Game Universe
 	</h2>
-	<div id="bg-layer-4" class="absolute" bind:this={layer4}></div>
+	<div id="bg-layer-4" class="absolute z-40" bind:this={layer4}></div>
 </div>
-<section class="flex flex-col bg-black p-4 md:p-10 xl:px-32 xl:min-h-full">
+<section class="flex flex-col bg-black p-4 md:p-10 xl:px-32 xl:min-h-full z-50">
 	<!-- <div class="text-primary text-6xl w-[50%] ">VIDEO GAMES</div> -->
-	<div class="flex flex-col md:flex-row gap-8 p-4 md:p-0">
-		<div class="text-primary text-6xl w-[50%] md:my-8">VIDEO GAMES</div>
-		<p class="text-xl md:px-8 text-doswhite sf m-auto">
+	<div class="flex flex-col md:flex-row gap-8 p-4 md:p-0 z-50 3xl:px-8  bg-black/40 backdrop-blur-xl">
+		<div class="text-primary text-6xl w-[50%] md:my-8 z-50 ">VIDEO GAMES</div>
+		<p class="text-xl md:px-8 text-doswhite sf m-auto z-50">
 			I craft rich purpose driven experience that shares a story, dive into my video game universe!
 			Check out my games at <a
 				href="https://dataoverflow.itch.io/"
@@ -324,7 +324,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1800px) {
+	@media screen and (min-width: 1600px) {
 		#bg-layer-0,
 		#bg-layer-1,
 		#bg-layer-2,
@@ -336,8 +336,10 @@
 		}
 
 		#bg-layer-4 {
+			transform: translateY(200px);
 			background-size: 110%;
 		}
+
 	}
 
 	/* New Card Styles */

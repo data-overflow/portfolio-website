@@ -28,14 +28,16 @@
 				logoAlt: "cit logo",
 				institution: "Chennai Institute of Technology",
 				detail: "B.Tech Artificial Intelligence & Data Science",
-				period: "Oct 2021 - May 2025 (Can't wait) | Chennai, India"
+				period: "Oct 2021 - May 2025 (Can't wait) | Chennai, India",
+				link: "https://www.citchennai.edu.in/"
 			},
 			{
 				logo: dav,
 				logoAlt: "dav logo",
 				institution: "DAV Boys Senior Secondary School, Gopalapuram",
 				detail: "Grade: SSC - 464/500 | HSC - 432/500",
-				period: "2009 - 2021"
+				period: "2009 - 2021",
+				link: "https://bgpm.davchennai.org/"
 			}
 		],
 		experience: [
@@ -43,8 +45,9 @@
 				logo: quantegies,
 				logoAlt: "quantegies logo",
 				company: "Quantegies",
-				position: "AI/ML Developer",
+				position: "AI Engineer",
 				period: "July 2025 - Present | CA, United States (Remote)",
+				link: "https://quantegies.com/",
 				responsibilities: [
 					"Working on areas such as quantitative finance, algorithmic trading and machine learning using C++"
 				]
@@ -54,8 +57,9 @@
 				logo: teachafy,
 				logoAlt: "teachafy logo",
 				company: "Teachafy Labs",
-				position: "Machine Learning Developer Intern",
-				period: "Dec 2024 - Present | Chennai, India",
+				position: "Founding AI/ML Engineer",
+				period: "Dec 2024 - July 2025 | Chennai, India",
+				link: "https://teachafy.com/",
 				responsibilities: [
 					"Designed & engineered the product to production, and setup CI/CD pipelines using Git, Docker Compose & AWS",
 					"Ensured 100% consistency integrating 3rd party platforms such as Notion & Frappe, using a two-way database sync system",
@@ -69,6 +73,7 @@
 				company: "Fiverr",
 				position: "Freelance Full Stack Developer",
 				period: "Dec 2023 - Nov 2024 | Remote, Global",
+				link: "https://www.fiverr.com/dataoverflow",
 				responsibilities: [
 					"Delivered 5+ client websites using SvelteKit with 100% on-time completion, and $1.2K revenue in 2 weeks",
 					"Deployed frontend websites with 95-97% mobile performance using optimizations such as caching, lazy loading and splitting"
@@ -80,6 +85,7 @@
 				company: "Cognizant",
 				position: "Research & Development Intern",
 				period: "Jun 2023 - Aug 2023 | Chennai, India",
+				link: "https://www.cognizant.com/",
 				responsibilities: [
 					"Reduced warehouse navigation time by 50% for clients by innovating an AR navigation app (for Vuzix m400) using Unity3D",
 					"Optimized pathfinding algorithms to enable error-free routing in complex environments, boosting client productivity",
@@ -295,7 +301,9 @@
 						<div class="flex flex-col gap-8 sf content-scrollable">
 							{#each resumeData.education as item}
 								<div class="flex flex-col md:flex-row gap-2 md:gap-6">
-									<img src={item.logo} class="h-20 w-20 md:h-24 md:w-24 border-2 border-black" alt={item.logoAlt} />
+									<a href={item.link} target="_blank" rel="noreferrer" class="min-h-20 min-w-20 md:min-h-24 md:min-w-24">
+										<img src={item.logo} class="h-20 w-20 md:h-24 md:w-24 border-2 border-black" alt={item.logoAlt} />
+									</a>
 									<div class="flex flex-col">
 										<div class="text-xl font-bold text-black">{item.institution}</div>
 										<div class="text-xl text-black">{item.detail}</div>
@@ -315,7 +323,9 @@
 						<div class="flex flex-col gap-8 sf content-scrollable">
 							{#each resumeData.experience as job}
 								<div class="flex flex-col md:flex-row gap-2 md:gap-6">
-									<img src={job.logo} class="h-20 w-20 md:h-24 md:w-24 border-2 border-black" alt={job.logoAlt} />
+									<a href={job.link} target="_blank" rel="noreferrer" class="min-h-20 min-w-20 md:min-h-24 md:min-w-24">
+										<img src={job.logo} class="h-20 w-20 md:h-24 md:w-24 border-2 border-black" alt={job.logoAlt} />
+									</a>
 									<div class="flex flex-col">
 										<div class="text-xl font-bold text-black">{job.company}</div>
 										<div class="text-xl text-black">{job.position}</div>
@@ -451,7 +461,7 @@
 	/* Custom scrollbar styling */
 	.content-scrollable::-webkit-scrollbar {
 		width: 16px;
-		background-color: #f0f0f0;
+		background-color: #B4B3B4;
 		border-left: 2px solid black;
 	}
 
@@ -466,7 +476,7 @@
 	}
 
 	.content-scrollable::-webkit-scrollbar-track {
-		background-color: #f0f0f0;
+		background-color: #B4B3B4;
 		border-left: 2px solid black;
 	}
 
