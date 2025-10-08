@@ -7,6 +7,7 @@
 	import lumos from '$lib/assets/lumos.png';
 	import teachafy from '$lib/assets/teachafy.png';
 	import quantegies from '$lib/assets/quantegies.png';
+	import lyzr from '$lib/assets/lyzr.png';
 
 	const MAX_TAB = 5;
 	const RESUME_LINK = "https://drive.google.com/file/d/1Iufwcex0A8wS0pBlGnAzqO1xxuQPpTWW/view?usp=sharing";
@@ -42,14 +43,25 @@
 		],
 		experience: [
 			{
+				logo: lyzr,
+				logoAlt: "lyzr logo",
+				company: "Lyzr AI",
+				position: "Founder's Office Developer",
+				period: "Aug 2025 - Present | Bengaluru, India (Hybrid)",
+				link: "https://lyzr.ai/",
+				responsibilities: [
+					"Building SaaS applications powered by production ready Lyzr AI Agents"
+				]
+			},
+			{
 				logo: quantegies,
 				logoAlt: "quantegies logo",
 				company: "Quantegies",
 				position: "AI Engineer",
-				period: "July 2025 - Present | CA, United States (Remote)",
+				period: "July 2025 - Aug 2025 | CA, United States (Remote)",
 				link: "https://quantegies.com/",
 				responsibilities: [
-					"Working on areas such as quantitative finance, algorithmic trading and machine learning using C++"
+					"Worked on areas such as quantitative finance, algorithmic trading and machine learning using C++"
 				]
 			},
 
